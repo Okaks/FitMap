@@ -208,7 +208,7 @@ with tab_co:
             df = pd.DataFrame(r["tier1_breakdown"])
             df["signal"] = df["signal"].str.replace("tier1_", "").str.replace("_", " ")
             st.dataframe(
-                df[["signal", "weight", "strength", "decay", "contribution"]],
+                df[["signal", "weight", "strength", "decay", "contribution"]].astype(str),
                 hide_index=True, use_container_width=True,
             )
         comp = r["components"]
@@ -264,7 +264,8 @@ with tab_prod:
     not_approachable.sort(key=lambda h: -h["Fit"])
 
     st.caption(f"{len(approachable)} companies to approach, ranked by fit")
-    st.dataframe(pd.DataFrame(approachable), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(approachable).astype(str) if approachable else pd.DataFrame(),
+                 hide_index=True, use_container_width=True)
 
     if not_approachable:
         with st.expander(
@@ -274,7 +275,8 @@ with tab_prod:
                 "Kept visible on purpose. A tool that only shows what it selected can't be checked. "
                 "These fire on the signature and are still ruled out, each for a stated reason."
             )
-            st.dataframe(pd.DataFrame(not_approachable), hide_index=True, use_container_width=True)
+            st.dataframe(pd.DataFrame(not_approachable).astype(str),
+                         hide_index=True, use_container_width=True)
 
     suppressed_here = [r["company"] for r in rows if chosen in r["suppressed_products"]]
     if suppressed_here:
@@ -293,9 +295,9 @@ with tab_mkt:
         "Presence": m["yc_status"],
         "Friction": m["friction"]["score"],
         "Trajectory": m.get("trajectory", ""),
-        "Regulatory": m.get("regulatory", 0),
-        "Rails": m.get("rails", 0),
-        "Partners": m.get("partners", 0),
+        "Regulatory": int(m.get("regulatory", 0) or 0),
+        "Rails": int(m.get("rails", 0) or 0),
+        "Partners": int(m.get("partners", 0) or 0),
         "Blocked funds": "yes" if m.get("blocked_funds") else "",
         "Binding constraint": m.get("binding_constraint", ""),
     } for m in mk["markets"]])
@@ -307,9 +309,10 @@ with tab_mkt:
             "Markets where friction is high and Yellow Card has little or no regulatory footing. "
             "These are expansion signals, not sales targets — the constraint is capability, not demand."
         )
-        st.dataframe(gap, hide_index=True, use_container_width=True)
+        st.dataframe(gap.astype(str), hide_index=True, use_container_width=True)
     else:
-        st.dataframe(md.sort_values("Friction", ascending=False), hide_index=True, use_container_width=True)
+        st.dataframe(md.sort_values("Friction", ascending=False).astype(str),
+                     hide_index=True, use_container_width=True)
 
     st.markdown("---")
     pickm = st.selectbox("Open a market", [m["country"] for m in mk["markets"]])
@@ -331,7 +334,7 @@ with tab_mkt:
     st.dataframe(pd.DataFrame([{
         "FX volatility": f["fx_volatility"], "Dollar access": f["dollar_access"],
         "Rail fragmentation": f["rail_fragmentation"], "Settlement friction": f["settlement_friction"],
-    }]), hide_index=True, use_container_width=True)
+    }]).astype(str), hide_index=True, use_container_width=True)
 
     for k in ["trajectory_note", "evidence", "expansion_signal", "note"]:
         if m.get(k):
@@ -402,12 +405,14 @@ floor rule can be judged rather than trusted.
 
 ### Validation
 """)
-    st.dataframe(pd.DataFrame(validation["positive_controls"]), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(validation["positive_controls"]).astype(str),
+                 hide_index=True, use_container_width=True)
     st.caption(
         "These are confirmed customers. If they don't rank high, the framework is wrong — "
         "not the companies. Move the weights in the sidebar and watch whether they hold."
     )
-    st.dataframe(pd.DataFrame(validation["negative_controls"]), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(validation["negative_controls"]).astype(str),
+                 hide_index=True, use_container_width=True)
     st.caption(
         "Each negative control fails for one specific reason, so every rule is visibly doing work. "
         "The hardest of them has publicly stated FX pain and still isn't a customer — it supplies "
@@ -530,7 +535,8 @@ with tab_edit:
         )
         st.caption("Set up sync: see the GitHub sync section of the README. Takes about five minutes.")
 
-    mode = st.radio("", ["Add a company", "Edit an existing one", "Remove", "Download"],
+    mode = st.radio("What do you want to do", 
+                    ["Add a company", "Edit an existing one", "Remove", "Download"],
                     horizontal=True, label_visibility="collapsed")
 
     companies = st.session_state.companies
