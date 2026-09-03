@@ -1,0 +1,2414 @@
+{
+  "framework_version": "1.4",
+  "scored": 27,
+  "validation": {
+    "positive_controls": [
+      {
+        "company": "Coinbase",
+        "category": "prospect",
+        "score": 67.4,
+        "rank": 14,
+        "passes": true
+      },
+      {
+        "company": "Tranzmit",
+        "category": "prospect",
+        "score": 62.4,
+        "rank": 15,
+        "passes": true
+      },
+      {
+        "company": "Western Union",
+        "category": "prospect_narrow",
+        "score": 88.8,
+        "rank": 4,
+        "passes": true
+      },
+      {
+        "company": "Visa",
+        "category": "prospect_narrow",
+        "score": 80.8,
+        "rank": 7,
+        "passes": true
+      }
+    ],
+    "negative_controls": [
+      {
+        "company": "Onafriq",
+        "category": "excluded",
+        "score": 112.6,
+        "passes": true
+      },
+      {
+        "company": "Cemex",
+        "category": "prospect_narrow",
+        "score": 69.7,
+        "passes": [
+          "global_usd_accounts",
+          "treasury_management"
+        ]
+      },
+      {
+        "company": "Dangote Group",
+        "category": "prospect_narrow",
+        "score": 68.6,
+        "passes": [
+          "global_usd_accounts",
+          "treasury_management"
+        ]
+      },
+      {
+        "company": "Shoprite Group",
+        "category": "excluded",
+        "score": 57.8,
+        "passes": true
+      },
+      {
+        "company": "Zeepay",
+        "category": "excluded",
+        "score": 57.5,
+        "passes": true
+      },
+      {
+        "company": "Fan Milk",
+        "category": "excluded",
+        "score": 41.9,
+        "passes": true
+      },
+      {
+        "company": "Okomu Oil",
+        "category": "excluded",
+        "score": 17.2,
+        "passes": true
+      },
+      {
+        "company": "Naivas",
+        "category": "excluded",
+        "score": 5.3,
+        "passes": true
+      }
+    ],
+    "note": "Positive controls are confirmed Yellow Card customers. If they do not rank high, the framework is wrong, not the companies."
+  },
+  "by_category": {
+    "prospect": [
+      "Tala",
+      "Moove",
+      "M-KOPA",
+      "Kenya Airways / KQ",
+      "Jumia",
+      "Wave",
+      "Coinbase",
+      "Tranzmit",
+      "Flour Mills / FMN",
+      "Bamboo"
+    ],
+    "excluded": [
+      "Onafriq",
+      "Shoprite Group",
+      "Zeepay",
+      "Fan Milk",
+      "Okomu Oil",
+      "Twiga",
+      "Naivas"
+    ],
+    "prospect_narrow": [
+      "ETG",
+      "Western Union",
+      "Sun King",
+      "Visa",
+      "Globant",
+      "Cemex",
+      "Dangote Group",
+      "Old Mutual"
+    ],
+    "route_to_partnership": [
+      "Halan",
+      "VALR"
+    ]
+  },
+  "results": [
+    {
+      "company": "Tala",
+      "sector": "Digital lending",
+      "category": "prospect",
+      "raw_score": 125.54,
+      "components": {
+        "tier1_base": 70.8,
+        "tier2_modifier": 1.24,
+        "tier3_modifier": 1.1,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 0.8,
+          "contribution": 21.6
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.4,
+          "contribution": 7.2
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 99.0,
+          "reason": "USD requirement: receives, holds, needs_on_demand",
+          "product": "global_usd_accounts"
+        },
+        {
+          "score": 93.3,
+          "reason": "Multi-entity structure across 6 collected currencies",
+          "product": "treasury_management"
+        },
+        {
+          "score": 90.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": null,
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": true,
+        "reason": "MAJOR FINDING - TALA ALREADY MOVES LENDING CAPITAL OVER STABLECOIN RAILS. Per Kindred Ventures: with 'Tala in a Box', lending capital moves across stablecoin rails, and Tala has built local off-ramp pathways - neighbourhood convenience stores, partner banks, Tala mobile wallets - so customers can hold value digitally and convert to local currency when needed. Backed by the Stellar Development Foun"
+      },
+      "score": 100.0
+    },
+    {
+      "company": "Moove",
+      "sector": "Mobility fintech - vehicle financing and fleet operations",
+      "category": "prospect",
+      "raw_score": 121.21,
+      "components": {
+        "tier1_base": 74.0,
+        "tier2_modifier": 1.26,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 0.8,
+          "contribution": 24.0
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.4,
+          "contribution": 8.0
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-entity structure across 10 collected currencies",
+          "product": "treasury_management"
+        },
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": true,
+        "countries": [
+          "Nigeria (historically)"
+        ]
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": null,
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 96.6
+    },
+    {
+      "company": "M-KOPA",
+      "sector": "Asset financing - smartphones, solar, productive assets",
+      "category": "prospect",
+      "raw_score": 108.7,
+      "components": {
+        "tier1_base": 62.4,
+        "tier2_modifier": 1.34,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 1.0,
+          "contribution": 24.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 0.8,
+          "contribution": 19.2
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.4,
+          "contribution": 7.2
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 94.4,
+          "reason": "Multi-entity structure across 5 collected currencies",
+          "product": "treasury_management"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "gray area",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 86.6
+    },
+    {
+      "company": "Kenya Airways / KQ",
+      "sector": "Aviation",
+      "category": "prospect",
+      "raw_score": 99.9,
+      "components": {
+        "tier1_base": 74.0,
+        "tier2_modifier": 1.35,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 0.8,
+          "contribution": 24.0
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.4,
+          "contribution": 8.0
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 86.7,
+          "reason": "Multi-entity structure across 7 collected currencies",
+          "product": "treasury_management"
+        },
+        {
+          "score": 86.0,
+          "reason": "USD requirement: pays, needs_on_demand",
+          "product": "global_usd_accounts"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": true,
+        "countries": [
+          "Ethiopia",
+          "Malawi",
+          "Burundi",
+          "Nigeria (historically)"
+        ]
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": null,
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 79.6
+    },
+    {
+      "company": "Jumia",
+      "sector": "E-commerce marketplace, logistics, payments",
+      "category": "prospect",
+      "raw_score": 96.88,
+      "components": {
+        "tier1_base": 69.2,
+        "tier2_modifier": 1.4,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "pruning"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 0.8,
+          "contribution": 19.2
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.4,
+          "contribution": 8.0
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-entity structure across 8 collected currencies",
+          "product": "treasury_management"
+        },
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": true,
+        "countries": [
+          "Algeria"
+        ]
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "live prospect",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 77.2
+    },
+    {
+      "company": "Wave",
+      "sector": "Mobile money / payments",
+      "category": "prospect",
+      "raw_score": 90.09,
+      "components": {
+        "tier1_base": 55.0,
+        "tier2_modifier": 1.26,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.7,
+          "weighted": 21.0,
+          "decay": 1.0,
+          "contribution": 21.0
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.8,
+          "contribution": 16.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.6,
+          "weighted": 18.0,
+          "decay": 0.6,
+          "contribution": 10.8
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.4,
+          "contribution": 7.2
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-entity structure across 6 collected currencies",
+          "product": "treasury_management"
+        },
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "signature test",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 71.8
+    },
+    {
+      "company": "Coinbase",
+      "sector": "Digital asset exchange / platform",
+      "category": "prospect",
+      "raw_score": 84.66,
+      "components": {
+        "tier1_base": 59.2,
+        "tier2_modifier": 1.3,
+        "tier3_modifier": 1.1,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 1.0,
+          "contribution": 24.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.7,
+          "weighted": 21.0,
+          "decay": 0.8,
+          "contribution": 16.8
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.4,
+          "contribution": 6.4
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 75.6,
+          "reason": "Multi-entity structure across 4 collected currencies",
+          "product": "treasury_management"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "positive",
+      "confirmed_yc_customer": true,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 67.4
+    },
+    {
+      "company": "Tranzmit",
+      "sector": "Cross-border payments",
+      "category": "prospect",
+      "raw_score": 78.37,
+      "components": {
+        "tier1_base": 63.2,
+        "tier2_modifier": 1.24,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 0.8,
+          "contribution": 19.2
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.7,
+          "weighted": 14.0,
+          "decay": 0.6,
+          "contribution": 8.4
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.7,
+          "weighted": 14.0,
+          "decay": 0.4,
+          "contribution": 5.6
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 70.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 70.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 68.8,
+          "reason": "USD requirement: receives, holds",
+          "product": "global_usd_accounts"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "medium",
+      "evidence_depth": "moderate",
+      "control_type": "positive",
+      "confirmed_yc_customer": true,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 62.4
+    },
+    {
+      "company": "Flour Mills / FMN",
+      "sector": "Food processing, milling, agribusiness",
+      "category": "prospect",
+      "raw_score": 70.68,
+      "components": {
+        "tier1_base": 57.0,
+        "tier2_modifier": 1.24,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 1.0,
+          "contribution": 27.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 0.8,
+          "contribution": 21.6
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.7,
+          "weighted": 14.0,
+          "decay": 0.6,
+          "contribution": 8.4
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 77.4,
+          "reason": "USD requirement: pays, needs_on_demand",
+          "product": "global_usd_accounts"
+        },
+        {
+          "score": 90.0,
+          "reason": "Recurring currency mismatch (soft_in_hard_out)",
+          "subordinate": true,
+          "product": "fx"
+        },
+        {
+          "score": 90.0,
+          "reason": "Cross-border settlement through high-friction corridors",
+          "subordinate": true,
+          "product": "stablecoin_settlement"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "gate test",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 56.3
+    },
+    {
+      "company": "Bamboo",
+      "sector": "Retail investment platform - US equities access",
+      "category": "prospect",
+      "raw_score": 34.85,
+      "components": {
+        "tier1_base": 31.4,
+        "tier2_modifier": 1.11,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.5,
+          "weighted": 15.0,
+          "decay": 1.0,
+          "contribution": 15.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.5,
+          "weighted": 15.0,
+          "decay": 0.8,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.3,
+          "weighted": 6.0,
+          "decay": 0.6,
+          "contribution": 3.6
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.1,
+          "weighted": 2.0,
+          "decay": 0.4,
+          "contribution": 0.8
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 43.0,
+          "reason": "USD requirement: pays, holds",
+          "product": "global_usd_accounts"
+        },
+        {
+          "score": 40.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 50.0,
+          "reason": "Cross-border settlement through high-friction corridors",
+          "subordinate": true,
+          "product": "stablecoin_settlement"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "low",
+      "evidence_depth": "thin",
+      "control_type": "gate test",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 27.8
+    },
+    {
+      "company": "Onafriq",
+      "sector": "Pan-African payments network / infrastructure",
+      "category": "excluded",
+      "raw_score": 141.3,
+      "components": {
+        "tier1_base": 71.6,
+        "tier2_modifier": 1.38,
+        "tier3_modifier": 1.1,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 0.8,
+          "contribution": 21.6
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.4,
+          "contribution": 8.0
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [
+        {
+          "rule": "competes_for_same_buyer",
+          "reason": "Sells cross-border settlement to the same customers Yellow Card sells to"
+        }
+      ],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 90.0,
+          "reason": "USD requirement: receives, holds, pays, needs_on_demand",
+          "product": "global_usd_accounts"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "negative",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 112.6
+    },
+    {
+      "company": "ETG",
+      "sector": "Agricultural commodities, trading, logistics",
+      "category": "prospect_narrow",
+      "raw_score": 111.93,
+      "components": {
+        "tier1_base": 70.0,
+        "tier2_modifier": 1.23,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 0.8,
+          "contribution": 21.6
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.4,
+          "contribution": 6.4
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 80.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Recurring currency mismatch (bidirectional)",
+          "subordinate": true,
+          "product": "fx"
+        },
+        {
+          "score": 100.0,
+          "reason": "Cross-border settlement through high-friction corridors",
+          "subordinate": true,
+          "product": "stablecoin_settlement"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": true,
+        "countries": [
+          "Mozambique",
+          "Ethiopia",
+          "Malawi"
+        ]
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "gray area",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 89.2
+    },
+    {
+      "company": "Western Union",
+      "sector": "Remittance / cross-border money movement",
+      "category": "prospect_narrow",
+      "raw_score": 111.52,
+      "components": {
+        "tier1_base": 74.0,
+        "tier2_modifier": 1.37,
+        "tier3_modifier": 1.1,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 0.8,
+          "contribution": 24.0
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.4,
+          "contribution": 8.0
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 70.0,
+          "reason": "Documented need to hold or manage digital assets",
+          "product": "wallets_custody"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "positive",
+      "confirmed_yc_customer": true,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 88.8
+    },
+    {
+      "company": "Sun King",
+      "sector": "Off-grid solar / PAYG energy",
+      "category": "prospect_narrow",
+      "raw_score": 111.38,
+      "components": {
+        "tier1_base": 63.0,
+        "tier2_modifier": 1.36,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 1.0,
+          "contribution": 27.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.7,
+          "weighted": 21.0,
+          "decay": 0.8,
+          "contribution": 16.8
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.4,
+          "contribution": 7.2
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 90.0,
+          "reason": "Recurring currency mismatch (soft_in_hard_out)",
+          "subordinate": true,
+          "product": "fx"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": null,
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 88.7
+    },
+    {
+      "company": "Visa",
+      "sector": "Payment network / financial infrastructure",
+      "category": "prospect_narrow",
+      "raw_score": 101.41,
+      "components": {
+        "tier1_base": 68.8,
+        "tier2_modifier": 1.34,
+        "tier3_modifier": 1.1,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 1.0,
+          "weighted": 30.0,
+          "decay": 1.0,
+          "contribution": 30.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 0.8,
+          "contribution": 21.6
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.6,
+          "contribution": 10.8
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.4,
+          "contribution": 6.4
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 80.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 80.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 70.0,
+          "reason": "Documented need to hold or manage digital assets",
+          "product": "wallets_custody"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "positive",
+      "confirmed_yc_customer": true,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 80.8
+    },
+    {
+      "company": "Globant",
+      "sector": "IT services, software engineering",
+      "category": "prospect_narrow",
+      "raw_score": 100.56,
+      "components": {
+        "tier1_base": 58.6,
+        "tier2_modifier": 1.32,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 1.0,
+          "contribution": 27.0
+        },
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 0.8,
+          "contribution": 19.2
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.6,
+          "contribution": 10.8
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.2,
+          "weighted": 4.0,
+          "decay": 0.4,
+          "contribution": 1.6
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 100.0,
+          "reason": "Recurring currency mismatch (hard_in_soft_out)",
+          "subordinate": true,
+          "product": "fx"
+        },
+        {
+          "score": 80.0,
+          "reason": "Cross-border settlement through high-friction corridors",
+          "subordinate": true,
+          "product": "stablecoin_settlement"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "gray area",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 80.1
+    },
+    {
+      "company": "Halan",
+      "sector": "Fintech - lending, payments, e-commerce",
+      "category": "route_to_partnership",
+      "raw_score": 100.14,
+      "components": {
+        "tier1_base": 58.8,
+        "tier2_modifier": 1.31,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 1.0,
+          "contribution": 24.0
+        },
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.7,
+          "weighted": 21.0,
+          "decay": 0.8,
+          "contribution": 16.8
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.6,
+          "contribution": 10.8
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.4,
+          "contribution": 7.2
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 90.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 90.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 85.6,
+          "reason": "Multi-entity structure across 4 collected currencies",
+          "product": "treasury_management"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "gray area",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 79.8
+    },
+    {
+      "company": "Cemex",
+      "sector": "Building materials - cement",
+      "category": "prospect_narrow",
+      "raw_score": 87.46,
+      "components": {
+        "tier1_base": 67.8,
+        "tier2_modifier": 1.29,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 1.0,
+          "contribution": 27.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 0.8,
+          "contribution": 21.6
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 1.0,
+          "weighted": 20.0,
+          "decay": 0.6,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.4,
+          "contribution": 7.2
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 90.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Recurring currency mismatch (bidirectional)",
+          "subordinate": true,
+          "product": "fx"
+        },
+        {
+          "score": 90.0,
+          "reason": "Cross-border settlement through high-friction corridors",
+          "subordinate": true,
+          "product": "stablecoin_settlement"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "negative",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 69.7
+    },
+    {
+      "company": "Dangote Group",
+      "sector": "Conglomerate - cement, refining, sugar, fertiliser",
+      "category": "prospect_narrow",
+      "raw_score": 86.13,
+      "components": {
+        "tier1_base": 63.8,
+        "tier2_modifier": 1.35,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 1.0,
+          "contribution": 27.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 0.8,
+          "contribution": 21.6
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.6,
+          "contribution": 9.6
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.7,
+          "weighted": 14.0,
+          "decay": 0.4,
+          "contribution": 5.6
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 70.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 100.0,
+          "reason": "Recurring currency mismatch (soft_in_hard_out (historically); repricing to hard_in from July 2026)",
+          "subordinate": true,
+          "product": "fx"
+        },
+        {
+          "score": 90.0,
+          "reason": "Cross-border settlement through high-friction corridors",
+          "subordinate": true,
+          "product": "stablecoin_settlement"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "negative",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 68.6
+    },
+    {
+      "company": "VALR",
+      "sector": "Digital asset exchange and institutional custody",
+      "category": "route_to_partnership",
+      "raw_score": 86.07,
+      "components": {
+        "tier1_base": 52.8,
+        "tier2_modifier": 1.14,
+        "tier3_modifier": 1.1,
+        "urgency_multiplier": 1.3,
+        "urgency_state": "expanding"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 1.0,
+          "contribution": 24.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 0.8,
+          "contribution": 19.2
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.6,
+          "weighted": 12.0,
+          "decay": 0.6,
+          "contribution": 7.2
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.3,
+          "weighted": 6.0,
+          "decay": 0.4,
+          "contribution": 2.4
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [
+        {
+          "rule": "competes_for_same_buyer",
+          "reason": "Sells cross-border settlement to the same customers Yellow Card sells to"
+        }
+      ],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 79.2,
+          "reason": "USD requirement: receives, holds, pays",
+          "product": "global_usd_accounts"
+        },
+        {
+          "score": 70.0,
+          "reason": "Documented need to hold or manage digital assets",
+          "product": "wallets_custody"
+        },
+        {
+          "score": 40.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "signature test",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 68.6
+    },
+    {
+      "company": "Shoprite Group",
+      "sector": "Retail - supermarkets",
+      "category": "excluded",
+      "raw_score": 72.59,
+      "components": {
+        "tier1_base": 52.6,
+        "tier2_modifier": 1.38,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "retreating"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.7,
+          "weighted": 21.0,
+          "decay": 1.0,
+          "contribution": 21.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.6,
+          "weighted": 18.0,
+          "decay": 0.8,
+          "contribution": 14.4
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.6,
+          "contribution": 10.8
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.4,
+          "contribution": 6.4
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [
+        {
+          "rule": "sustained_regional_retreat",
+          "reason": "Multiple market exits plus stated reduction in regional capital allocation"
+        },
+        {
+          "rule": "sustained_regional_retreat",
+          "reason": "Multiple market exits plus stated reduction in regional capital allocation"
+        }
+      ],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 90.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 90.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 100.0,
+          "reason": "Recurring currency mismatch (soft_in_hard_out)",
+          "subordinate": true,
+          "product": "fx"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "negative",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 57.8
+    },
+    {
+      "company": "Zeepay",
+      "sector": "Cross-border payments / mobile money remittance",
+      "category": "excluded",
+      "raw_score": 72.15,
+      "components": {
+        "tier1_base": 62.2,
+        "tier2_modifier": 1.16,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.9,
+          "weighted": 27.0,
+          "decay": 1.0,
+          "contribution": 27.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.8,
+          "weighted": 24.0,
+          "decay": 0.8,
+          "contribution": 19.2
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.6,
+          "contribution": 9.6
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.4,
+          "contribution": 6.4
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [
+        {
+          "rule": "competes_for_same_buyer",
+          "reason": "Sells cross-border settlement to the same customers Yellow Card sells to"
+        }
+      ],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 80.0,
+          "reason": "Multi-market local collection/disbursement (both)",
+          "direction": "both",
+          "product": "local_rails"
+        },
+        {
+          "score": 80.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 68.8,
+          "reason": "USD requirement: receives, holds",
+          "product": "global_usd_accounts"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "medium",
+      "evidence_depth": "moderate",
+      "control_type": "negative",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 57.5
+    },
+    {
+      "company": "Old Mutual",
+      "sector": "Insurance, asset management",
+      "category": "prospect_narrow",
+      "raw_score": 71.54,
+      "components": {
+        "tier1_base": 52.6,
+        "tier2_modifier": 1.36,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.7,
+          "weighted": 21.0,
+          "decay": 1.0,
+          "contribution": 21.0
+        },
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.6,
+          "weighted": 18.0,
+          "decay": 0.8,
+          "contribution": 14.4
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.9,
+          "weighted": 18.0,
+          "decay": 0.6,
+          "contribution": 10.8
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.4,
+          "contribution": 6.4
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [],
+      "soft_caps": [
+        "treasury_already_solved"
+      ],
+      "suppressed_products": [
+        "global_usd_accounts",
+        "treasury_management"
+      ],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 80.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 80.0,
+          "reason": "Offers financial functionality to its own customers",
+          "product": "api_widget"
+        },
+        {
+          "score": 90.0,
+          "reason": "Recurring currency mismatch (bidirectional)",
+          "subordinate": true,
+          "product": "fx"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": true,
+        "countries": [
+          "Zimbabwe",
+          "Malawi"
+        ]
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "gray area",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 57.0
+    },
+    {
+      "company": "Fan Milk",
+      "sector": "FMCG - frozen dairy",
+      "category": "excluded",
+      "raw_score": 52.66,
+      "components": {
+        "tier1_base": 45.4,
+        "tier2_modifier": 1.16,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.6,
+          "weighted": 18.0,
+          "decay": 1.0,
+          "contribution": 18.0
+        },
+        {
+          "signal": "tier1_multi_market_collection",
+          "weight": 20,
+          "strength": 0.8,
+          "weighted": 16.0,
+          "decay": 0.8,
+          "contribution": 12.8
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.5,
+          "weighted": 15.0,
+          "decay": 0.6,
+          "contribution": 9.0
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.7,
+          "weighted": 14.0,
+          "decay": 0.4,
+          "contribution": 5.6
+        }
+      ],
+      "tier1_established": true,
+      "hard_disqualifiers": [
+        {
+          "rule": "foreign_parent_treasury",
+          "reason": "FX and banking policy set by an overseas parent"
+        }
+      ],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 80.0,
+          "reason": "Multi-market local collection/disbursement (inbound)",
+          "direction": "inbound",
+          "product": "local_rails"
+        },
+        {
+          "score": 70.0,
+          "reason": "Multi-entity structure across 3 collected currencies",
+          "product": "treasury_management"
+        },
+        {
+          "score": 70.0,
+          "reason": "Recurring currency mismatch (soft_in_hard_out)",
+          "subordinate": true,
+          "product": "fx"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "medium",
+      "evidence_depth": "moderate",
+      "control_type": "negative",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 41.9
+    },
+    {
+      "company": "Okomu Oil",
+      "sector": "Agribusiness - palm oil, rubber",
+      "category": "excluded",
+      "raw_score": 21.6,
+      "components": {
+        "tier1_base": 21.6,
+        "tier2_modifier": 1.0,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.4,
+          "weighted": 12.0,
+          "decay": 1.0,
+          "contribution": 12.0
+        },
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.3,
+          "weighted": 9.0,
+          "decay": 0.8,
+          "contribution": 7.2
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.2,
+          "weighted": 4.0,
+          "decay": 0.6,
+          "contribution": 2.4
+        }
+      ],
+      "tier1_established": false,
+      "hard_disqualifiers": [
+        {
+          "rule": "single_market_single_currency",
+          "reason": "Single market, single currency in and out - no cross-border problem exists"
+        }
+      ],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [
+        {
+          "score": 29.2,
+          "reason": "USD requirement: receives",
+          "product": "global_usd_accounts"
+        },
+        {
+          "score": 20.0,
+          "reason": "Recurring currency mismatch (hard_in_soft_out (export receipts))",
+          "subordinate": true,
+          "product": "fx"
+        }
+      ],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "medium",
+      "evidence_depth": "moderate",
+      "control_type": "negative",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 17.2
+    },
+    {
+      "company": "Twiga",
+      "sector": "B2B food distribution",
+      "category": "excluded",
+      "raw_score": 10.46,
+      "components": {
+        "tier1_base": 9.6,
+        "tier2_modifier": 1.09,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.2,
+          "weighted": 6.0,
+          "decay": 1.0,
+          "contribution": 6.0
+        },
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.1,
+          "weighted": 3.0,
+          "decay": 0.8,
+          "contribution": 2.4
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.1,
+          "weighted": 2.0,
+          "decay": 0.6,
+          "contribution": 1.2
+        }
+      ],
+      "tier1_established": false,
+      "hard_disqualifiers": [
+        {
+          "rule": "single_market_single_currency",
+          "reason": "Single market, single currency in and out - no cross-border problem exists"
+        }
+      ],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "rich",
+      "control_type": "gray area",
+      "confirmed_yc_customer": false,
+      "status": "EXTRACTED",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 8.3
+    },
+    {
+      "company": "Naivas",
+      "sector": "Retail - supermarkets",
+      "category": "excluded",
+      "raw_score": 6.6,
+      "components": {
+        "tier1_base": 6.6,
+        "tier2_modifier": 1.0,
+        "tier3_modifier": 1.0,
+        "urgency_multiplier": 1.0,
+        "urgency_state": "static"
+      },
+      "tier1_breakdown": [
+        {
+          "signal": "tier1_cross_border_payments",
+          "weight": 30,
+          "strength": 0.1,
+          "weighted": 3.0,
+          "decay": 1.0,
+          "contribution": 3.0
+        },
+        {
+          "signal": "tier1_usd_liquidity",
+          "weight": 30,
+          "strength": 0.1,
+          "weighted": 3.0,
+          "decay": 0.8,
+          "contribution": 2.4
+        },
+        {
+          "signal": "tier1_multi_currency_obligations",
+          "weight": 20,
+          "strength": 0.1,
+          "weighted": 2.0,
+          "decay": 0.6,
+          "contribution": 1.2
+        }
+      ],
+      "tier1_established": false,
+      "hard_disqualifiers": [
+        {
+          "rule": "single_market_single_currency",
+          "reason": "Single market, single currency in and out - no cross-border problem exists"
+        }
+      ],
+      "soft_caps": [],
+      "suppressed_products": [],
+      "cannot_lead": false,
+      "recommendations": [],
+      "blocked_funds_flag": {
+        "fires": false,
+        "countries": []
+      },
+      "confidence": "high",
+      "evidence_depth": "moderate",
+      "control_type": "negative",
+      "confirmed_yc_customer": false,
+      "status": "unknown",
+      "review_flag": {
+        "needs_review": false
+      },
+      "score": 5.3
+    }
+  ]
+}

@@ -1,0 +1,501 @@
+{
+  "document": "scoring-framework",
+  "version": "1.4",
+  "updated": "2026-08-30",
+  "changelog": [
+    "v1.4 - THIRD OUTPUT CATEGORY added: route-to-partnership. Companies that are neither prospects nor exclusions - payments-adjacent firms that compete on one layer but could consume Yellow Card rails on another. Prevents forcing a wrong classification.",
+    "v1.3 - SOFT CAPS NOW SUPPRESS PRODUCTS, NOT SCORES. A treasury-solved company is not excluded; its Global USD Accounts and Treasury signatures are suppressed while local rails, settlement, FX and payouts remain live. Forces ETG and Sanlam from exclusions into narrow-pitch prospects.",
+    "v1.3 - Blocked-funds flag added to the market layer, sourced from the IATA Focus Africa dataset. Fires automatically for any company earning revenue in a listed country.",
+    "v1.3 - Market friction now carries a trajectory (rising / stable / declining), mirroring company footprint trajectory. Argentina flagged declining.",
+    "v1.3 - Block/Square restored as a positive control pending verification; earlier removal was based on an investor-only reading that the prospecting research contradicts.",
+    "v1.3 - Jumia retained as a prospect with the JumiaPay competitor question flagged open rather than resolved.",
+    "v1.2 - Tier 2 boundary stated explicitly: DISCLOSED FX OR DOLLAR-ACCESS HARM only, not financial distress generally (Twiga).",
+    "v1.2 - Control set rebalanced: Wave and VALR added to test the local-rails and wallets/custody signatures. Six rows previously tested the soft cap while two product signatures had none.",
+    "v1.2 - resolution field added to control rows: ambiguous / resolved_prospect / resolved_excluded. A control that resolves stays in the file as evidence the framework settles hard cases.",
+    "v1.2 - ETG designated the worked example for the demo page.",
+    "v1.1 - Sustained regional retreat moved to Tier 0 as a hard disqualifier (was: negative urgency multiplier). Individual market exits captured separately in footprint_trajectory as context only.",
+    "v1.1 - Competitor disqualifier narrowed to 'competes for the same buyer' following the Western Union / Zeepay comparison.",
+    "v1.1 - Jumia promoted from control set to live prospect list; M-KOPA takes the vacated gray-area slot.",
+    "v1.1 - Shoprite reclassified from gray-area to Tier 0 exclusion control.",
+    "v1.1 - Platform gate unchanged; scale qualifier added to recommendation presentation instead."
+  ],
+  "formula": "Score = Tier1_base x Tier2_modifier x Tier3_modifier x urgency_multiplier, subject to Tier 0, normalised 0-100 for display",
+  "tier0": {
+    "principle": "Caps and exclusions override accumulation. A company failing here is reported with its reason, not scored into the ranking.",
+    "hard_disqualifiers": [
+      {
+        "rule": "single_market_single_currency",
+        "note": "No cross-border problem exists. Nothing to consolidate."
+      },
+      {
+        "rule": "foreign_parent_treasury",
+        "note": "FX and banking policy set by an overseas parent. Local operation cannot buy independently."
+      },
+      {
+        "rule": "competes_for_same_buyer",
+        "note": "REVISED. The test is commercial overlap, not technological. A company selling cross-border settlement to the same customers is out. A company that sits above the rail layer and buys underneath is IN - Visa and Western Union are confirmed Yellow Card customers and both touch stablecoin technology directly."
+      },
+      {
+        "rule": "sustained_regional_retreat",
+        "note": "NEW in v1.1. Multiple market exits over a sustained period combined with a stated reduction in regional capital allocation. This is a company that has decided not to invest in operating in the region. Distinct from pruning individual weak markets, which is normal and not disqualifying.",
+        "example": "Shoprite - seven exits 2021-2025 plus management statement that regional capital remains at a minimum"
+      },
+      {
+        "rule": "licence_conflict",
+        "note": "Regulated deposit-taker where third-party settlement infrastructure would conflict with its own licence."
+      }
+    ],
+    "soft_caps": [
+      {
+        "rule": "treasury_already_solved",
+        "note": "Dedicated group treasury, ISDA relationships, direct tier-1 banking in every operating market. Structural need may be maximal; commercial argument is nil.",
+        "examples": [
+          "Dangote",
+          "Cemex"
+        ]
+      },
+      {
+        "rule": "single_dominant_corridor_served",
+        "note": "One corridor, already working."
+      },
+      {
+        "rule": "infrastructure_layer_peer",
+        "note": "Competes in the same layer without competing for the same buyer. Scores, cannot lead."
+      }
+    ],
+    "soft_caps_mechanism": {
+      "principle": "REVISED in v1.3. A soft cap suppresses the product signatures the company has already solved for itself. It does NOT cap the company score or exclude the row. Structural need and commercial opportunity are product-specific, not company-wide.",
+      "treasury_already_solved": {
+        "suppresses": [
+          "global_usd_accounts",
+          "treasury_management"
+        ],
+        "remains_live": [
+          "local_rails",
+          "fx",
+          "stablecoin_settlement",
+          "api_widget",
+          "wallets_custody"
+        ],
+        "worked_example": "ETG runs treasury companies in Singapore, Mauritius and the UAE and employs a Chief Treasury Officer, so the core treasury pitch is dead. Its farm-gate procurement across dozens of African markets in soft currency is NOT solved by an offshore treasury desk - local collection and payout rails and stablecoin settlement remain a genuine pitch. Excluding ETG outright, as v1.2 did, threw away a real opportunity."
+      },
+      "infrastructure_layer_peer": {
+        "suppresses": [],
+        "note": "Scores, cannot lead. Unchanged."
+      },
+      "single_dominant_corridor_served": {
+        "suppresses": [
+          "stablecoin_settlement"
+        ],
+        "note": "The corridor is solved; other products may not be."
+      },
+      "affected_rows_to_rescore": [
+        "ETG",
+        "Sanlam",
+        "Old Mutual",
+        "Globant",
+        "Dangote",
+        "Cemex",
+        "Shoprite"
+      ],
+      "note_on_shoprite": "Shoprite remains a HARD Tier 0 exclusion on sustained regional retreat. That is unaffected - retreat is not a soft cap."
+    }
+  },
+  "tier1": {
+    "role": "Establishes that a problem exists. No Tier 1 signal means no established need, and the multipliers have nothing to act on.",
+    "signals": [
+      {
+        "name": "recurring_cross_border_payments",
+        "weight": 30
+      },
+      {
+        "name": "persistent_usd_liquidity_requirement",
+        "weight": 30
+      },
+      {
+        "name": "multi_market_local_collection",
+        "weight": 20
+      },
+      {
+        "name": "recurring_multi_currency_obligations",
+        "weight": 20
+      }
+    ],
+    "strength_rating": {
+      "method": "Each signal rated 0-1 on evidence quality, multiplied by its weight, then decayed by rank.",
+      "bands": {
+        "0.9-1.0": "stated in a filing or annual report with figures or explicit language",
+        "0.6-0.8": "clearly evidenced across multiple public sources, not quantified",
+        "0.3-0.5": "inferable from business model and footprint, no direct statement",
+        "0.1-0.2": "thin, single weak source"
+      },
+      "thin_evidence_flag": "applies at 0.5 or below"
+    },
+    "decay_ladder": [
+      1.0,
+      0.8,
+      0.6,
+      0.4
+    ],
+    "decay_note": "Applied to weighted signals sorted descending. Sharp ladder chosen deliberately to force separation at the top of the ranking."
+  },
+  "tier2": {
+    "role": "Multiplicative, not additive. Supporting signals make an existing problem worse; they cannot create one.",
+    "range": [
+      1.0,
+      1.4
+    ],
+    "signals": [
+      {
+        "name": "disclosed_fx_or_dollar_access_pain",
+        "relative_weight": "highest - a public statement of harm is near-proof"
+      },
+      {
+        "name": "multi_entity_structure",
+        "relative_weight": "moderate"
+      },
+      {
+        "name": "multiple_local_payment_requirements",
+        "relative_weight": "moderate"
+      }
+    ],
+    "boundary": "Tier 2 disclosed pain means PUBLICLY DISCLOSED FOREIGN-EXCHANGE OR DOLLAR-ACCESS HARM - an FX loss, a devaluation impact, a stated shortage of hard currency, a repatriation problem. It does NOT mean financial distress generally. Layoffs, unpaid vendors, funding difficulty and restructuring are not FX pain and score nothing here. Evidence: Twiga Foods shows heavy documented distress (300+ layoffs, delayed vendor payments, a supplier lawsuit, CEO replaced) with no FX component at all. A model keying on 'financial difficulty' would score it as pain; it is the wrong kind of pain entirely. STATE THIS ON THE METHOD NOTE."
+  },
+  "tier3": {
+    "role": "Colour only. Existing crypto or stablecoin activity belongs here and must never make a company a priority on its own.",
+    "range": [
+      1.0,
+      1.1
+    ]
+  },
+  "footprint_trajectory": {
+    "note": "REVISED in v1.1. Replaces urgency as a single one-way multiplier for context purposes; the multiplier itself remains upward-only.",
+    "states": {
+      "expanding": {
+        "multiplier": "1.0 to 1.3",
+        "note": "Recent market entry or announced expansion. An unsolved problem, now."
+      },
+      "static": {
+        "multiplier": "1.0",
+        "note": "No penalty. 'Already solved it' is an inference, not evidence. Where the footprint has been unchanged for years, attach an 'incumbent arrangement likely entrenched' note to the row so the reader sees high need and displacement difficulty separately, rather than averaged into one number."
+      },
+      "pruning": {
+        "multiplier": "1.0",
+        "note": "Individual market exits alongside continued investment elsewhere. Normal portfolio management. NOT disqualifying.",
+        "example": "Jumia - exited Algeria, South Africa, Tunisia while targeting breakeven in remaining markets"
+      },
+      "retreating": {
+        "multiplier": "n/a",
+        "note": "Handled at Tier 0 as a hard disqualifier, not scored."
+      }
+    }
+  },
+  "product_signatures": {
+    "count": 7,
+    "note": "Local Stablecoin Issuance is excluded from company rows entirely and lives in the market view alongside the bank and telco institutional count.",
+    "products": [
+      {
+        "name": "global_usd_accounts",
+        "trigger": "dollar-side facts only - receives, holds, pays or needs USD on demand",
+        "direction_sensitive": true
+      },
+      {
+        "name": "treasury_management",
+        "trigger": "multiplicity facts only - several entities, currencies, markets to reconcile",
+        "note": "Trigger sets are disjoint from Global USD Accounts at the strong-signal level. Overlap permitted only in supporting signals."
+      },
+      {
+        "name": "local_rails",
+        "trigger": "multi-market local collection or disbursement",
+        "direction_flag": [
+          "inbound",
+          "outbound",
+          "both"
+        ],
+        "note": "Single signature. Collection and payouts are mirror images of the same product."
+      },
+      {
+        "name": "fx",
+        "trigger": "recurring currency mismatch requiring conversion",
+        "direction_sensitive": false,
+        "note": "DELIBERATELY direction-agnostic. Fires on soft-in/hard-out and hard-in/soft-out alike. Direction captured as a separate field. Subordinated in presentation - ranks below whichever product it accompanies."
+      },
+      {
+        "name": "stablecoin_settlement",
+        "trigger": "corridors where both ends are high-friction, or correspondent banking is slow or costly",
+        "note": "Structural trigger, checkable against the market table. Presented as the 'how' beneath a lead product, not as a standalone recommendation."
+      },
+      {
+        "name": "api_widget",
+        "gate": "HARD - company must provide financial functionality to its own customers",
+        "note": "corporate user = infrastructure solves the company's own operations; platform user = infrastructure is offered onward to customers. A manufacturer never qualifies at any score. Add a scale qualifier where the customer-facing operation is small relative to the core business."
+      },
+      {
+        "name": "wallets_custody",
+        "gate": "HARD - evidence of need to hold, manage or safeguard digital assets for self or customers",
+        "note": "Crypto adjacency alone is insufficient. May co-occur with API/Widget: API/Widget is how functionality is offered; wallets/custody is what holds the assets."
+      }
+    ],
+    "output_rule": "Maximum three recommendations per company row, ranked, lead product first."
+  },
+  "scoring_levels": {
+    "market": "Country friction, business density, and Yellow Card position scored as three SEPARATE fields - regulatory status, rail coverage, partner coverage - since they fail independently. The binding constraint is what the view reports. Also carries the bank and telco institutional opportunity count.",
+    "company_market": "This company's need in this market for this product.",
+    "company": "Aggregate of market scores plus a cross-market consolidation component that exists only at company level."
+  },
+  "data_rules": {
+    "structure_only": "No payment volumes, transaction counts, idle balance estimates or banking relationships. Structure is verifiable; volume is not. Stated on the page.",
+    "every_signal_sourced": "present / strength / source. No signal scored without a source.",
+    "confidence_flag": "rich / moderate / thin, driven by evidence depth found.",
+    "zero_tier1_bucket": "Companies with no Tier 1 signal are listed separately as 'signals present, no established need', with their Tier 2 and 3 evidence shown. Visible, not deleted - it demonstrates the model discriminating and lets a reader judge the floor rule themselves."
+  },
+  "control_set": {
+    "positive": [
+      "Visa",
+      "Western Union",
+      "Coinbase",
+      "Tranzmit",
+      "Block/Square (RESTORED v1.3 - verify)"
+    ],
+    "gate_tests": [
+      "Dangote",
+      "Cemex",
+      "Fan Milk",
+      "Naivas",
+      "Okomu Oil",
+      "Zeepay",
+      "Flour Mills",
+      "Bamboo"
+    ],
+    "tier0_exclusion": [
+      "Shoprite (regional retreat)",
+      "Onafriq (same-buyer competitor)"
+    ],
+    "gray_area": [
+      "Export Trading Group",
+      "Old Mutual",
+      "Globant",
+      "Twiga Foods"
+    ],
+    "promoted_to_prospects": [
+      "Jumia"
+    ],
+    "validation_test": "Visa, Western Union, Coinbase and Tranzmit must rank high. If they do not, the framework is wrong, not the companies.",
+    "signature_tests": [
+      "Wave (local rails)",
+      "VALR (wallets/custody)"
+    ],
+    "resolved_prospects": [
+      "Jumia",
+      "MNT-Halan",
+      "M-KOPA"
+    ],
+    "open_questions": [
+      "Block/Square: prospecting research lists it as an API 'Africa-as-a-service' customer alongside Coinbase. Earlier removal from the control set was based on reading it as a Series C investor only. Verify before relying on it as a positive control.",
+      "Jumia: retained as a prospect on the strength of its SEC filings (70% of liquidity held in USD, $19m adverse currency effect on cash in one quarter, $31.3m Q1 2024 net finance costs from devaluation-driven treasury activity). The prospecting research cuts it on established treasury plus JumiaPay competitor-adjacency. Both readings defensible - flag open, do not resolve silently."
+    ]
+  },
+  "demo_presentation": {
+    "worked_example": {
+      "company": "Export Trading Group (ETG)",
+      "why": "The clearest demonstration that the tool reasons rather than pattern-matches. ETG has arguably the highest raw Tier 1 base in the entire dataset - farm-gate procurement in soft currencies across 48 countries against USD export receipts and USD input imports, roughly 70 subsidiaries. Every structural signal the framework hunts for fires at maximum. And it is excluded, because it operates dedicated treasury companies in Singapore, Mauritius and the UAE, employs a Chief Treasury Officer, and its Ras Al Khaimah entity acts as the group's central treasury. A scraper ranks ETG in the top five. Only research at depth finds the reason it does not belong there.",
+      "placement": "Open the demo with this panel, and open a call with it."
+    },
+    "three_way_competitor_comparison": {
+      "companies": [
+        "Western Union",
+        "Onafriq",
+        "Zeepay"
+      ],
+      "why": "All three touch stablecoin infrastructure directly. Western Union issues its own dollar stablecoin and is a confirmed Global USD Account CUSTOMER. Onafriq signed four stablecoin partnerships in 2026 and sells settlement, treasury and liquidity to African banks and fintechs - a COMPETITOR. Zeepay overlaps commercially - a COMPETITOR. The trio demonstrates that the rule is commercial overlap, not technology, better than any statement of the rule could."
+    },
+    "method_note_required_lines": [
+      "Structure only - no payment volumes, transaction counts or idle balance estimates. Structure is verifiable; volume is not.",
+      "Tier 2 counts disclosed FX or dollar-access harm, not financial distress generally.",
+      "Every signal carries a source. Thin evidence is flagged, not hidden.",
+      "Companies with no Tier 1 signal are shown separately rather than deleted, so the floor rule can be judged by the reader.",
+      "Framework runs on a verified sample and scales to any universe of companies."
+    ]
+  },
+  "market_layer": {
+    "blocked_funds_flag": {
+      "source": "IATA Focus Africa release, 29 April 2026 (Addis Ababa; Kamil Alawadhi, IATA Regional VP Africa & Middle East)",
+      "headline": "USD 774 million blocked across African countries as at end-March 2026 - the largest proportion of the global total",
+      "country_amounts_end_march_2026": {
+        "Algeria": "USD 258m",
+        "XAF Zone": "USD 105m",
+        "Mozambique": "USD 82m",
+        "Eritrea": "USD 78m",
+        "Angola": "USD 73m"
+      },
+      "prior_readings": {
+        "end_October_2025": "global total USD 1.2bn; Algeria 307m, XAF Zone 179m, Mozambique 91m, Angola 81m, Eritrea 78m, Zimbabwe 67m, Ethiopia 54m (AFRAA via Aviation Week)",
+        "end_April_2025": "global total USD 1.3bn; Mozambique 205m, XAF Zone 191m, Algeria 178m, Angola 84m, Eritrea 76m, Zimbabwe 68m, Ethiopia 44m, plus Bangladesh 92m and Pakistan 83m"
+      },
+      "rule": "Fires automatically for any company earning material revenue in a listed country. Treated as Tier 2 disclosed pain at high strength - it is third-party documented rather than self-reported, which makes it stronger evidence than a company's own disclosure.",
+      "why_it_matters": "IATA frames the problem in exactly Yellow Card's terms: airlines earn local currency but must repatriate USD to cover leasing, fuel, maintenance and salaries. This is the best public quantification of trapped capital available, and it is not company-specific - it evidences the market condition itself.",
+      "nigeria_correction": {
+        "finding": "Nigeria has been REMOVED from the IATA blocked-funds list. IATA regional VP Kamil Al-Awadhi confirmed significant improvements in Nigeria, Egypt and Ethiopia, with Nigeria no longer listed. Kenya Airways CEO Allan Kilavuka corroborates: Nigeria improved, and once they liberalized the airline was able to remove its money.",
+        "implication": "The blocked-funds flag must NOT fire for Nigeria on current data. Nigeria remains very high friction for other reasons - the May 2026 FX policy lengthens repatriation, and CBN 2025 outflow figures are large - but trapped airline revenue is no longer one of them. Scoring Nigeria on stale blocked-funds data would be a visible error to anyone at Yellow Card who follows this.",
+        "current_flag_countries": [
+          "Algeria",
+          "XAF Zone",
+          "Mozambique",
+          "Eritrea",
+          "Angola",
+          "Zimbabwe",
+          "Ethiopia",
+          "Malawi",
+          "Lebanon"
+        ]
+      }
+    },
+    "friction_trajectory": {
+      "principle": "Market friction has direction, mirroring company footprint trajectory. Scoring a market on its current level alone misreads where it is heading.",
+      "states": [
+        "rising",
+        "stable",
+        "declining"
+      ],
+      "assessments": {
+        "Nigeria": "very high overall, but MIXED direction. Repatriation friction rising (May 2026 FX policy: receive naira, apply for conversion, await review). Blocked airline funds RESOLVED - Nigeria off the IATA list following liberalisation. Score the two separately rather than as one trend.",
+        "Ethiopia": "very high - birr floated July 2024 (~30% devaluation), banks still ration FX, importers wait months for allocations",
+        "XAF/XOF Zones, Mozambique, Angola, Zimbabwe, Malawi, DR Congo": "high - documented repatriation delays and FX shortages per IATA/AFRAA",
+        "Argentina": "DECLINING - cepo largely lifted for individuals from April 2025; companies still restricted on FX for non-operational/treasury purposes and dividend repatriation timing. DOWN-WEIGHT.",
+        "Kenya, Ghana, Zambia, Tanzania, Uganda": "moderate - FX volatility, fragmented rails, mobile-money dependency"
+      }
+    },
+    "yellow_card_african_footprint_verified": {
+      "count": 20,
+      "east": [
+        "Kenya",
+        "Rwanda",
+        "Tanzania",
+        "Uganda"
+      ],
+      "west": [
+        "Benin",
+        "Burkina Faso",
+        "Côte d'Ivoire",
+        "Ghana",
+        "Mali",
+        "Nigeria",
+        "Senegal",
+        "Togo"
+      ],
+      "central": [
+        "Cameroon",
+        "DR Congo",
+        "Gabon",
+        "Republic of the Congo"
+      ],
+      "southern": [
+        "Botswana",
+        "Malawi",
+        "South Africa",
+        "Zambia"
+      ],
+      "serviceability_strongest": [
+        "South Africa",
+        "Nigeria",
+        "Ghana",
+        "Kenya",
+        "East/Southern African cluster"
+      ]
+    }
+  },
+  "exclusions_partners_and_integrations": {
+    "note": "Never appear as prospects. From Yellow Card partner, customer and case-study material.",
+    "customers_and_partners": [
+      "Visa",
+      "Western Union",
+      "Coinbase",
+      "Block/Square",
+      "PayPal",
+      "Erebor",
+      "Thunes",
+      "Fireblocks",
+      "Smile ID",
+      "AppsFlyer",
+      "Tranzmit"
+    ],
+    "direct_competitors": [
+      "Onafriq",
+      "Conduit",
+      "Bitmama",
+      "Busha",
+      "Luno",
+      "Chipper Cash",
+      "LemFi",
+      "Zeepay"
+    ],
+    "payments_competitors_route_to_partner_motion_instead": {
+      "companies": [
+        "Flutterwave/Paystack",
+        "Cellulant",
+        "DPO Group",
+        "Pesapal",
+        "Fawry",
+        "Interswitch",
+        "Nomba",
+        "Yoco",
+        "Peach Payments",
+        "Clip",
+        "MNT-Halan"
+      ],
+      "note": "Compete on the payments layer but could consume Yellow Card rails. Approach as API or local-stablecoin-issuance partners, NOT as treasury prospects. Do not cold-pitch treasury."
+    }
+  },
+  "output_categories": {
+    "principle": "Three categories, not two. A binary prospect/exclusion split forces payments-adjacent companies into a classification that is wrong either way - calling them prospects invites a treasury pitch that will not land, calling them exclusions discards a real commercial opportunity.",
+    "prospect": {
+      "definition": "Established Tier 1 need, no disqualifier, products not already self-solved.",
+      "sub_type_narrow": "Soft-capped on some products but live on others. Pitch only the live signatures. Examples: ETG, Old Mutual, Globant."
+    },
+    "route_to_partnership": {
+      "definition": "Competes with Yellow Card on one layer while plausibly consuming its rails on another. Approach as an API or local-stablecoin-issuance partner, NOT with the treasury pitch.",
+      "test": "Would this company plausibly BUY rails in markets where it does not operate, even while competing where it does?",
+      "members": [
+        "VALR",
+        "Interswitch",
+        "Cellulant",
+        "Peach Payments",
+        "MNT-Halan",
+        "Flutterwave/Paystack",
+        "DPO Group",
+        "Pesapal",
+        "Fawry",
+        "Nomba",
+        "Yoco",
+        "Clip"
+      ],
+      "precedent": "Coinbase competes with Yellow Card on digital assets and is still a Widget customer for African local payment methods. Competing somewhere does not mean competing everywhere.",
+      "presentation": "Shown as its own list in the tool, with the recommended motion stated. Not buried inside exclusions."
+    },
+    "excluded": {
+      "definition": "Hard disqualifier fired. Reason always stated.",
+      "grounds": [
+        "single_market_single_currency",
+        "foreign_parent_treasury",
+        "competes_for_same_buyer",
+        "sustained_regional_retreat",
+        "licence_conflict"
+      ],
+      "examples": {
+        "Onafriq": "same-buyer competitor",
+        "Zeepay": "same-buyer competitor",
+        "Shoprite": "sustained regional retreat",
+        "Naivas": "single market",
+        "Twiga": "single market",
+        "Fan Milk": "foreign parent",
+        "Okomu Oil": "single market + foreign parent"
+      }
+    },
+    "no_established_need": {
+      "definition": "Tier 2 or Tier 3 signals present, no Tier 1. Listed separately with evidence shown, not deleted.",
+      "examples": {
+        "Bamboo": "dollar-facing and finance-adjacent, single market, one currency pair"
+      }
+    }
+  }
+}

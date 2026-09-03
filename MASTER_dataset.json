@@ -1,0 +1,2956 @@
+{
+  "project": "Yellow Card Customer Opportunity Scoring Engine",
+  "compiled": "2026-08-30",
+  "framework_version": "1.4",
+  "counts": {
+    "total_rows": 28,
+    "extracted": 17,
+    "by_category": {
+      "positive": 4,
+      "negative": 8,
+      "gate test": 2,
+      "gray area": 6,
+      "signature test": 2,
+      "live prospect": 1,
+      "prospect": 2,
+      "prospect_narrow": 1,
+      "REVIEW - prospect vs partner motion": 1
+    }
+  },
+  "companies": [
+    {
+      "identity": {
+        "legal_name": "Visa Inc.",
+        "trading_name": "Visa",
+        "sector": "Payment network / financial infrastructure",
+        "business_model_type": "financial institution",
+        "hq_country": "United States",
+        "ownership": "listed",
+        "year_founded": 1958
+      },
+      "footprint": {
+        "operating_countries": "190+ countries and territories (Visa Direct)",
+        "entity_structure": "own entities across regions",
+        "entry_years": "n/a - long established",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "multiple - settlement across all major and local currencies"
+        ],
+        "currencies_paid_raw": [
+          "multiple"
+        ],
+        "customer_geography": "global, incl. CEMEA issuers and acquirers",
+        "supplier_geography": "global",
+        "recipient_type": "issuers, acquirers, intra-group",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 1.0,
+          "source": "visamiddleeast.com CEMEA stablecoin release - Visa Direct funds delivery across 190+ countries"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Visa expanding USD cross-border settlement to CEMEA issuers/acquirers via blockchain"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.9,
+          "source": "same - multi-currency settlement operations"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.8,
+          "source": "issuer/acquirer settlement across CEMEA markets"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.8,
+          "source": "Visa CEMEA release cites reducing settlement costs and enhancing liquidity management; 365-day settlement need incl. weekends"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "regional entity structure"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Visa Direct local delivery"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": true
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": true,
+        "infrastructure_competitor": "ADJACENT - see note",
+        "tier0_note": "Visa is payment infrastructure but sits ABOVE Yellow Card's layer and buys rails underneath. Confirmed Global USD Account customer. This row is the reason the infrastructure-competitor disqualifier needs a carve-out."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "positive",
+        "confirmed_yc_customer": true,
+        "confirmation_source": "Yellow Card Aug 2026 funding announcement names Visa as Global USD Account customer; Visa CEMEA press release confirms partnership for treasury and liquidity management",
+        "notes": "Visa's own words on the partnership: streamlining treasury operations and enhancing liquidity management across markets where Yellow Card is licensed. Expected recommendation: Global USD Accounts + Treasury, with Stablecoin Settlement as the how."
+      },
+      "_batch": "01-positive-controls"
+    },
+    {
+      "identity": {
+        "legal_name": "The Western Union Company",
+        "trading_name": "Western Union",
+        "sector": "Remittance / cross-border money movement",
+        "business_model_type": "financial institution",
+        "hq_country": "United States",
+        "ownership": "listed (NYSE: WU)",
+        "year_founded": 1851
+      },
+      "footprint": {
+        "operating_countries": "200+ countries and territories; Stablecard live in 37 markets, targeting 60+ by end 2026",
+        "entity_structure": "own entities and agent network",
+        "entry_years": "Stablecard 37 markets 2026 - RECENT, urgency relevant",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "multiple local currencies"
+        ],
+        "currencies_paid_raw": [
+          "multiple local currencies",
+          "USD",
+          "USDPT"
+        ],
+        "customer_geography": "global, remittance corridors into emerging markets",
+        "supplier_geography": "global agent network",
+        "recipient_type": "consumers, agents",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 1.0,
+          "source": "core business - global remittance network"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "USDPT settlement asset for global payment network; rain.xyz notes capital previously pre-positioned days in advance"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 1.0,
+          "source": "payout in local currency across 200+ markets"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "collection and payout across full network"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.9,
+          "source": "rain.xyz: capital that once sat idle is freed up; money moved the moment needed rather than days in advance - explicit prefunding cost admission"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "multi-jurisdiction entity structure"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 1.0,
+          "source": "cash-out network plus bank and wallet payout"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": true
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": "COMPLEX - see note",
+        "direct_banking_all_markets": true,
+        "infrastructure_competitor": "ADJACENT - see note",
+        "tier0_note": "WU issues its own stablecoin (USDPT, via Anchorage on Solana) and runs a Digital Asset Network off-ramp with Rain. Under the disqualifiers as written this is competitor integration in the same layer. It is nonetheless a confirmed Global USD Account customer. Strongest evidence yet that the competitor gate needs redesign."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "positive",
+        "confirmed_yc_customer": true,
+        "confirmation_source": "Yellow Card Aug 2026 funding announcement names Western Union as Global USD Account customer",
+        "notes": "The prefunding language in the Rain writeup is the single best public articulation of the problem Yellow Card solves. Worth quoting in the tool as evidence the trapped-capital thesis is real, not inferred."
+      },
+      "_batch": "01-positive-controls"
+    },
+    {
+      "identity": {
+        "legal_name": "Coinbase Global, Inc.",
+        "trading_name": "Coinbase",
+        "sector": "Digital asset exchange / platform",
+        "business_model_type": "platform",
+        "hq_country": "United States",
+        "ownership": "listed (NASDAQ: COIN)",
+        "year_founded": 2012
+      },
+      "footprint": {
+        "operating_countries": "global; Yellow Card Widget gave access to local payment methods across 20 African countries",
+        "entity_structure": "own entities, no local African entities - reason for the integration",
+        "entry_years": "Yellow Card Widget integration Jan 2024",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "USD",
+          "EUR",
+          "GBP",
+          "multiple local currencies via partners"
+        ],
+        "currencies_paid_raw": [
+          "multiple"
+        ],
+        "customer_geography": "global retail and institutional",
+        "supplier_geography": "n/a",
+        "recipient_type": "consumers",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.8,
+          "source": "global customer base requiring local funding methods"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.7,
+          "source": "USD-denominated core operations"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.8,
+          "source": "multi-currency customer funding"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "Widget integration explicitly to collect local bank transfer and mobile money across 20 African markets"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.7,
+          "source": "integration rationale - avoided building African payment connections itself"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.6,
+          "source": "multi-jurisdiction but no local African entities"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 1.0,
+          "source": "20-country local rail access via Widget"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": true
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "infrastructure_competitor": false
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "positive",
+        "confirmed_yc_customer": true,
+        "confirmation_source": "Jan 2024 Coinbase Wallet Widget integration; named as strategic partner in Aug 2026 funding coverage",
+        "notes": "This is the positive test of the API/Widget gate. Coinbase must produce API/Widget as lead recommendation, NOT Global USD Accounts. If the gate is working, this row and the Flour Mills row diverge cleanly."
+      },
+      "_batch": "01-positive-controls"
+    },
+    {
+      "identity": {
+        "legal_name": "Tranzmit Payment Services",
+        "trading_name": "Tranzmit",
+        "sector": "Cross-border payments",
+        "business_model_type": "platform",
+        "hq_country": "United States",
+        "ownership": "private",
+        "year_founded": null
+      },
+      "footprint": {
+        "operating_countries": "USA plus payout corridors; USA-Nigeria named as largest and fastest-growing",
+        "entity_structure": "VERIFY",
+        "entry_years": "Yellow Card API integration announced 25 Aug 2026 - VERY RECENT",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "USD"
+        ],
+        "currencies_paid_raw": [
+          "NGN",
+          "others - VERIFY"
+        ],
+        "customer_geography": "US-based senders, diaspora",
+        "supplier_geography": "n/a",
+        "recipient_type": "consumers",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 1.0,
+          "source": "core business; USA-Nigeria corridor named largest"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.8,
+          "source": "USD collection against local currency payout"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.7,
+          "source": "multi-corridor payout - VERIFY corridor count"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.7,
+          "source": "local payout rails required at destination"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.8,
+          "source": "integrated Yellow Card for direct settlement path into Nigeria rather than building it"
+        },
+        "tier2_multi_entity": {
+          "present": false,
+          "strength": 0.0,
+          "source": "no evidence - VERIFY"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.8,
+          "source": "payout rail requirement per corridor"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "hard_in_soft_out",
+        "usd_requirement_type": [
+          "receives",
+          "holds"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "infrastructure_competitor": false
+      },
+      "meta": {
+        "evidence_depth": "moderate",
+        "confidence": "medium",
+        "control_type": "positive",
+        "confirmed_yc_customer": true,
+        "confirmation_source": "Yellow Card announcement 25 Aug 2026 - Tranzmit integrated Payments API, USA-Nigeria corridor",
+        "notes": "Thinnest of the four - private company, limited public material. Flag as moderate confidence. Also the recency test: integration is five days old at time of extraction."
+      },
+      "_batch": "01-positive-controls"
+    },
+    {
+      "identity": {
+        "legal_name": "Dangote Industries Limited",
+        "trading_name": "Dangote Group",
+        "sector": "Conglomerate - cement, refining, sugar, fertiliser",
+        "business_model_type": "corporate",
+        "hq_country": "Nigeria",
+        "ownership": "private (refinery IPO planned for NGX 2026)",
+        "year_founded": 1981
+      },
+      "footprint": {
+        "operating_countries": "Nigeria plus multiple African markets (cement) - VERIFY current count",
+        "entity_structure": "own entities, group structure",
+        "entry_years": "long established; refinery commissioned 2023",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "NGN",
+          "USD (from July 2026, domestic fuel priced in USD)",
+          "various African currencies"
+        ],
+        "currencies_paid_raw": [
+          "USD (crude feedstock)",
+          "NGN"
+        ],
+        "customer_geography": "Nigeria, West Africa, export markets",
+        "supplier_geography": "international crude, equipment",
+        "recipient_type": "suppliers, intra-group",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.9,
+          "source": "imports significant crude volumes at international dollar prices; requires 13-15 cargoes/month vs 7 allocated domestically"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Serrari/Reuters - buying crude in USD while selling refined fuel in NGN created explicit mismatch"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.8,
+          "source": "multi-market cement operations plus dollar feedstock"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.7,
+          "source": "cement sales across African markets"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 1.0,
+          "source": "Group VP Devakumar Edwin stated refinery had been absorbing a mismatch from buying crude in dollars and selling in naira; company moved all fuel pricing to USD on 13 July 2026 to fix it"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "group structure across subsidiaries and markets"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.6,
+          "source": "multi-market operations"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out (historically); repricing to hard_in from July 2026",
+        "usd_requirement_type": [
+          "receives",
+          "pays",
+          "holds"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": true,
+        "infrastructure_competitor": false,
+        "tier0_note": "SOFT CAP APPLIES. Group publicly targets becoming Nigeria's largest FX supplier and independence from CBN forex sourcing; projects ~90% hard currency revenue. This is a company that SUPPLIES dollar liquidity rather than buying it. It also solved its own mismatch unilaterally in July 2026 by repricing domestic sales into USD - a solution unavailable to smaller firms and evidence of pricing power no Yellow Card prospect has.",
+        "soft_cap_effect": {
+          "mechanism": "per-product suppression (v1.3)",
+          "suppressed": [
+            "global_usd_accounts",
+            "treasury_management"
+          ],
+          "live": [
+            "local_rails",
+            "fx"
+          ],
+          "verdict": "Still not a meaningful prospect, but for a sharper reason under v1.3: Dangote SUPPLIES dollar liquidity rather than buying it, and repriced an entire national fuel market into USD to solve its own mismatch. Multi-market cement collection is the only live angle and it is thin. Remains the hardest negative control."
+        }
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "negative",
+        "tests_rule": "Treasury already solved / soft cap",
+        "expected_outcome": "High Tier 1 and Tier 2 scores, capped below prospect threshold. This is the hardest negative control in the set - it has genuine, publicly stated FX pain. If the soft cap does not hold here, the cap is not working.",
+        "notes": "Best possible test row. Every signal fires strongly and the answer is still no. Worth showing explicitly in the demo: high need, wrong customer."
+      },
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "Flour Mills of Nigeria Plc",
+        "trading_name": "Flour Mills / FMN",
+        "sector": "Food processing, milling, agribusiness",
+        "business_model_type": "corporate",
+        "hq_country": "Nigeria",
+        "ownership": "listed (NGX: FLOURMILL)",
+        "year_founded": 1960
+      },
+      "footprint": {
+        "operating_countries": "Nigeria primary; informal flour outflow to Sahel neighbours",
+        "entity_structure": "group with subsidiaries incl. Premier Feed Mills",
+        "entry_years": "long established",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "NGN"
+        ],
+        "currencies_paid_raw": [
+          "USD",
+          "EUR"
+        ],
+        "customer_geography": "Nigeria",
+        "supplier_geography": "United States, EU (Latvia, Lithuania), Black Sea",
+        "recipient_type": "suppliers",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Truth Nigeria - 50,000MT US wheat cargo valued $15m procured by FMN; recurring import programme"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "wheat import bill; Nigeria imports 5m+ MT annually at ~$2bn"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.7,
+          "source": "US and EU wheat sourcing - USD and EUR obligations"
+        },
+        "tier1_multi_market_collection": {
+          "present": false,
+          "strength": 0.0,
+          "source": "collection is Nigeria-only"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Africa Report - FMN booked heavy FX losses when naira fell in 2023; classic import-cost/purchasing-power pincer"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.6,
+          "source": "subsidiary structure, single market"
+        },
+        "tier2_multiple_local_rails": {
+          "present": false,
+          "strength": 0.0,
+          "source": "single market"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "infrastructure_competitor": false
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "gate test",
+        "tests_rule": "API/Widget platform gate",
+        "expected_outcome": "Should score MODERATE-TO-HIGH and remain a legitimate prospect - real dollar obligations, disclosed FX losses, soft-in/hard-out mismatch. API/Widget must NOT appear on this row at any score. Global USD Accounts and FX should. Only 3 of 4 Tier 1 signals fire, so decay keeps it below the multi-market operators.",
+        "notes": "This is the cleanest test of the platform gate because the company is otherwise attractive. If API/Widget appears here, the gate is leaking. Contrast directly with Coinbase in batch 01."
+      },
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "Fan Milk Limited / Fan Milk International",
+        "trading_name": "Fan Milk",
+        "sector": "FMCG - frozen dairy",
+        "business_model_type": "corporate",
+        "hq_country": "Ghana",
+        "ownership": "subsidiary of Danone",
+        "year_founded": 1960
+      },
+      "footprint": {
+        "operating_countries": "Ghana, Nigeria, Togo, Burkina Faso, Côte d'Ivoire - VERIFY current",
+        "entity_structure": "subsidiary of foreign parent",
+        "entry_years": "VERIFY",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "GHS",
+          "NGN",
+          "XOF"
+        ],
+        "currencies_paid_raw": [
+          "USD",
+          "EUR - VERIFY"
+        ],
+        "customer_geography": "West Africa",
+        "supplier_geography": "international dairy inputs",
+        "recipient_type": "suppliers, parent",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.6,
+          "source": "regional operations, imported inputs - VERIFY"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.5,
+          "source": "input purchasing - VERIFY"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.7,
+          "source": "GHS/NGN/XOF operations"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.8,
+          "source": "multi-market West African distribution"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.0,
+          "source": "not found at subsidiary level"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.8,
+          "source": "entity per market"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.8,
+          "source": "multi-market collection"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": "PARENT LEVEL",
+        "infrastructure_competitor": false,
+        "tier0_note": "HARD DISQUALIFY - foreign parent treasury. Danone sets FX and banking policy centrally. The local operation cannot buy treasury infrastructure independently regardless of its structural need."
+      },
+      "meta": {
+        "evidence_depth": "moderate",
+        "confidence": "medium",
+        "control_type": "negative",
+        "tests_rule": "Foreign-parent treasury disqualifier",
+        "expected_outcome": "Excluded with stated reason, not scored. Structurally attractive on paper - four currencies, multi-market collection - which is exactly why it tests the rule.",
+        "notes": "VERIFY current Danone ownership status and market list before finalising."
+      },
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "Naivas Limited",
+        "trading_name": "Naivas",
+        "sector": "Retail - supermarkets",
+        "business_model_type": "corporate",
+        "hq_country": "Kenya",
+        "ownership": "private (IBL Group / Proparco minority stake - VERIFY)",
+        "year_founded": 1990
+      },
+      "footprint": {
+        "operating_countries": "Kenya only",
+        "entity_structure": "single-market",
+        "entry_years": "n/a",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "KES"
+        ],
+        "currencies_paid_raw": [
+          "KES",
+          "limited USD for imported goods"
+        ],
+        "customer_geography": "Kenya",
+        "supplier_geography": "mostly domestic, some import",
+        "recipient_type": "suppliers",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": false,
+          "strength": 0.1,
+          "source": "limited import exposure only"
+        },
+        "tier1_usd_liquidity": {
+          "present": false,
+          "strength": 0.1,
+          "source": "no evidence of persistent USD requirement"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": false,
+          "strength": 0.1,
+          "source": "KES-dominant"
+        },
+        "tier1_multi_market_collection": {
+          "present": false,
+          "strength": 0.0,
+          "source": "single market"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.0,
+          "source": "none found"
+        },
+        "tier2_multi_entity": {
+          "present": false,
+          "strength": 0.0,
+          "source": "single market"
+        },
+        "tier2_multiple_local_rails": {
+          "present": false,
+          "strength": 0.0,
+          "source": "single market"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "none",
+        "usd_requirement_type": []
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": true,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "infrastructure_competitor": false,
+        "tier0_note": "HARD CAP - single market, single currency in and out. Nothing to consolidate."
+      },
+      "meta": {
+        "evidence_depth": "moderate",
+        "confidence": "high",
+        "control_type": "negative",
+        "tests_rule": "Single-market hard cap",
+        "expected_outcome": "Near-zero score. Cleanest negative in the set.",
+        "notes": "Baseline floor for the ranking."
+      },
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "The Okomu Oil Palm Company Plc",
+        "trading_name": "Okomu Oil",
+        "sector": "Agribusiness - palm oil, rubber",
+        "business_model_type": "corporate",
+        "hq_country": "Nigeria",
+        "ownership": "listed (NGX); majority held by SOCFIN (Belgium/Luxembourg)",
+        "year_founded": 1976
+      },
+      "footprint": {
+        "operating_countries": "Nigeria only",
+        "entity_structure": "single-market subsidiary of foreign group",
+        "entry_years": "n/a",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "NGN",
+          "USD (rubber export)"
+        ],
+        "currencies_paid_raw": [
+          "NGN",
+          "some USD"
+        ],
+        "customer_geography": "Nigeria domestic, rubber export",
+        "supplier_geography": "mostly domestic",
+        "recipient_type": "suppliers, parent",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.3,
+          "source": "export receipts, limited import"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.4,
+          "source": "rubber export earns USD - VERIFY"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": false,
+          "strength": 0.2,
+          "source": "NGN-dominant cost base"
+        },
+        "tier1_multi_market_collection": {
+          "present": false,
+          "strength": 0.0,
+          "source": "single market"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.0,
+          "source": "none found"
+        },
+        "tier2_multi_entity": {
+          "present": false,
+          "strength": 0.0,
+          "source": "single market"
+        },
+        "tier2_multiple_local_rails": {
+          "present": false,
+          "strength": 0.0,
+          "source": "single market"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "hard_in_soft_out (export receipts)",
+        "usd_requirement_type": [
+          "receives"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": true,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "infrastructure_competitor": false,
+        "tier0_note": "FAILS TWICE - single market AND foreign parent (SOCFIN) treasury control. Deliberately double-flagged."
+      },
+      "meta": {
+        "evidence_depth": "moderate",
+        "confidence": "medium",
+        "control_type": "negative",
+        "tests_rule": "Single-market + foreign-parent, simultaneously",
+        "expected_outcome": "Excluded. Tests whether the tool reports BOTH reasons or stops at the first.",
+        "notes": "The output should name both disqualifiers. If it names only one, the exclusion reporting is incomplete."
+      },
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "Zeepay Ghana Limited",
+        "trading_name": "Zeepay",
+        "sector": "Cross-border payments / mobile money remittance",
+        "business_model_type": "financial institution",
+        "hq_country": "Ghana",
+        "ownership": "private",
+        "year_founded": 2014
+      },
+      "footprint": {
+        "operating_countries": "Ghana plus multiple African markets - VERIFY current count",
+        "entity_structure": "licensed entities per market",
+        "entry_years": "VERIFY",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "USD",
+          "GBP",
+          "EUR (inbound remittance)"
+        ],
+        "currencies_paid_raw": [
+          "GHS",
+          "multiple African currencies"
+        ],
+        "customer_geography": "diaspora senders, African recipients",
+        "supplier_geography": "n/a",
+        "recipient_type": "consumers, mobile wallets",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.9,
+          "source": "core remittance business"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.8,
+          "source": "hard currency inbound against local payout"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.8,
+          "source": "multi-currency corridors"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.8,
+          "source": "multi-market payout rails"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.0,
+          "source": "none found"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.7,
+          "source": "licensed entities per market"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "mobile money payout across markets"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "hard_in_soft_out",
+        "usd_requirement_type": [
+          "receives",
+          "holds"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "infrastructure_competitor": true,
+        "tier0_note": "HARD DISQUALIFY - direct competitor. Zeepay operates African mobile money settlement rails and competes for the same buyer. Note this is the DISTINGUISHING case against Visa/WU in batch 01: Zeepay competes for the same customer, whereas Visa and WU sit above the rail layer and buy underneath."
+      },
+      "meta": {
+        "evidence_depth": "moderate",
+        "confidence": "medium",
+        "control_type": "negative",
+        "tests_rule": "Competitor disqualifier - and the boundary of it",
+        "expected_outcome": "Excluded. All four Tier 1 signals fire strongly, which is exactly why this row matters: the gate must beat the score.",
+        "notes": "Read this row alongside Western Union. Both are remittance-adjacent with strong Tier 1 signals. One is a customer, one is a competitor. The rule that separates them is 'competes for the same buyer', not 'touches the same technology'."
+      },
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "Bamboo Systems Technology Limited",
+        "trading_name": "Bamboo",
+        "sector": "Retail investment platform - US equities access",
+        "business_model_type": "platform",
+        "hq_country": "Nigeria",
+        "ownership": "private, VC-backed",
+        "year_founded": 2019
+      },
+      "footprint": {
+        "operating_countries": "Nigeria primary - VERIFY Ghana expansion status",
+        "entity_structure": "VERIFY",
+        "entry_years": "VERIFY",
+        "markets_exited": null
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "NGN"
+        ],
+        "currencies_paid_raw": [
+          "USD (to US brokerage/custody)"
+        ],
+        "customer_geography": "Nigeria",
+        "supplier_geography": "US brokerage infrastructure",
+        "recipient_type": "custodian, consumers",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.5,
+          "source": "NGN to USD flow for US securities purchase - VERIFY"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.5,
+          "source": "USD settlement requirement - VERIFY"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": false,
+          "strength": 0.3,
+          "source": "essentially one pair"
+        },
+        "tier1_multi_market_collection": {
+          "present": false,
+          "strength": 0.1,
+          "source": "single market collection"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.4,
+          "source": "FX access is a known constraint for the category - WEAK, verify company-specific"
+        },
+        "tier2_multi_entity": {
+          "present": false,
+          "strength": 0.2,
+          "source": "VERIFY"
+        },
+        "tier2_multiple_local_rails": {
+          "present": false,
+          "strength": 0.1,
+          "source": "single market"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays",
+          "holds"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "infrastructure_competitor": false
+      },
+      "meta": {
+        "evidence_depth": "thin",
+        "confidence": "low",
+        "control_type": "gate test",
+        "tests_rule": "Floor rule - Tier 2/3 signals without strong Tier 1",
+        "expected_outcome": "Should land in the 'signals present, no established need' bucket, or score low. Dollar-facing and finance-adjacent, so it LOOKS like a prospect; single market and one currency pair means the need is not established.",
+        "notes": "Thin evidence - flagged low confidence. If verification shows meaningful Ghana/multi-market operations, this row moves out of the control set and becomes a real prospect. Verify before relying on it."
+      },
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "CEMEX S.A.B. de C.V.",
+        "trading_name": "Cemex",
+        "sector": "Building materials - cement",
+        "business_model_type": "corporate",
+        "hq_country": "Mexico",
+        "ownership": "listed (NYSE: CX, BMV)",
+        "year_founded": 1906
+      },
+      "footprint": {
+        "operating_countries": "50+ countries",
+        "entity_structure": "own entities, group treasury",
+        "entry_years": "long established",
+        "markets_exited": "several divestments over past decade - VERIFY"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "MXN",
+          "USD",
+          "EUR",
+          "GBP",
+          "COP",
+          "PHP",
+          "EGP",
+          "others"
+        ],
+        "currencies_paid_raw": [
+          "multiple"
+        ],
+        "customer_geography": "Americas, Europe, Middle East, Asia",
+        "supplier_geography": "global",
+        "recipient_type": "suppliers, intra-group",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.9,
+          "source": "global operations"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "USD-denominated debt and reporting"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 1.0,
+          "source": "50+ country operations"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.9,
+          "source": "collection across all operating markets"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.5,
+          "source": "FX translation effects routinely disclosed - standard for listed multinationals, not distinctive"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "extensive group structure"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "multi-market operations"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "pays"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": true,
+        "infrastructure_competitor": false,
+        "tier0_note": "SOFT CAP - dedicated group treasury, ISDA relationships, global cash pooling with tier-1 banks. Structural need is maximal; commercial argument is nil.",
+        "soft_cap_effect": {
+          "mechanism": "per-product suppression (v1.3)",
+          "suppressed": [
+            "global_usd_accounts",
+            "treasury_management"
+          ],
+          "live": [
+            "local_rails",
+            "fx"
+          ],
+          "verdict": "Global cash pooling with tier-1 banks. Live products are nominal. Retains negative-control status."
+        }
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "negative",
+        "tests_rule": "Treasury-already-solved soft cap, applied outside Africa",
+        "expected_outcome": "Maximum Tier 1 score, capped. Proves the cap is about treasury maturity and not about geography.",
+        "notes": "Pair with Dangote in the demo: one African, one Latin American, same rule, same outcome."
+      },
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "Shoprite Holdings Ltd",
+        "trading_name": "Shoprite Group",
+        "sector": "Retail - supermarkets",
+        "business_model_type": "corporate",
+        "hq_country": "South Africa",
+        "ownership": "listed (JSE: SHP)",
+        "year_founded": 1979
+      },
+      "footprint": {
+        "operating_countries": "~10 African countries as at 2025, down from 15",
+        "entity_structure": "own entities per market",
+        "entry_years": "long established",
+        "markets_exited": "Nigeria (2021), Kenya, Uganda, Madagascar (2021), DRC (2022), Ghana and Malawi (2025) - SUSTAINED RETREAT"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "ZAR",
+          "AOA",
+          "ZMW",
+          "MZN",
+          "NAD",
+          "BWP",
+          "others"
+        ],
+        "currencies_paid_raw": [
+          "ZAR",
+          "USD (dollar-linked costs)"
+        ],
+        "customer_geography": "Southern Africa and Indian Ocean islands",
+        "supplier_geography": "South Africa primary, international",
+        "recipient_type": "suppliers, intra-group",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.7,
+          "source": "multi-market supply chain from SA base"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.6,
+          "source": "analyst commentary on dollar-linked cost pressure (Africa Report)"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.8,
+          "source": "operations across ~10 currencies"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.9,
+          "source": "retail collection across all operating markets"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 1.0,
+          "source": "CEO Pieter Engelbrecht cited ongoing forex shortages, currency devaluations and inflation aftermath, particularly Angola; Angolan revenue fell 16% local / 40% in rand terms; analyst commentary describes struggling to repatriate cash from Angola with large balances stuck"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "entity per market"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "retail collection plus in-store Money Market transfer counters"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "Runs money transfer services at 1,400+ Money Market counters for CMA corridors (Lesotho, Eswatini). Technically passes the API/Widget gate. Adjacent to a remittance operation inside a retailer."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": true,
+        "infrastructure_competitor": false,
+        "tier0_note": "HARD DISQUALIFY (framework v1.1) - sustained regional retreat. Seven market exits 2021-2025 (Nigeria, Kenya, Uganda, Madagascar, DRC, Ghana, Malawi) combined with management stating capital allocated to the region remains at a minimum. This is a decision not to invest in operating in the region, distinct from pruning individual weak markets. Soft cap for treasury maturity also applies but is now secondary.",
+        "sustained_regional_retreat": true,
+        "soft_cap_note_v13": "UNAFFECTED by the per-product change. Sustained regional retreat is a HARD exclusion, not a soft cap."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "negative",
+        "tests_rule": "Sustained regional retreat (Tier 0 hard disqualifier, new in v1.1)",
+        "expected_outcome": "Excluded with stated reason, not scored. Strong Tier 1 and maximal disclosed pain make this the test that the disqualifier beats the score.",
+        "notes": "Reclassified from gray-area to Tier 0 exclusion in v1.1. This row is why the disqualifier exists: nothing on a company website says 'we have given up on the region' - only deep research finds it. Also passes the API/Widget platform gate via money transfer at 1,400+ in-store counters for the Lesotho and Eswatini corridors; gate unchanged, scale qualifier applied in presentation."
+      },
+      "footprint_trajectory": "retreating",
+      "_batch": "02-gate-tests"
+    },
+    {
+      "identity": {
+        "legal_name": "ETC Group / Export Trading Group",
+        "trading_name": "ETG",
+        "sector": "Agricultural commodities, trading, logistics",
+        "business_model_type": "corporate",
+        "hq_country": "Mauritius (ETC Group Mauritius)",
+        "ownership": "private",
+        "year_founded": 1967
+      },
+      "footprint": {
+        "operating_countries": "48-49 countries across six continents; ~70 direct subsidiaries serving 40+ countries. Core African markets include Tanzania, Kenya, Malawi, Mozambique, Nigeria, South Africa, Uganda, Ethiopia",
+        "entity_structure": "ETC Group Mauritius parent; ~70 direct subsidiaries; supply chain operations in China, India, America, Middle East, South East Asia; merchandising desks in Europe; TREASURY COMPANIES IN SINGAPORE, MAURITIUS AND UAE",
+        "entry_years": "long established; continued acquisitions (Uganda coffee facility, Mozambique tea estate)",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "USD (export sales)",
+          "TZS",
+          "KES",
+          "MWK",
+          "MZN",
+          "NGN",
+          "ZAR",
+          "ETB",
+          "UGX"
+        ],
+        "currencies_paid_raw": [
+          "local currencies (farm-gate procurement from smallholders)",
+          "USD (fertilizer and input imports)"
+        ],
+        "customer_geography": "global commodity buyers - Europe, Asia, Middle East, North Africa",
+        "supplier_geography": "African smallholder farmers at farm-gate level; international fertilizer and agrochemical suppliers",
+        "recipient_type": "smallholder farmers, suppliers, intra-group",
+        "payment_frequency": "recurring - seasonal procurement cycles"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 1.0,
+          "source": "importing and exporting soft commodities to and from 48-49 countries; global supply chain operations"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "USD-denominated trade finance - TDB $100m facility to ACF, AfDB $75m participation in sustainability-linked loan, DEG-arranged $150m senior unsecured working capital facility earmarked for Africa"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 1.0,
+          "source": "farm-gate procurement in African local currencies against USD export receipts and USD input imports"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.8,
+          "source": "procurement and distribution networks across East, West and Southern Africa; fertilizer distribution to smallholders"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.2,
+          "source": "no public FX pain disclosure found - private company, no filings"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "~70 direct subsidiaries plus dedicated treasury entities in three jurisdictions"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "farm-gate payment networks across multiple African markets"
+        }
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": true,
+        "sustained_regional_retreat": false,
+        "infrastructure_competitor": false,
+        "tier0_note": "SOFT CAP APPLIES - and the evidence is unusually explicit. ETG operates dedicated treasury companies in Singapore, Mauritius and the UAE, has a Chief Treasury Officer (Paul Van Spaendonk), and Agri Commodities and Finance FZ-LLC in Ras Al Khaimah 'acts as a central treasury for the Group'. Direct relationships with TDB, AfDB, DEG and Finnfund. This is a company that built its own cross-border treasury infrastructure because it needed one.",
+        "soft_cap_effect": {
+          "mechanism": "per-product suppression (v1.3)",
+          "suppressed": [
+            "global_usd_accounts",
+            "treasury_management"
+          ],
+          "live": [
+            "local_rails",
+            "stablecoin_settlement",
+            "fx"
+          ],
+          "verdict": "NARROW-PITCH PROSPECT, not an exclusion. Pitch local-currency collection and payout rails plus settlement; do not pitch core treasury."
+        }
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "gray area",
+        "tests_rule": "Multi-market scale vs offshore treasury sophistication",
+        "status": "EXTRACTED",
+        "expected_outcome": "All four Tier 1 signals fire strongly - possibly the highest raw Tier 1 base in the entire control set - then soft-capped. Tier 2 is weak because no FX pain is publicly disclosed (private company).",
+        "notes": "The most instructive soft-cap row in the set. ETG has the exact profile the framework hunts for - farm-gate procurement in soft currencies across dozens of African markets against USD export receipts - and it is NOT a prospect, because it built three offshore treasury companies to solve it. The lesson for the tool: structural need and commercial opportunity are different things, and only research at this depth distinguishes them. A scraper would rank ETG in the top five. v1.3 UPDATE: reclassified from exclusion to narrow-pitch prospect. The offshore treasury companies solve ETG's treasury problem; they do not solve farm-gate collection and payout across dozens of African markets. Still the worked example on the demo page, but the lesson changes from 'the tool knows when to exclude' to 'the tool knows WHICH PRODUCT to pitch' - which is a better lesson.",
+        "resolution": "resolved_prospect_narrow"
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "pays"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "VERIFY - some agri-traders extend input credit to farmers, which could constitute customer-facing financial functionality. Not established here."
+      },
+      "footprint_trajectory": "expanding",
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "Old Mutual Limited",
+        "trading_name": "Old Mutual",
+        "sector": "Insurance, asset management",
+        "business_model_type": "financial institution",
+        "hq_country": "South Africa",
+        "ownership": "listed (JSE primary; secondary listings incl. VFEX Zimbabwe from Aug 2026)",
+        "year_founded": 1845
+      },
+      "footprint": {
+        "operating_countries": "17 countries (African financial services group per exchange profile); key markets South Africa, Zimbabwe, Malawi, Namibia, Botswana, Kenya",
+        "entity_structure": "group with licensed entities per market; OM Bank launched publicly Aug 2025",
+        "entry_years": "long established; OM Bank 2025 (new business line, not new market)",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "ZAR",
+          "USD (Zimbabwe, from functional currency change 2024)",
+          "MWK",
+          "NAD",
+          "BWP",
+          "KES"
+        ],
+        "currencies_paid_raw": [
+          "local currencies (claims, policyholder payouts)",
+          "USD (reinsurance)"
+        ],
+        "customer_geography": "Southern and East Africa - retail and corporate",
+        "supplier_geography": "international reinsurers",
+        "recipient_type": "policyholders, reinsurers, intra-group",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.6,
+          "source": "17-market operations with intra-group and reinsurance flows"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.7,
+          "source": "Zimbabwe business now reports in US dollars following two functional currency changes in 2024; USD reinsurance obligations"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.9,
+          "source": "operations across ZAR, USD, MWK, NAD, BWP, KES and others"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.8,
+          "source": "premium collection across 17 markets"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.9,
+          "source": "FY2025 results - group earnings significantly impacted by the hyperinflationary environment in Malawi; sensitivity analysis showing that a 50% kwacha devaluation would have cut results-from-operations growth to 7-9% against the 13% reported. Company states Malawi hyperinflationary conditions AND foreign currency shortages continue to pose a significant risk and impair comparability."
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "licensed entities across 17 markets"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.8,
+          "source": "premium collection infrastructure per market; OM Bank onboarding ~3,000 customers per business day"
+        }
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": true,
+        "sustained_regional_retreat": false,
+        "infrastructure_competitor": false,
+        "licence_conflict": "PARTIAL - OM Bank is a licensed deposit-taker. Check the licence-conflict rule at that entity level; the insurance and asset management entities are unaffected.",
+        "tier0_note": "SOFT CAP - large listed group, AUM surpassed R1 trillion, dedicated treasury. Structural need real; commercial argument weak.",
+        "soft_cap_effect": {
+          "mechanism": "per-product suppression (v1.3)",
+          "suppressed": [
+            "global_usd_accounts",
+            "treasury_management"
+          ],
+          "live": [
+            "local_rails",
+            "fx",
+            "stablecoin_settlement"
+          ],
+          "verdict": "Narrow-pitch. Malawi hyperinflation and FX shortage are documented and unsolved; premium collection rails across 17 markets remain live."
+        }
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "gray area",
+        "tests_rule": "Regulated financial institution with genuine currency pain",
+        "status": "EXTRACTED",
+        "expected_outcome": "Strong Tier 1 and near-maximal Tier 2 from the Malawi disclosure, then soft-capped. Should not reach prospect threshold.",
+        "notes": "The pain is Malawi, not Zimbabwe - the earlier assumption in the control set was wrong. Zimbabwe actually IMPROVED: two functional currency changes in 2024 moved the business to USD reporting and hyperinflation accounting ceased from 1 July 2024, with the company expecting reduced FX gains and translation reserve transfers thereafter. Malawi is where hyperinflation and foreign currency shortages still bite, and the company quantified it with a sensitivity analysis. Worth noting as an example of research correcting an assumption - the framework would have scored the right company for the wrong reason.",
+        "resolution": "resolved_prospect_narrow"
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "pays"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "Insurance, banking, savings and investment products to its own customers. Passes the platform gate - but see licence-conflict flag."
+      },
+      "footprint_trajectory": "static",
+      "urgency": {
+        "state": "static",
+        "multiplier": 1.0,
+        "note": "No market entries or exits identified. Incumbent arrangement likely entrenched - attach that note to the row rather than discounting the score."
+      },
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "Globant S.A.",
+        "trading_name": "Globant",
+        "sector": "IT services, software engineering",
+        "business_model_type": "corporate",
+        "hq_country": "Luxembourg / Argentina origin",
+        "ownership": "listed (NYSE: GLOB)",
+        "year_founded": 2003
+      },
+      "footprint": {
+        "operating_countries": "LatAm delivery centres (Argentina, Colombia, Mexico, Brazil), plus Europe (top: Spain), North America, New Markets (top: Saudi Arabia). VERIFY full entity list.",
+        "entity_structure": "Luxembourg parent, entities across delivery and client markets",
+        "entry_years": "New Markets segment (Saudi Arabia) recent - VERIFY entry year",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "USD (63.0% of Q2 2026 revenues)",
+          "EUR",
+          "other client currencies"
+        ],
+        "currencies_paid_raw": [
+          "COP",
+          "ARS",
+          "MXN",
+          "BRL",
+          "other delivery-market currencies"
+        ],
+        "customer_geography": "North America 52.8%, Europe 20.9%, LatAm 20.8%, New Markets 5.5% (Q2 2026)",
+        "supplier_geography": "n/a - cost base is payroll",
+        "recipient_type": "employees and contractors (27,411 staff as at Q2 2026)",
+        "payment_frequency": "recurring - monthly payroll"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.8,
+          "source": "Q2 2026 results - revenue collected across four geographic segments against delivery payroll concentrated in LatAm"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Q2 2026 - 63.0% of revenues denominated in USD (64.5% Q1 2026, 64.0% Q4 2025); $168.8m cash and short-term investments at Q2 2026"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.9,
+          "source": "payroll obligations across COP, ARS, MXN, BRL; payroll and social security payable $190.7m per Form 6-K"
+        },
+        "tier1_multi_market_collection": {
+          "present": false,
+          "strength": 0.2,
+          "source": "collection is B2B invoicing to enterprise clients, largely in USD - not multi-market local collection"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 1.0,
+          "source": "CFO Juan Urthiague, Q2 2026 - margin pressure attributed primarily to FX, Colombian peso appreciation after the presidential election had a 'massive impact'; Colombia is the largest delivery centre at 22% of headcount. Q1 2026 - gross margins impacted by relative strength of LatAm currencies (MXN, COP, BRL); adjusted EPS absorbed meaningful FX headwinds"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Luxembourg parent with entities across delivery and client markets"
+        },
+        "tier2_multiple_local_rails": {
+          "present": false,
+          "strength": 0.3,
+          "source": "payroll disbursement rather than consumer collection"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "hard_in_soft_out",
+        "usd_requirement_type": [
+          "receives",
+          "holds"
+        ],
+        "validation_note": "THIS ROW VALIDATES THE TWO-FIELD SPLIT. Mismatch direction is hard_in_soft_out - the reverse of the typical importer - and the direction-agnostic FX rule fires correctly on it. Separately, the USD requirement is 'receives and holds', which triggers Global USD Accounts on its own dollar-side facts. Two fields, two independent triggers, different justification text. If the tool renders the same reason for both products on this row, the fields are not doing separate work."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": true,
+        "infrastructure_competitor": false,
+        "sustained_regional_retreat": false,
+        "tier0_note": "SOFT CAP - listed NYSE company, $614.4m quarterly revenue, active $125m buyback programme, net debt $253.1m, dedicated treasury function. Structural mismatch is real and quantified; commercial argument is weak.",
+        "soft_cap_effect": {
+          "mechanism": "per-product suppression (v1.3)",
+          "suppressed": [
+            "global_usd_accounts",
+            "treasury_management"
+          ],
+          "live": [
+            "fx",
+            "local_rails"
+          ],
+          "verdict": "Narrow-pitch at best. Payroll disbursement across LatAm delivery markets is the live angle; the dollar position is already managed."
+        }
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "gray area",
+        "tests_rule": "Reverse mismatch - direction-agnostic FX rule must fire; Global USD Accounts must fire on the separate USD-requirement field",
+        "status": "EXTRACTED",
+        "notes": "Cleanest reverse-mismatch case in the set and better evidenced than expected. Also a useful demo row: it shows the model handling a company whose problem is currencies getting STRONGER, not weaker - the opposite of every African importer in the list, same underlying mismatch.",
+        "expected_outcome": "Three of four Tier 1 signals fire (no multi-market local collection), so decay caps the base. Maximal disclosed pain drives a high Tier 2 modifier. Soft cap then holds it below prospect threshold. Expected products: FX and Global USD Accounts, each with distinct justification.",
+        "resolution": "resolved_prospect_narrow"
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false
+      },
+      "footprint_trajectory": "expanding",
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "Twiga Foods Limited",
+        "trading_name": "Twiga",
+        "sector": "B2B food distribution",
+        "business_model_type": "platform",
+        "hq_country": "Kenya",
+        "ownership": "private, VC-backed; new holding company created during restructuring",
+        "year_founded": 2014
+      },
+      "footprint": {
+        "operating_countries": "Kenya only",
+        "entity_structure": "new holding company ('newco') created during restructuring; majority stakes acquired in three FMCG distributorships (Jumra, Sojpar, Raisons); eight distribution centres across Central, Coast and Western Kenya",
+        "entry_years": "n/a - single market since founding",
+        "markets_exited": "n/a"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "KES"
+        ],
+        "currencies_paid_raw": [
+          "KES",
+          "USD (cloud services and some imported FMCG - limited)"
+        ],
+        "customer_geography": "Kenya - small retailers",
+        "supplier_geography": "Kenyan farmers and FMCG manufacturers",
+        "recipient_type": "farmers, suppliers, distributors",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": false,
+          "strength": 0.1,
+          "source": "domestic distribution; no material cross-border payment activity identified"
+        },
+        "tier1_usd_liquidity": {
+          "present": false,
+          "strength": 0.2,
+          "source": "USD-denominated VC funding raised (>$180m total) but no operating USD requirement identified"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": false,
+          "strength": 0.1,
+          "source": "KES-dominant on both sides"
+        },
+        "tier1_multi_market_collection": {
+          "present": false,
+          "strength": 0.0,
+          "source": "single market - eight distribution centres all within Kenya"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.1,
+          "source": "documented distress is operational and capital-related, NOT FX - layoffs (283 in 2023, 59 in 2026), delayed vendor payments, a supplier lawsuit over unpaid cloud services, CEO departure"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.5,
+          "source": "newco holding structure plus three acquired distributorships - all Kenyan"
+        },
+        "tier2_multiple_local_rails": {
+          "present": false,
+          "strength": 0.2,
+          "source": "single market"
+        }
+      },
+      "tier0_flags": {
+        "single_market_single_currency": true,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "sustained_regional_retreat": false,
+        "infrastructure_competitor": false,
+        "tier0_note": "HARD CAP - single market, single currency. Attractive platform archetype, no cross-border problem. Additionally in financial distress, which is a separate reason not to prospect it."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "gray area",
+        "tests_rule": "Multi-market gate against an otherwise ideal profile",
+        "status": "EXTRACTED",
+        "notes": "Second finding beyond the intended test: the visible distress is operational and capital-related, not FX. Over $180m raised, repeated layoffs, delayed vendor payments, a lawsuit from a cloud provider over unpaid invoices, founding CEO replaced. A naive model keying on 'financial difficulty' would score this as pain. It is the wrong kind of pain entirely, which is a useful argument for why Tier 2 is specifically DISCLOSED FX OR DOLLAR-ACCESS pain rather than distress generally.",
+        "expected_outcome": "Excluded on the single-market hard cap. Distinct from Naivas: Naivas is an obviously domestic retailer, Twiga is a well-funded tech platform of exactly the archetype the framework targets. Tests whether the gate holds against an attractive profile rather than an obvious one.",
+        "resolution": "ambiguous"
+      },
+      "fx": {
+        "mismatch_direction": "none material",
+        "usd_requirement_type": []
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "B2B distribution platform. Extends trade terms but is not a financial functionality provider."
+      },
+      "footprint_trajectory": "static",
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "MNT-Halan",
+        "trading_name": "Halan",
+        "sector": "Fintech - lending, payments, e-commerce",
+        "business_model_type": "platform",
+        "hq_country": "Egypt",
+        "ownership": "private, VC and PE backed; ~$1.4bn valuation June 2026",
+        "year_founded": 2018
+      },
+      "footprint": {
+        "operating_countries": "Egypt, Türkiye, Pakistan, United Arab Emirates (four markets, company-confirmed)",
+        "entity_structure": "group; owns Tam Finans (Türkiye, acquired 2024) and Halan Microfinance Bank (Pakistan, SBP licence 2024)",
+        "entry_years": "Türkiye 2024 (Tam Finans acquisition), Pakistan 2024 (microfinance banking licence), UAE 2024 (Halan Advance salary financing). THREE MARKET ENTRIES IN ONE YEAR.",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "EGP",
+          "TRY",
+          "PKR",
+          "AED"
+        ],
+        "currencies_paid_raw": [
+          "EGP",
+          "USD (equity and IFC funding)",
+          "local currencies"
+        ],
+        "customer_geography": "Egypt, Türkiye, Pakistan, UAE",
+        "supplier_geography": "n/a",
+        "recipient_type": "borrowers, merchants, cardholders (1.2m+ activated cards, 70k-120k issued monthly)",
+        "payment_frequency": "recurring - lending disbursement and repayment"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.7,
+          "source": "four-market group operations with cross-border capital and intra-group flows"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.8,
+          "source": "USD-denominated capital stack - $200m Chimera equity 2023, $157.5m raise 2024 incl. $40m IFC, financing portfolio targeted at $4.5-5bn by end 2026 against EGP-denominated local funding"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.9,
+          "source": "EGP, TRY, PKR, AED operations against USD capital; three of four operating currencies are historically volatile"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.9,
+          "source": "lending collection and repayment across four markets; 1.2m+ activated cards"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.6,
+          "source": "CEO Nakhla describes operating under exceptional geopolitical conditions with regional challenges affecting some markets - real but not FX-specific. Local debt strategy (EGP 30bn securitisation and bonds 2026) suggests deliberate local-currency funding to match local assets."
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "group with separately licensed entities per market incl. a Pakistani bank"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "wallets, cards, payments across four markets"
+        }
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "sustained_regional_retreat": false,
+        "infrastructure_competitor": false,
+        "competes_for_same_buyer": false,
+        "tier0_note": "COMPETITOR RULE RESOLVED - NOT DISQUALIFIED. Applying the v1.1 test: MNT-Halan's payments and wallet products serve its own consumer and micro-business ecosystem, not businesses buying cross-border settlement infrastructure. It does not compete for Yellow Card's buyer. Same reasoning that keeps Visa and Western Union in and puts Zeepay out. Note the group owns a licensed bank in Pakistan - check the licence-conflict rule at entity level before recommending anything to that subsidiary."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "gray area",
+        "tests_rule": "Competitor boundary - the rule redesigned after batch 01/02",
+        "status": "EXTRACTED",
+        "expected_outcome": "HIGH score. All four Tier 1 signals fire, strong Tier 2, expanding trajectory. Likely multi-product: Global USD Accounts and Treasury for the group position, local rails and API/Widget for the superapp.",
+        "notes": "PROMOTION CANDIDATE - like Jumia. The gray-area question was whether the competitor rule catches it; under v1.1 it clearly does not, and the row resolves to a strong prospect rather than an ambiguous one. Recommend moving to the prospect list and finding another competitor-boundary control. One caveat worth flagging on a call: the EGP 30bn local securitisation programme suggests they are deliberately funding local assets with local debt, which is the textbook hedge - it may mean less USD mismatch than the capital stack implies.",
+        "resolution": "resolved_prospect",
+        "resolution_note": "Entered as a competitor-boundary test; the v1.1 same-buyer rule resolved it cleanly as NOT a competitor. Stays in the file as evidence of the framework settling a hard case, and enters the ranking as a prospect."
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "Superapp offering lending, payments, e-wallets, savings, investments to its own customers. Passes the API/Widget gate."
+      },
+      "footprint_trajectory": "expanding",
+      "urgency": {
+        "state": "expanding",
+        "multiplier": "high",
+        "note": "Three market entries in 2024 (Türkiye, Pakistan, UAE), continued Gulf expansion stated, IPO targeted within 12-18 months. Strong upward urgency."
+      },
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "M-KOPA Holdings",
+        "trading_name": "M-KOPA",
+        "sector": "Asset financing - smartphones, solar, productive assets",
+        "business_model_type": "platform",
+        "hq_country": "United Kingdom (holding) / Kenya (core operations)",
+        "ownership": "private, VC and debt funded",
+        "year_founded": 2011
+      },
+      "footprint": {
+        "operating_countries": "Kenya, Uganda, Nigeria, Ghana, South Africa (five markets, confirmed across IFC disclosure and company material)",
+        "entity_structure": "M-KOPA Holdings Limited with separately financed local entities - M-KOPA Kenya Limited, M-KOPA Uganda Limited, M-KOPA Kenya Mobility (2023 subsidiary)",
+        "entry_years": "Kenya 2011, Uganda early, Nigeria 2021, Ghana more recent, South Africa recent - VERIFY Ghana and SA years",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "KES",
+          "UGX",
+          "NGN",
+          "GHS",
+          "ZAR"
+        ],
+        "currencies_paid_raw": [
+          "USD (device and hardware procurement, senior debt)",
+          "KES",
+          "UGX"
+        ],
+        "customer_geography": "five African markets, 10m customers reached 2026",
+        "supplier_geography": "international device manufacturers, e-mobility hardware",
+        "recipient_type": "suppliers, lenders, ~40,000 agent network",
+        "payment_frequency": "recurring - daily and weekly micro-repayments inbound, periodic supplier and debt service outbound"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.8,
+          "source": "five-market operations; international device procurement; debt service to IFC, FMO, BII, Standard Bank and fund lenders"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.8,
+          "source": "USD-denominated senior debt and equity - $200m+ sustainability-linked debt with Standard Bank providing half; IFC facility up to $180m total funding; cumulative credit extended surpassed $2bn"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.9,
+          "source": "receivables in KES, UGX, NGN, GHS, ZAR against USD hardware costs and partially USD debt"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "daily/weekly micropayment collection via mobile money across five markets; ~10,000 new users daily"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.7,
+          "source": "WeeTracker on the July 2026 FMO facility - funding aims to address the shortage of local-currency financing for Kenya's clean mobility sector. Local currency scarcity stated as the constraint being solved."
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "UK holding with separately financed entities per market plus a dedicated mobility subsidiary"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 1.0,
+          "source": "mobile money collection infrastructure across five markets, 40,000 agents"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "sustained_regional_retreat": false,
+        "infrastructure_competitor": false,
+        "competes_for_same_buyer": false,
+        "tier0_note": "NOT DISQUALIFIED. Asset financier, not a payments company - does not compete for Yellow Card's buyer under the v1.1 test."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "gray area",
+        "tests_rule": "Dual profile - replaces Jumia in the gray set after its promotion in v1.1",
+        "status": "EXTRACTED",
+        "expected_outcome": "HIGH score - all four Tier 1 signals fire with multi-market collection at maximum. Expected products: local rails (inbound), Global USD Accounts, treasury.",
+        "notes": "IMPORTANT NUANCE - partial hedge already in place. The IFC facility is structured as a senior secured loan of up to $50m to M-KOPA Kenya 'in USD or KES equivalent' plus up to $15m to M-KOPA Uganda 'in UGX equivalent', supported by the IDA-PSW Local Currency Facility. Lenders are deliberately providing local-currency tranches to match local receivables. Real mismatch is therefore SMALLER than the headline USD capital stack implies, and the residual exposure sits mainly in device procurement rather than debt service. This is the kind of detail that separates a real analyst from a scraper - and it is worth saying out loud on a call rather than hiding, because it is the first thing a Yellow Card analyst would check.",
+        "resolution": "resolved_prospect",
+        "resolution_note": "Entered as a dual-profile test; resolved cleanly as a strong prospect with a partial local-currency hedge already in place. Stays in the file and enters the ranking."
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "Embedded credit, digital loans and insurance offered to its own customers. Passes the API/Widget gate - dual profile confirmed."
+      },
+      "footprint_trajectory": "expanding",
+      "urgency": {
+        "state": "expanding",
+        "multiplier": "moderate-high",
+        "note": "Nigeria 2021, Ghana and South Africa more recent, e-mobility subsidiary established 2023, revenue growing ~50% annually since 2020. Continued market and product expansion."
+      },
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "Onafriq (formerly MFS Africa)",
+        "trading_name": "Onafriq",
+        "sector": "Pan-African payments network / infrastructure",
+        "business_model_type": "financial institution",
+        "hq_country": "United Kingdom / pan-African operations",
+        "ownership": "private, VC and PE backed",
+        "year_founded": 2009
+      },
+      "footprint": {
+        "operating_countries": "43 African markets; connects 1bn+ mobile money wallets and 500m bank accounts",
+        "entity_structure": "licensed entities across markets - VERIFY count",
+        "entry_years": "long established; rebranded from MFS Africa 2023",
+        "markets_exited": "VERIFY"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "multiple African currencies"
+        ],
+        "currencies_paid_raw": [
+          "multiple African currencies",
+          "USD"
+        ],
+        "customer_geography": "banks, fintechs, mobile money operators, merchants across Africa",
+        "supplier_geography": "n/a",
+        "recipient_type": "financial institutions, merchants, wallets",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 1.0,
+          "source": "core business - domestic and cross-border collections and disbursements across 43 markets"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Conduit partnership Feb 2026 - uses USDC to fund accounts, rebalance treasury holdings and make payouts in markets where bank transfers take days"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 1.0,
+          "source": "43-market currency coverage"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "collections and disbursements network across 43 markets"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.9,
+          "source": "Group CPIO Luke Kyohere on the Privy partnership - cites need for faster settlement and better liquidity management; company material describes African cross-border movement as slow and fragmented with multiple intermediaries and prolonged settlement cycles"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "licensed entities across markets"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 1.0,
+          "source": "1bn+ wallet and 500m bank account connectivity"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": true,
+        "gate_note": "Provides collections, disbursements, card issuing, agency banking and treasury services to institutional customers."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "direct_banking_all_markets": false,
+        "sustained_regional_retreat": false,
+        "infrastructure_competitor": true,
+        "competes_for_same_buyer": true,
+        "known_competitor_integration": true,
+        "tier0_note": "HARD DISQUALIFY - competes for the same buyer, and has built the competing capability directly. Four stablecoin infrastructure partnerships in 2026 alone: Conduit (Feb, institutional cross-border settlement), VALR (Apr, local-currency funding), Yuno (Jun, merchant orchestration), Privy (Jul, wallet infrastructure), plus USDC settlement via Circle Mint. Onafriq sells stablecoin-enabled cross-border settlement, treasury and liquidity services to African banks, fintechs and mobile money operators - the same buyer Yellow Card sells to."
+      },
+      "footprint_trajectory": "expanding",
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "negative",
+        "tests_rule": "Competitor disqualifier (v1.1 same-buyer test) - replaces MNT-Halan as the competitor-boundary control after its promotion",
+        "expected_outcome": "Excluded. Every Tier 1 signal fires at or near maximum, making this the strongest possible test that the gate beats the score.",
+        "status": "EXTRACTED",
+        "notes": "Best competitor control in the set - better than Zeepay. Zeepay is a remittance company that happens to overlap; Onafriq is explicitly building the same product for the same customers, announced publicly and repeatedly through 2026. Read the three-way comparison in the demo: Western Union (touches stablecoins, buys rails, CUSTOMER), Onafriq (touches stablecoins, sells rails to the same buyer, COMPETITOR), Zeepay (adjacent overlap, COMPETITOR). That trio is the clearest possible demonstration that the rule is about commercial overlap, not technology.",
+        "resolution": "resolved_excluded"
+      },
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "Wave Mobile Money",
+        "trading_name": "Wave",
+        "sector": "Mobile money / payments",
+        "business_model_type": "platform",
+        "hq_country": "Senegal (US founders)",
+        "ownership": "private, VC and debt funded; ~$1.7bn valuation",
+        "year_founded": 2018
+      },
+      "footprint": {
+        "operating_countries": "~11 African markets - Senegal, Côte d'Ivoire, Mali, Burkina Faso, Niger, The Gambia, Sierra Leone, Cameroon, Uganda, DRC",
+        "entity_structure": "licensed entities per market; BCEAO EMI licence for WAEMU; Wave Bank Africa S.A. registered in Côte d'Ivoire with CFA 20bn share capital",
+        "entry_years": "Senegal 2018, Côte d'Ivoire late 2021, Mali/Burkina Faso/Uganda subsequently, Cameroon authorised June 2025 via Commercial Bank Cameroon, Wave Bank Africa recent - ACTIVELY EXPANDING",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "XOF",
+          "GMD",
+          "SLE",
+          "XAF",
+          "UGX",
+          "CDF"
+        ],
+        "currencies_paid_raw": [
+          "XOF",
+          "EUR (IFC-led debt)",
+          "USD",
+          "local currencies"
+        ],
+        "customer_geography": "West, Central and East Africa - 23m users",
+        "supplier_geography": "n/a",
+        "recipient_type": "consumers, agents, merchants, SME payroll",
+        "payment_frequency": "recurring - continuous high-volume transfers"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.7,
+          "source": "multi-market operations; cross-border remittance rails targeted as a growth line; EUR-denominated IFC-led financing against local currency operations"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.6,
+          "source": "EUR 90m IFC-arranged package 2022 and EUR 117m RMB-led round June 2025 against XOF-denominated operations - hard currency debt service"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.9,
+          "source": "XOF, XAF, GMD, SLE, UGX, CDF operations against EUR/USD funding"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "PRIMARY SIGNAL - agent-network collection and disbursement across ~11 markets, 23m users, processing billions monthly"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.3,
+          "source": "no FX pain disclosure found - private company. CEO comments note that a common licensing and compliance framework eases WAEMU expansion, implying friction outside it."
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "licensed entity per market plus a new commercial bank"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 1.0,
+          "source": "agent networks, mobile wallets, bank partnerships across all markets"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "Core business is customer-facing financial functionality. Passes the API/Widget gate."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "direct_banking_all_markets": false,
+        "sustained_regional_retreat": false,
+        "infrastructure_competitor": "BOUNDARY - see note",
+        "competes_for_same_buyer": false,
+        "tier0_note": "NOT DISQUALIFIED, but this is the closest boundary call in the set. Wave is a consumer and merchant mobile money operator, not a seller of cross-border settlement infrastructure to businesses. Its buyer is the end user; Yellow Card's buyer is the business. Contrast with Onafriq, which explicitly sells settlement and treasury to banks and fintechs. Wave's stated ambition to build cross-border remittance rails is worth monitoring - if it starts selling those rails to third parties, the classification changes."
+      },
+      "footprint_trajectory": "expanding",
+      "urgency": {
+        "state": "expanding",
+        "multiplier": "high",
+        "note": "Cameroon authorised 2025, Wave Bank Africa newly registered, DRC and Sierra Leone recent, IPO or exit contemplated around 2027."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "signature test",
+        "resolution": "ambiguous",
+        "tests_rule": "LOCAL RAILS signature - the first control testing a product signature rather than a disqualifier",
+        "expected_outcome": "Local rails must be the LEAD recommendation with direction flag 'both'. Global USD Accounts should rank below it, since the dollar need is debt service rather than an operating dollar position. If Global USD Accounts leads on this row, the two signatures are not properly disjoint.",
+        "status": "EXTRACTED",
+        "notes": "Added in v1.2 to close a coverage gap - six control rows tested the soft cap while local rails and wallets/custody had none. Also doubles as a second competitor-boundary case, softer than Onafriq: same sector, different buyer."
+      },
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "VALR (Pty) Ltd",
+        "trading_name": "VALR",
+        "sector": "Digital asset exchange and institutional custody",
+        "business_model_type": "platform",
+        "hq_country": "South Africa (Johannesburg)",
+        "ownership": "private; investors include Pantera Capital, Coinbase Ventures, Fidelity's F-Prime Capital",
+        "year_founded": 2018
+      },
+      "footprint": {
+        "operating_countries": "South Africa base; serves clients worldwide. Regulatory footprint: South Africa, Cayman Islands (provisional), Europe (approval referenced - VERIFY jurisdiction)",
+        "entity_structure": "FSCA Category I and II Crypto Asset Service Provider licences, plus ODP (OTC Derivatives Provider) and TPPP licences; registered credit provider with South Africa's National Credit Regulator; provisional CIMA VASP licence",
+        "entry_years": "CIMA provisional VASP licence May 2026; FSCA ODP licence 2026 - ACTIVELY EXPANDING",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "ZAR",
+          "USD",
+          "stablecoins"
+        ],
+        "currencies_paid_raw": [
+          "ZAR",
+          "USD",
+          "stablecoins"
+        ],
+        "customer_geography": "1.9m registered users and ~1,900 corporate and institutional clients worldwide",
+        "supplier_geography": "n/a",
+        "recipient_type": "retail users, corporate and institutional clients, counterparties",
+        "payment_frequency": "continuous"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.8,
+          "source": "CIMA provisional licence covers cross-border transfer services; serves institutional clients worldwide from a South African base"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.8,
+          "source": "fiat-to-crypto and crypto-to-crypto exchange; bridging African markets to global institutional capital requires standing dollar and stablecoin positions"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.6,
+          "source": "ZAR and USD plus stablecoin settlement - fewer currencies than a multi-market operator"
+        },
+        "tier1_multi_market_collection": {
+          "present": false,
+          "strength": 0.3,
+          "source": "collection is concentrated in South Africa; international clients rather than multi-market local collection"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.2,
+          "source": "no FX or dollar-access pain disclosed; the company's public framing is expansion, not constraint"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.7,
+          "source": "multiple licensed entities and regulatory footholds"
+        },
+        "tier2_multiple_local_rails": {
+          "present": false,
+          "strength": 0.3,
+          "source": "single primary market for local rails"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "pays"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": true,
+        "gate_note": "GATE TEST RESULT - PASSES ON GENUINE EVIDENCE, NOT CRYPTO ADJACENCY. The CIMA provisional licence explicitly authorises custody services (secure storage for digital assets) and transfer services. FSCA Category I and II CASP licences plus ODP. ~1,900 corporate and institutional clients. This is documented institutional asset-holding infrastructure, not 'it is a crypto company therefore custody'. The gate is working as written."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "direct_banking_all_markets": false,
+        "sustained_regional_retreat": false,
+        "infrastructure_competitor": true,
+        "competes_for_same_buyer": "PARTIAL - see note",
+        "known_competitor_integration": true,
+        "tier0_note": "BOUNDARY CASE, LEANS DISQUALIFY. VALR describes itself as the leading digital asset infrastructure provider on the African continent and is explicitly targeting institutional clients, cross-border payments and stablecoin infrastructure - the same positioning Yellow Card uses. It also partnered with Onafriq in April 2026, publicly framed as Onafriq tapping VALR's infrastructure for local-currency funding, which places VALR upstream of a confirmed competitor. COUNTER-ARGUMENT worth preserving: VALR is primarily an exchange and custodian, while Yellow Card sells payment rails and treasury accounts. VALR could plausibly consume Yellow Card's local rails outside South Africa, the way Coinbase does. RECOMMENDATION: route to the partner motion, not the treasury pitch - the same treatment the prospecting research gives Interswitch, Cellulant and Peach Payments."
+      },
+      "footprint_trajectory": "expanding",
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "signature test",
+        "resolution": "resolved_partner_motion",
+        "tests_rule": "WALLETS / CUSTODY signature - the only remaining product signature with no control",
+        "expected_outcome": "Wallets/custody signature MUST fire, and on the licence evidence rather than on crypto adjacency. Global USD Accounts and local rails should NOT lead - collection is single-market. If wallets/custody fires here and does NOT fire on, say, Flour Mills, the gate discriminates correctly.",
+        "status": "EXTRACTED",
+        "notes": "SIGNATURE TEST RESULT: the wallets/custody gate holds. It fired on documented custody authorisation and ~1,900 institutional clients, not on the company being crypto-adjacent. That was the specific failure mode this row was added to catch, and it did not occur. SECOND FINDING: VALR is the third company in the set to land in the partner-motion bucket rather than prospect or competitor. With Interswitch, Cellulant, Peach Payments and MNT-Halan also there, that bucket is now large enough that the tool should show it as a THIRD OUTPUT CATEGORY alongside prospects and exclusions - 'route to partnership, not treasury pitch'. That is a real commercial distinction and showing it makes the tool more useful, not less decisive."
+      },
+      "_batch": "03-gray-area"
+    },
+    {
+      "identity": {
+        "legal_name": "Jumia Technologies AG",
+        "trading_name": "Jumia",
+        "sector": "E-commerce marketplace, logistics, payments",
+        "business_model_type": "platform",
+        "hq_country": "Germany (registered); operations Africa; listed US",
+        "ownership": "listed (NYSE: JMIA)",
+        "year_founded": 2012
+      },
+      "footprint": {
+        "operating_countries": "~9-10 African countries following Algeria exit Feb 2026 (was 11)",
+        "entity_structure": "entity per market",
+        "entry_years": "varies; South Africa and Tunisia exited 2024, Algeria Feb 2026",
+        "markets_exited": "South Africa, Tunisia (2024), Algeria (Feb 2026, ~2% of GMV)"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "NGN",
+          "EGP",
+          "KES",
+          "GHS",
+          "XOF",
+          "MAD",
+          "UGX",
+          "others"
+        ],
+        "currencies_paid_raw": [
+          "USD",
+          "local currencies"
+        ],
+        "customer_geography": "Africa",
+        "supplier_geography": "international sellers, local sellers",
+        "recipient_type": "merchants, sellers, consumers, intra-group",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.8,
+          "source": "multi-market operations with USD-denominated group funding"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "SEC filing Q2 2023 - nearly 70% of liquidity position deliberately held in USD to avoid local currency risk"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 1.0,
+          "source": "9 of 10 local currencies depreciating in one reporting period; FX contributed 14pp to a 25% GMV decline"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "JumiaPay TPV $45.5m in Q1 2025; collection across all markets via mobile money and local rails"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 1.0,
+          "source": "SEC filings quantify it: $19m adverse currency effect on cash in one quarter, ~$13m from the June 2023 naira devaluation alone; net FX losses of $13.0m for FY2024; Q1 2024 net finance costs of $31.3m driven by treasury activities during Nigeria and Egypt devaluations"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "entity per market, German parent, US listing"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 1.0,
+          "source": "mobile money integration across markets; JumiaPay penetration ~45% Côte d'Ivoire, 32.5% Egypt"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "holds",
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "JumiaPay is a genuine customer-facing payment product. Passes the API/Widget gate cleanly - this is the dual-profile row."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "known_competitor_integration": false,
+        "direct_banking_all_markets": false,
+        "infrastructure_competitor": "PARTIAL - JumiaPay is a payment product but serves Jumia's own ecosystem, not the open market. Does not compete for Yellow Card's buyer.",
+        "tier0_note": "NO CAP. Listed but loss-making, no group treasury desk of the Cemex kind, explicitly managing cash burn."
+      },
+      "urgency": {
+        "state": "pruning",
+        "multiplier": 1.0,
+        "note": "Exited Algeria (Feb 2026), South Africa and Tunisia (2024) while targeting EBITDA breakeven Q4 2026 and profitability 2027. Pruning weak markets alongside continued investment in the rest is normal portfolio management and carries no penalty under v1.1."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "control_type": "live prospect",
+        "tests_rule": null,
+        "expected_outcome": "Expected top-tier prospect. Multi-product recommendation likely: Global USD Accounts and Treasury for its own position, local rails and possibly API/Widget for JumiaPay.",
+        "notes": "Promoted out of the control set: too well evidenced to sit in a group whose job is to fail. SEC filings quantify the trapped-capital thesis in the company's own numbers - roughly 70% of liquidity deliberately held in USD, $19m adverse currency effect on cash in one quarter with ~$13m from the June 2023 naira devaluation, $31.3m net finance costs in Q1 2024 from treasury activity during the Nigeria and Egypt devaluations. Verify current market count before finalising.",
+        "promoted_from": "batch 03 gray-area control, v1.1"
+      },
+      "footprint_trajectory": "pruning",
+      "_batch": "04-prospects"
+    },
+    {
+      "identity": {
+        "legal_name": "Moove Africa / Moove",
+        "trading_name": "Moove",
+        "sector": "Mobility fintech - vehicle financing and fleet operations",
+        "business_model_type": "platform",
+        "hq_country": "Dubai (Nigerian founders Ladi Delano and Jide Odunsi)",
+        "ownership": "private; $2.1bn valuation Aug 2026; Mubadala, Woven Capital (Toyota), Ion Pacific, BlackRock, Uber, MUFG, Franklin Templeton, BlueCrest, Sona Capital, Ontario Power Generation Pension Plan",
+        "year_founded": 2020
+      },
+      "footprint": {
+        "operating_countries": "13-14 countries, ~29 cities. Africa base plus UAE, India, Mexico, US, Japan (Tokyo Taxi), Brazil (Kovi)",
+        "entity_structure": "multi-entity across 13-14 markets; acquisitions Kovi (Brazil) and Tokyo Taxi (Japan)",
+        "entry_years": "Lagos 2020 with 76 vehicles; expansion through Europe, Middle East, Asia, LatAm; Waymo partnership Dec 2024; US AV rollout in progress - RAPIDLY EXPANDING",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "NGN",
+          "GHS",
+          "ZAR",
+          "KES",
+          "BRL",
+          "AED",
+          "INR",
+          "MXN",
+          "JPY",
+          "USD"
+        ],
+        "currencies_paid_raw": [
+          "USD (vehicle debt and fleet procurement)"
+        ],
+        "customer_geography": "gig drivers across 29 cities in 13-14 countries",
+        "supplier_geography": "international vehicle manufacturers and lessors",
+        "recipient_type": "drivers, vehicle suppliers, lenders",
+        "payment_frequency": "recurring - revenue-based repayments collected continuously from drivers"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 1.0,
+          "source": "13-14 country operations, 42,000 vehicles, ~$420m ARR, 3,300 employees; cross-border vehicle procurement and debt service"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "USD-denominated vehicle debt against local-currency driver repayments; ~$210m debt raised historically, ~$100m repaid, pursuing a reported $1.2bn debt round for US AV rollout"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 1.0,
+          "source": "revenue-based repayments collected in naira, cedi, rand, shilling, real, dirham, rupee, peso against USD obligations"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "continuous micro-collection from ~42,000 drivers across 29 cities"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.3,
+          "source": "no explicit FX pain disclosure found - private company. Delano's public framing is lender relationships and debt repayment discipline, not currency constraint."
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "entities across 13-14 markets plus acquired subsidiaries in Brazil and Japan"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 1.0,
+          "source": "driver collection rails per market"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "Provides vehicle financing and alternative credit scoring to drivers. Passes the platform gate."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "foreign_parent_treasury": false,
+        "competes_for_same_buyer": false,
+        "sustained_regional_retreat": false,
+        "direct_banking_all_markets": false,
+        "tier0_note": "NO CAP. Institutional lender relationships exist but there is no evidence of a group treasury function of the ETG or Cemex kind."
+      },
+      "footprint_trajectory": "expanding",
+      "urgency": {
+        "state": "expanding",
+        "multiplier": "high",
+        "note": "Series C closed 5 Aug 2026, three weeks before extraction. Capital explicitly earmarked for expansion. A company that just raised $250m is deploying, and deploying is when treasury problems surface."
+      },
+      "blocked_funds_flag": {
+        "fires": true,
+        "countries": [
+          "Nigeria (historically)"
+        ],
+        "note": "Nigeria removed from the IATA list - see batch note. Flag fires weakly."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "status": "EXTRACTED",
+        "output_category": "prospect",
+        "expected_outcome": "TOP-TIER PROSPECT. All four Tier 1 signals at or near maximum, expanding trajectory, no cap. Expected products: Global USD Accounts (lead), local rails (inbound), treasury, FX.",
+        "notes": "Cleanest structural fit in the dataset so far. The model is textbook: collect soft currency continuously from drivers in a dozen markets, service hard-currency vehicle debt. Timing is also unusually good - Series C closed three weeks ago and a reported $1.2bn debt round is in progress, so treasury complexity is increasing right now rather than settled. One caveat for the call: the strategic centre of gravity is shifting to US autonomous vehicles with Waymo, which is a hard-currency market. The African soft-currency book remains large but may not be where management attention sits."
+      },
+      "_batch": "04-prospects"
+    },
+    {
+      "identity": {
+        "legal_name": "Kenya Airways PLC",
+        "trading_name": "Kenya Airways / KQ",
+        "sector": "Aviation",
+        "business_model_type": "corporate",
+        "hq_country": "Kenya",
+        "ownership": "listed (NSE), state-linked",
+        "year_founded": 1977
+      },
+      "footprint": {
+        "operating_countries": "pan-African and international network; revenue-generating presence incl. Nigeria, Ethiopia, Malawi, Burundi, South Sudan",
+        "entity_structure": "single group with country sales operations",
+        "entry_years": "long established",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "KES",
+          "NGN",
+          "ETB",
+          "MWK",
+          "BIF",
+          "USD",
+          "and other ticket-sale currencies"
+        ],
+        "currencies_paid_raw": [
+          "USD (aircraft leasing, fuel, maintenance, debt service)"
+        ],
+        "customer_geography": "pan-African and international passengers, travel agents",
+        "supplier_geography": "international lessors, fuel suppliers, MRO providers",
+        "recipient_type": "lessors, suppliers, lenders",
+        "payment_frequency": "recurring"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 1.0,
+          "source": "network-wide ticket revenue collected in local currencies against international obligations"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "dollar cost base - leasing, fuel, maintenance, salaries. CEO Allan Kilavuka: because of the forex regime you cannot always hedge by selling in US dollars."
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 1.0,
+          "source": "ticket sales across many African currencies against USD costs"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "ticket sales collection across the network"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 1.0,
+          "source": "CEO Kilavuka to a Senate committee - KSh 1.4bn stuck across Nigeria, Malawi, Ethiopia and Burundi as at September 2024, trapped by FX controls and restrictions, with government assistance sought for repatriation. Separately ~$11.6m trapped in Ethiopia losing value as the birr fell ~30%. Reported KSh 17bn FX losses on loans and leases."
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.6,
+          "source": "single group, country sales operations rather than separate entities"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "agent and direct ticket collection across the network"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": false,
+        "holds_or_manages_digital_assets": false
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "foreign_parent_treasury": false,
+        "competes_for_same_buyer": false,
+        "sustained_regional_retreat": false,
+        "direct_banking_all_markets": false,
+        "tier0_note": "NO HARD CAP. Has treasury capability but the blocked-funds problem is demonstrably UNSOLVED - the CEO is asking government for diplomatic help, which is what a company does when its own treasury cannot fix something. Under v1.3 per-product logic this is the ideal case: treasury partially capable, the specific product need live."
+      },
+      "footprint_trajectory": "static",
+      "urgency": {
+        "state": "static",
+        "multiplier": 1.0,
+        "note": "No market changes, but financial pressure is acute and rising - H1 2026 pre-tax loss of KSh 15.92bn (~$123m), widened from KSh 12.17bn a year earlier. Distress is not urgency under the framework, but it affects decidability and is worth noting for the call."
+      },
+      "blocked_funds_flag": {
+        "fires": true,
+        "countries": [
+          "Ethiopia",
+          "Malawi",
+          "Burundi",
+          "Nigeria (historically)"
+        ],
+        "source": "IATA/AFRAA dataset plus company-specific CEO statements",
+        "strength": "maximum - both third-party documented and company-confirmed"
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "status": "EXTRACTED",
+        "output_category": "prospect",
+        "expected_outcome": "TOP-TIER PROSPECT. Maximum Tier 1 and Tier 2. The blocked-funds flag fires on both third-party and company evidence.",
+        "notes": "IMPORTANT DATA CORRECTION: the widely cited '$28m blocked in Nigeria, Ethiopia and Malawi' figure dates from AUGUST 2022 and should NOT be presented as current. The current, sourced figure is KSh 1.4bn across Nigeria, Malawi, Ethiopia and Burundi as at September 2024, plus ~$11.6m specifically in Ethiopia. Using the 2022 number in an email to Yellow Card would be an easy thing for an analyst to catch. Kilavuka also states Nigeria IMPROVED after liberalisation - once they liberalized, we were able to remove our money - which matters for the market layer, not just this row."
+      },
+      "_batch": "04-prospects"
+    },
+    {
+      "identity": {
+        "legal_name": "Sun King (Greenlight Planet)",
+        "trading_name": "Sun King",
+        "sector": "Off-grid solar / PAYG energy",
+        "business_model_type": "platform",
+        "hq_country": "multi-hub",
+        "ownership": "private; General Atlantic BeyondNetZero, M&G, Arch EM plus DFI debt",
+        "year_founded": 2007
+      },
+      "footprint": {
+        "operating_countries": "40+ countries across Africa and Asia; securitisations executed in Kenya, Nigeria, Tanzania",
+        "entity_structure": "multi-entity with local securitisation vehicles per market",
+        "entry_years": "long established, continuing market expansion",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "KES",
+          "NGN",
+          "TZS",
+          "UGX",
+          "and other local currencies via mobile money"
+        ],
+        "currencies_paid_raw": [
+          "USD (solar hardware imports)",
+          "local currency (securitised debt service)"
+        ],
+        "customer_geography": "~10 million individual customers across Africa and Asia",
+        "supplier_geography": "international solar hardware manufacturers",
+        "recipient_type": "hardware suppliers, lenders, agents",
+        "payment_frequency": "recurring - micro-payments from $0.19/KES 25 per day via mobile money"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.9,
+          "source": "40+ country operations; imported solar hardware against local collections"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 0.7,
+          "source": "USD hardware procurement; $1.3bn extended in solar loans to ~10m customers"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.9,
+          "source": "collections across many local currencies against dollar hardware costs"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 1.0,
+          "source": "daily micro-payments via mobile money across 40+ markets - among the highest-volume local collection profiles in the dataset"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.8,
+          "source": "CEO-level statement via African Business: local currency financing is critical because it allows the company to provide affordability and security to the end user. $450m raised in local currency across Kenya, Nigeria and Tanzania specifically to avoid the mismatch."
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "local securitisation vehicles per market"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 1.0,
+          "source": "mobile money collection across all markets"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "soft_in_hard_out",
+        "usd_requirement_type": [
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "Extends consumer credit for solar products. Passes the platform gate."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "foreign_parent_treasury": false,
+        "competes_for_same_buyer": false,
+        "sustained_regional_retreat": false,
+        "direct_banking_all_markets": "PARTIAL - Citi and Stanbic arranged the Kenya securitisation",
+        "tier0_note": "PARTIAL SOFT CAP under v1.3 per-product logic. Sun King has solved the FUNDING side deliberately - $450m raised in local currency across three markets, the $156m KES securitisation arranged by Citi with Stanbic as placement agent, and a prior $130m deal in 2023. Treasury and Global USD Accounts suppressed on the funding argument. Local rails, FX and settlement REMAIN LIVE - collection across 40+ markets is not addressed by a securitisation."
+      },
+      "footprint_trajectory": "expanding",
+      "blocked_funds_flag": {
+        "fires": false,
+        "note": "operating markets not on the current IATA list"
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "status": "EXTRACTED",
+        "output_category": "prospect_narrow",
+        "expected_outcome": "High Tier 1 with maximum multi-market collection. Narrow pitch: local rails lead, FX and settlement follow. Do NOT lead with Global USD Accounts or treasury.",
+        "notes": "Instructive row: Sun King is the clearest case of a company that solved the FUNDING mismatch and still has an unsolved COLLECTION problem. A securitisation converts future customer repayments into local-currency debt - it does nothing about moving money across 40 markets. Under v1.2 this would have been capped and lost. Under v1.3 per-product logic it is a correctly-scoped prospect. Second demo example alongside ETG."
+      },
+      "_batch": "04-prospects"
+    },
+    {
+      "identity": {
+        "legal_name": "Tala Mobile / Tala",
+        "trading_name": "Tala",
+        "sector": "Digital lending",
+        "business_model_type": "platform",
+        "hq_country": "United States (Santa Monica)",
+        "ownership": "private; ~$350m raised from PayPal Ventures, IVP, Revolution Growth, GV, Stellar Development Foundation; ~$800m valuation Oct 2021",
+        "year_founded": 2011
+      },
+      "footprint": {
+        "operating_countries": "Kenya, Mexico, Philippines, India; entered Guatemala and Panama 2025; Tanzania and Uganda expansion reported June 2026; Dominican Republic and Vietnam planned 2026",
+        "entity_structure": "offices in US, Nairobi, Mexico City, Manila, Bangalore; licensed digital credit provider with the Central Bank of Kenya",
+        "entry_years": "Mexico 2017; Guatemala and Panama 2025; Tanzania and Uganda 2026 - ACTIVELY EXPANDING",
+        "markets_exited": "none identified"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "KES",
+          "MXN",
+          "PHP",
+          "INR",
+          "GTQ",
+          "PAB"
+        ],
+        "currencies_paid_raw": [
+          "USD (capital markets debt service)",
+          "local currency (loan disbursement)"
+        ],
+        "customer_geography": "10-12m customers across LatAm, Southeast Asia, East Africa; 3.5m Kenya, 3m+ Mexico",
+        "supplier_geography": "n/a",
+        "recipient_type": "borrowers, lenders",
+        "payment_frequency": "recurring - continuous disbursement and repayment"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 0.9,
+          "source": "operations across four continents with USD capital funding local books"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "$150m Neuberger Berman debt facility (Mar 2025, $75m initial commitment) explicitly to fund the Mexican peso loan book; over $500m in MXN loans approved in 2024; $7bn disbursed since launch"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 1.0,
+          "source": "KES, MXN, PHP, INR and expansion-market currencies against USD capital markets debt"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.9,
+          "source": "loan repayment collection across all operating markets"
+        },
+        "tier2_disclosed_pain": {
+          "present": false,
+          "strength": 0.3,
+          "source": "no FX pain disclosure; framing is expansion and capital access"
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.9,
+          "source": "licensed entities and offices across five-plus jurisdictions"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "disbursement and repayment rails per market"
+        }
+      },
+      "fx": {
+        "mismatch_direction": "hard_in_soft_out",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "holds_or_manages_digital_assets": true,
+        "gate_note": "Credit, payments, savings and transfer services to its own customers; Tala mobile wallets hold customer balances."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "foreign_parent_treasury": false,
+        "sustained_regional_retreat": false,
+        "competes_for_same_buyer": false,
+        "known_competitor_integration": "YES - CRITICAL, see note",
+        "tier0_note": "MAJOR FINDING - TALA ALREADY MOVES LENDING CAPITAL OVER STABLECOIN RAILS. Per Kindred Ventures: with 'Tala in a Box', lending capital moves across stablecoin rails, and Tala has built local off-ramp pathways - neighbourhood convenience stores, partner banks, Tala mobile wallets - so customers can hold value digitally and convert to local currency when needed. Backed by the Stellar Development Foundation. This is being rolled out to millions of users. IMPLICATION: Tala has BUILT the thing Yellow Card sells. That is not a same-buyer competitor disqualification - Tala does not sell rails to other businesses - but it materially weakens the pitch and may make Tala a partner or counterparty rather than a customer. The prospecting research called Tala the best lender fit; that assessment predates or overlooks this. DOWNGRADE from Tier 1 and flag for a judgement call."
+      },
+      "footprint_trajectory": "expanding",
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "status": "EXTRACTED",
+        "output_category": "REVIEW - prospect vs partner motion",
+        "expected_outcome": "Would score very high on signals alone. The stablecoin-rails finding is the reason to check the row before pitching.",
+        "notes": "This is exactly what deep research is for. On structure Tala is a textbook prospect - USD capital markets debt funding local-currency loan books across six-plus emerging markets. On current fact it has already deployed stablecoin infrastructure for that exact problem. Pitching Global USD Accounts to Tala without knowing this would be the single most embarrassing outcome of the whole exercise. Recommend routing to partner motion or verifying what 'Tala in a Box' actually covers before any outreach."
+      },
+      "_batch": "04-prospects"
+    },
+    {
+      "identity": {
+        "legal_name": "Nomba Financial Services",
+        "trading_name": "Nomba",
+        "sector": "Payments / business banking / FX services",
+        "business_model_type": "platform",
+        "hq_country": "Nigeria",
+        "ownership": "private, VC-backed",
+        "year_founded": 2016
+      },
+      "footprint": {
+        "operating_countries": "Nigeria primary; multi-currency operations USD, GBP, NGN; maintains multiple offshore accounts",
+        "entity_structure": "Nigerian entity with offshore account structure; payment processing via non-Nigerian partner entities",
+        "entry_years": "FX became a major line of business post-2024",
+        "markets_exited": "none"
+      },
+      "money_movement": {
+        "currencies_collected_raw": [
+          "NGN",
+          "USD",
+          "GBP"
+        ],
+        "currencies_paid_raw": [
+          "NGN",
+          "USD",
+          "GBP"
+        ],
+        "customer_geography": "Nigerian corporates, retail, SMEs",
+        "supplier_geography": "international terminal suppliers historically; now non-Nigerian payment partners",
+        "recipient_type": "merchants, corporates, consumers",
+        "payment_frequency": "recurring - FX payments on demand for third parties"
+      },
+      "signals": {
+        "tier1_cross_border_payments": {
+          "present": true,
+          "strength": 1.0,
+          "source": "PRIMARY INTERVIEW, Aug 2026 - treasury analyst: FX payment for third parties is now one of Nomba's major lines of business; pays for corporate and retail on demand"
+        },
+        "tier1_usd_liquidity": {
+          "present": true,
+          "strength": 1.0,
+          "source": "PRIMARY INTERVIEW - holds liquidity directly in USD and GBP and pays from it; maintains multiple offshore accounts"
+        },
+        "tier1_multi_currency_obligations": {
+          "present": true,
+          "strength": 0.9,
+          "source": "PRIMARY INTERVIEW - operations across NGN, USD and GBP"
+        },
+        "tier1_multi_market_collection": {
+          "present": true,
+          "strength": 0.7,
+          "source": "PRIMARY INTERVIEW - collects from Nigerian corporates and retail for onward FX payment"
+        },
+        "tier2_disclosed_pain": {
+          "present": true,
+          "strength": 0.9,
+          "source": "PRIMARY INTERVIEW - analyst states cross-border payment has not been cracked; even when the process runs smoothly it still takes time to land. Local dom account settlement T+1 to T+3; bank processing within the hour or end of day depending on relationship pressure rather than anything the company controls."
+        },
+        "tier2_multi_entity": {
+          "present": true,
+          "strength": 0.7,
+          "source": "PRIMARY INTERVIEW - multiple offshore accounts alongside the Nigerian entity"
+        },
+        "tier2_multiple_local_rails": {
+          "present": true,
+          "strength": 0.9,
+          "source": "PRIMARY INTERVIEW - pays FX for corporate and retail customers across channels"
+        },
+        "tier2_compliance_friction": {
+          "present": true,
+          "strength": 1.0,
+          "source": "PRIMARY INTERVIEW - the partners actually processing payments are mostly not Nigerian entities and add a compliance layer demanding CAC documents, payer identity and source of funds. Analyst: our people here often don't have what is being asked for. Payments stall on eligibility, not price."
+        }
+      },
+      "fx": {
+        "mismatch_direction": "bidirectional",
+        "usd_requirement_type": [
+          "receives",
+          "holds",
+          "pays",
+          "needs_on_demand"
+        ]
+      },
+      "product_gates": {
+        "provides_financial_functionality_to_customers": true,
+        "sells_fx_or_payments_to_third_parties": true,
+        "holds_or_manages_digital_assets": false,
+        "gate_note": "Sells FX payment services onward to corporates and retail. Triggers the FX-provider signature."
+      },
+      "tier0_flags": {
+        "single_market_single_currency": false,
+        "foreign_parent_treasury": false,
+        "competes_for_same_buyer": false,
+        "sustained_regional_retreat": false,
+        "direct_banking_all_markets": false,
+        "tier0_note": "NOT A COMPETITOR under the same-buyer test. Nomba sells FX payment services to Nigerian corporates and retail; it does not sell cross-border settlement infrastructure to businesses building on top of it. Its own rails are borrowed - the processing partners are non-Nigerian entities. Same shape as Coinbase: competes on one layer, buys underneath on another."
+      },
+      "footprint_trajectory": "expanding",
+      "urgency": {
+        "state": "expanding",
+        "multiplier": "high",
+        "note": "FX became a major line of business recently and is growing; expansion into USD and GBP operations is what removed the third-party payer dependency."
+      },
+      "meta": {
+        "evidence_depth": "rich",
+        "confidence": "high",
+        "status": "EXTRACTED",
+        "output_category": "route_to_partnership",
+        "control_type": "live prospect",
+        "evidence_type": "PRIMARY - first-hand interview with a serving treasury analyst, August 2026",
+        "notes": "The only row in the dataset built from primary research rather than public sources. PATTERN: solved its own FX problem by becoming an FX provider. Not treasury-solved, not a competitor - a company running an FX line on partner rails with its own customers to serve. THE PITCH: not treasury tooling. Sell Nomba the ability to promise its own customers faster settlement and a regulated local compliance counterparty, replacing foreign processors that demand documents Nigerian companies often cannot produce. Interview also supplies the simulator's core numbers: local dom T+1 to T+3, US offshore paying into the US same day within hours, bank processing within the hour or end of day depending on relationship."
+      }
+    }
+  ],
+  "open_items": [
+    "10 Tier 1 prospect rows remain unresearched (see tier1_queue_remaining in batch 04)",
+    "~40 further prospect rows from the prospecting universe remain unresearched",
+    "Block/Square positive-control status needs verification",
+    "Tala output category needs a judgement call - see its tier0_note",
+    "Market table (20 YC countries + expansion + absent markets) not yet built"
+  ]
+}
