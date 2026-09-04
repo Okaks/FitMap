@@ -4,247 +4,865 @@
   "compiled": "2026-08-30",
   "scoring_note": "Friction is scored 0-100 from four components. Serviceability is THREE SEPARATE fields - regulatory, rails, partners - because they fail independently. The binding constraint is what the market view reports.",
   "serviceability_scale": {
-    "regulatory": {"5": "full licence", "4": "registered VASP", "3": "conditional approval-in-principle", "2": "sandbox or application pending", "1": "financial-crime registration only", "0": "absent"},
-    "rails": {"5": "bank transfer + mobile money, published pricing", "3": "bank transfer only", "1": "partner-dependent", "0": "none"},
-    "partners": {"note": "Public partnerships only. Low confidence throughout - flag on the page."}
+    "regulatory": {
+      "5": "full licence",
+      "4": "registered VASP",
+      "3": "conditional approval-in-principle",
+      "2": "sandbox or application pending",
+      "1": "financial-crime registration only",
+      "0": "absent"
+    },
+    "rails": {
+      "5": "bank transfer + mobile money, published pricing",
+      "3": "bank transfer only",
+      "1": "partner-dependent",
+      "0": "none"
+    },
+    "partners": {
+      "note": "Public partnerships only. Low confidence throughout - flag on the page."
+    }
   },
   "blocked_funds_source": "IATA Focus Africa, 29 April 2026. Nigeria REMOVED from the list following liberalisation - do not fire the flag for Nigeria.",
   "markets": [
-    {"country": "Nigeria", "region": "West Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 90, "dollar_access": 85, "rail_fragmentation": 55, "settlement_friction": 80, "score": 78},
-     "trajectory": "mixed", "trajectory_note": "Repatriation friction RISING - May 2026 FX policy shifts settlement to receive-naira, apply for conversion, await review. Blocked airline funds RESOLVED - off the IATA list. Score the two separately.",
-     "evidence": "Naira down ~70% since 2023. CBN 2025 Annual Report: autonomous-channel outflows up 164.84% to $16.26bn from $6.14bn; total FX outflows up 27.83% to $49.05bn.",
-     "regulatory": 3, "regulatory_detail": "SEC ARIP conditional approval-in-principle as a Digital Assets Exchange (13 Aug 2026); NFIU registered",
-     "rails": 5, "rails_detail": "Bank transfer collections 1% below NGN 100,000, 0.5% above; payouts flat NGN 100",
-     "partners": 3, "partners_detail": "Tranzmit API integration, USA-Nigeria corridor (25 Aug 2026)",
-     "blocked_funds": false, "binding_constraint": "regulatory - conditional approval only",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY", "note": "Bank and telco counts not yet verified. Do not display invented figures."}},
-
-    {"country": "Ethiopia", "region": "East Africa", "yc_status": "absent",
-     "friction": {"fx_volatility": 85, "dollar_access": 95, "rail_fragmentation": 75, "settlement_friction": 90, "score": 86},
-     "trajectory": "stable", "trajectory_note": "Birr floated July 2024 (~30% devaluation). Parallel premium narrowed but banks still ration FX; importers wait months for allocations.",
-     "evidence": "IATA blocked funds $54m (Oct 2025), $44m (Apr 2025). Kenya Airways reports ~$11.6m trapped, losing value as the birr fell.",
-     "regulatory": 0, "rails": 0, "partners": 0,
-     "blocked_funds": true, "binding_constraint": "regulatory - no presence",
-     "expansion_signal": "HIGH. Highest friction score in the table against zero serviceability. The clearest demand-versus-capability gap.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Kenya", "region": "East Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 50, "dollar_access": 45, "rail_fragmentation": 35, "settlement_friction": 40, "score": 43},
-     "trajectory": "stable", "evidence": "Moderate FX volatility, deep mobile-money penetration, fragmented rails at the edges.",
-     "regulatory": 1, "regulatory_detail": "Operating; licence status to verify", "rails": 5, "rails_detail": "Bank transfer and mobile money",
-     "partners": 2, "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Ghana", "region": "West Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 60, "dollar_access": 55, "rail_fragmentation": 40, "settlement_friction": 45, "score": 50},
-     "trajectory": "stable",
-     "regulatory": 4, "regulatory_detail": "VASP registered with Bank of Ghana, August 2025; FIC registered",
-     "rails": 5, "partners": 2, "blocked_funds": false, "binding_constraint": "none - well served",
-     "note": "June 2025 Bank of Ghana notice referenced Yellow Pay; Yellow Card responded that Yellow Pay was not available in Ghana and disputed the HanyPay stablecoin claim.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "South Africa", "region": "Southern Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 40, "dollar_access": 30, "rail_fragmentation": 20, "settlement_friction": 30, "score": 30},
-     "trajectory": "stable",
-     "regulatory": 5, "regulatory_detail": "FSCA Category I FSP no. 53790; third-party payments provider under Standard Bank (Jan 2026) and Nedbank (Mar 2026) sponsorship",
-     "rails": 5, "partners": 4, "blocked_funds": false, "binding_constraint": "none - strongest serviceability in the table",
-     "note": "Lowest friction of the African markets. Serviceability is not the constraint here; demand density is.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Zambia", "region": "Southern Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 60, "dollar_access": 55, "rail_fragmentation": 50, "settlement_friction": 50, "score": 54},
-     "trajectory": "stable",
-     "regulatory": 4, "regulatory_detail": "VASP registered with Bank of Zambia under Circular 05/2026, March 2026; FIC registered",
-     "rails": 5, "partners": 1, "blocked_funds": false, "binding_constraint": "partners",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Botswana", "region": "Southern Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 35, "dollar_access": 35, "rail_fragmentation": 45, "settlement_friction": 40, "score": 39},
-     "trajectory": "stable",
-     "regulatory": 5, "regulatory_detail": "VASP licence, NBFIRA, 29 September 2022, certificate 11/1/5(1); FIA registered",
-     "rails": 3, "partners": 1, "blocked_funds": false, "binding_constraint": "rails",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Malawi", "region": "Southern Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 90, "dollar_access": 90, "rail_fragmentation": 65, "settlement_friction": 85, "score": 83},
-     "trajectory": "rising",
-     "evidence": "Old Mutual FY2025: group earnings significantly impacted by Malawi hyperinflation; sensitivity analysis shows a 50% kwacha devaluation would cut results-from-operations growth to 7-9% against the 13% reported. Company cites hyperinflationary conditions AND foreign currency shortages. Kenya Airways reports funds trapped here.",
-     "regulatory": 1, "rails": 3, "partners": 0,
-     "blocked_funds": true, "binding_constraint": "regulatory",
-     "expansion_signal": "HIGH. Second-highest friction with minimal serviceability.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Tanzania", "region": "East Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 50, "dollar_access": 55, "rail_fragmentation": 45, "settlement_friction": 50, "score": 50},
-     "trajectory": "stable",
-     "regulatory": 2, "regulatory_detail": "Bank of Tanzania fintech sandbox application pending; FIU registered",
-     "rails": 5, "rails_detail": "Bank transfer and mobile money", "partners": 1,
-     "blocked_funds": false, "binding_constraint": "regulatory - application pending",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Uganda", "region": "East Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 50, "dollar_access": 50, "rail_fragmentation": 45, "settlement_friction": 45, "score": 48},
-     "trajectory": "stable",
-     "regulatory": 1, "regulatory_detail": "FIA registration", "rails": 5, "partners": 1,
-     "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Rwanda", "region": "East Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 45, "dollar_access": 50, "rail_fragmentation": 40, "settlement_friction": 45, "score": 45},
-     "trajectory": "stable", "regulatory": 1, "regulatory_detail": "FIC registration", "rails": 3, "partners": 1,
-     "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Cameroon", "region": "Central Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 55, "dollar_access": 85, "rail_fragmentation": 70, "settlement_friction": 85, "score": 74},
-     "trajectory": "stable", "evidence": "Part of the XAF Zone - $105m blocked as at end-March 2026, second-largest single entry on the IATA list.",
-     "regulatory": 0, "rails": 3, "partners": 1,
-     "blocked_funds": true, "blocked_funds_note": "via XAF Zone", "binding_constraint": "regulatory",
-     "expansion_signal": "HIGH - XAF Zone friction with no regulatory footing.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Gabon", "region": "Central Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 55, "dollar_access": 85, "rail_fragmentation": 70, "settlement_friction": 85, "score": 74},
-     "trajectory": "stable", "regulatory": 0, "rails": 1, "partners": 0,
-     "blocked_funds": true, "blocked_funds_note": "via XAF Zone", "binding_constraint": "rails",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Republic of the Congo", "region": "Central Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 55, "dollar_access": 85, "rail_fragmentation": 75, "settlement_friction": 85, "score": 75},
-     "trajectory": "stable", "regulatory": 0, "rails": 1, "partners": 0,
-     "blocked_funds": true, "blocked_funds_note": "via XAF Zone", "binding_constraint": "rails",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "DR Congo", "region": "Central Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 75, "dollar_access": 80, "rail_fragmentation": 85, "settlement_friction": 80, "score": 80},
-     "trajectory": "stable", "regulatory": 0, "rails": 1, "partners": 0,
-     "blocked_funds": false, "binding_constraint": "rails and regulatory",
-     "expansion_signal": "HIGH - documented repatriation delays and FX shortages, minimal serviceability.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Senegal", "region": "West Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 40, "dollar_access": 65, "rail_fragmentation": 45, "settlement_friction": 55, "score": 51},
-     "trajectory": "stable", "note": "XOF is pegged to the euro, so FX volatility is structurally low; dollar access is the constraint.",
-     "regulatory": 0, "rails": 3, "partners": 1, "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Côte d'Ivoire", "region": "West Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 40, "dollar_access": 65, "rail_fragmentation": 45, "settlement_friction": 55, "score": 51},
-     "trajectory": "stable", "regulatory": 0, "rails": 3, "partners": 1,
-     "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Mali", "region": "West Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 40, "dollar_access": 70, "rail_fragmentation": 60, "settlement_friction": 60, "score": 58},
-     "trajectory": "stable", "regulatory": 0, "rails": 3, "partners": 0, "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Benin", "region": "West Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 40, "dollar_access": 65, "rail_fragmentation": 55, "settlement_friction": 55, "score": 54},
-     "trajectory": "stable", "regulatory": 0, "rails": 3, "partners": 0, "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Togo", "region": "West Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 40, "dollar_access": 65, "rail_fragmentation": 55, "settlement_friction": 55, "score": 54},
-     "trajectory": "stable", "regulatory": 0, "rails": 3, "partners": 0, "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Burkina Faso", "region": "West Africa", "yc_status": "operating",
-     "friction": {"fx_volatility": 40, "dollar_access": 70, "rail_fragmentation": 60, "settlement_friction": 60, "score": 58},
-     "trajectory": "stable", "regulatory": 0, "rails": 3, "partners": 0, "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Brazil", "region": "Latin America", "yc_status": "expansion",
-     "friction": {"fx_volatility": 55, "dollar_access": 40, "rail_fragmentation": 25, "settlement_friction": 35, "score": 39},
-     "trajectory": "stable", "note": "PIX has materially reduced domestic rail fragmentation. Cross-border remains the friction.",
-     "regulatory": 0, "rails": 1, "partners": 0, "blocked_funds": false, "binding_constraint": "rails",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Mexico", "region": "Latin America", "yc_status": "expansion",
-     "friction": {"fx_volatility": 45, "dollar_access": 35, "rail_fragmentation": 35, "settlement_friction": 40, "score": 39},
-     "trajectory": "stable", "note": "SPEI reduces domestic friction. High remittance volume corridor with the US.",
-     "regulatory": 0, "rails": 1, "partners": 0, "blocked_funds": false, "binding_constraint": "rails",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Argentina", "region": "Latin America", "yc_status": "expansion",
-     "friction": {"fx_volatility": 70, "dollar_access": 60, "rail_fragmentation": 40, "settlement_friction": 55, "score": 56},
-     "trajectory": "DECLINING", "trajectory_note": "Cepo capital controls largely lifted for individuals from April 2025. Companies still face restrictions on FX for non-operational and treasury purposes and on dividend repatriation timing. DOWN-WEIGHT relative to headline volatility.",
-     "regulatory": 0, "rails": 1, "partners": 0, "blocked_funds": false, "binding_constraint": "rails",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Colombia", "region": "Latin America", "yc_status": "expansion",
-     "friction": {"fx_volatility": 50, "dollar_access": 40, "rail_fragmentation": 45, "settlement_friction": 45, "score": 45},
-     "trajectory": "stable", "regulatory": 0, "rails": 1, "partners": 0, "blocked_funds": false, "binding_constraint": "rails",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "India", "region": "South Asia", "yc_status": "expansion",
-     "friction": {"fx_volatility": 35, "dollar_access": 45, "rail_fragmentation": 20, "settlement_friction": 45, "score": 36},
-     "trajectory": "stable", "note": "UPI makes domestic rails among the least fragmented anywhere. Capital controls and cross-border compliance are the friction.",
-     "regulatory": 0, "rails": 1, "partners": 0, "blocked_funds": false, "binding_constraint": "regulatory",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Bangladesh", "region": "South Asia", "yc_status": "expansion",
-     "friction": {"fx_volatility": 65, "dollar_access": 80, "rail_fragmentation": 55, "settlement_friction": 70, "score": 68},
-     "trajectory": "stable", "evidence": "IATA April 2025 reading: $92m blocked.",
-     "regulatory": 0, "rails": 1, "partners": 0, "blocked_funds": true, "binding_constraint": "regulatory and rails",
-     "expansion_signal": "MODERATE-HIGH - high friction, blocked funds, no footing.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Pakistan", "region": "South Asia", "yc_status": "expansion",
-     "friction": {"fx_volatility": 70, "dollar_access": 80, "rail_fragmentation": 60, "settlement_friction": 70, "score": 70},
-     "trajectory": "stable", "evidence": "IATA April 2025 reading: $83m blocked.",
-     "regulatory": 0, "rails": 1, "partners": 0, "blocked_funds": true, "binding_constraint": "regulatory and rails",
-     "expansion_signal": "MODERATE-HIGH",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Algeria", "region": "North Africa", "yc_status": "absent",
-     "friction": {"fx_volatility": 60, "dollar_access": 95, "rail_fragmentation": 70, "settlement_friction": 95, "score": 80},
-     "trajectory": "stable", "evidence": "Largest single blocked-funds entry globally: $258m at end-March 2026, $307m at end-October 2025.",
-     "regulatory": 0, "rails": 0, "partners": 0, "blocked_funds": true, "binding_constraint": "regulatory - no presence",
-     "expansion_signal": "HIGHEST BLOCKED-FUNDS VALUE OF ANY MARKET. Zero serviceability. The single largest documented demand-versus-capability gap in the dataset.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Mozambique", "region": "Southern Africa", "yc_status": "absent",
-     "friction": {"fx_volatility": 70, "dollar_access": 90, "rail_fragmentation": 70, "settlement_friction": 90, "score": 80},
-     "trajectory": "improving", "trajectory_note": "Blocked funds fell from $205m (Apr 2025) to $91m (Oct 2025) to $82m (Mar 2026) - a consistent downward trend.",
-     "regulatory": 0, "rails": 0, "partners": 0, "blocked_funds": true, "binding_constraint": "regulatory - no presence",
-     "expansion_signal": "HIGH but improving. Third-largest blocked-funds entry.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Angola", "region": "Southern Africa", "yc_status": "absent",
-     "friction": {"fx_volatility": 80, "dollar_access": 90, "rail_fragmentation": 70, "settlement_friction": 85, "score": 81},
-     "trajectory": "stable", "evidence": "$73m blocked at end-March 2026. Shoprite disclosed sustained difficulty repatriating cash from Angola; revenue fell 16% in local currency and 40% in rand terms in one reporting period.",
-     "regulatory": 0, "rails": 0, "partners": 0, "blocked_funds": true, "binding_constraint": "regulatory - no presence",
-     "expansion_signal": "HIGH. Both third-party (IATA) and corporate (Shoprite) evidence of trapped capital.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Zimbabwe", "region": "Southern Africa", "yc_status": "absent",
-     "friction": {"fx_volatility": 75, "dollar_access": 70, "rail_fragmentation": 60, "settlement_friction": 75, "score": 70},
-     "trajectory": "DECLINING", "trajectory_note": "Materially improving. Two functional currency changes in 2024 moved reporting to USD; Old Mutual ceased hyperinflation accounting from 1 July 2024. Annual inflation fell below 10% for the first time since 1997 (Feb 2026); IMF staff-monitored programme approved. DOWN-WEIGHT.",
-     "regulatory": 0, "rails": 0, "partners": 0, "blocked_funds": true,
-     "binding_constraint": "regulatory - no presence",
-     "expansion_signal": "MODERATE and falling. Do not treat historic hyperinflation as current condition.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Egypt", "region": "North Africa", "yc_status": "absent",
-     "friction": {"fx_volatility": 70, "dollar_access": 65, "rail_fragmentation": 50, "settlement_friction": 60, "score": 61},
-     "trajectory": "improving", "trajectory_note": "IATA cites significant improvement alongside Nigeria and Ethiopia.",
-     "regulatory": 0, "rails": 0, "partners": 0, "blocked_funds": false, "binding_constraint": "regulatory - no presence",
-     "expansion_signal": "MODERATE-HIGH. Large economy, real friction, active fintech sector (MNT-Halan, Fawry, Paymob), no Yellow Card presence.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Morocco", "region": "North Africa", "yc_status": "absent",
-     "friction": {"fx_volatility": 35, "dollar_access": 55, "rail_fragmentation": 45, "settlement_friction": 50, "score": 46},
-     "trajectory": "stable", "regulatory": 0, "rails": 0, "partners": 0, "blocked_funds": false,
-     "binding_constraint": "regulatory - no presence", "expansion_signal": "MODERATE",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}},
-
-    {"country": "Eritrea", "region": "East Africa", "yc_status": "absent",
-     "friction": {"fx_volatility": 70, "dollar_access": 95, "rail_fragmentation": 90, "settlement_friction": 95, "score": 88},
-     "trajectory": "stable", "evidence": "$78m blocked, unchanged across the Oct 2025 and Mar 2026 readings.",
-     "regulatory": 0, "rails": 0, "partners": 0, "blocked_funds": true, "binding_constraint": "regulatory - no presence",
-     "expansion_signal": "Highest friction score in the table, but flag realism: a closed economy where an infrastructure play may not be viable regardless of demand. Include for completeness, not as a recommendation.",
-     "institutional_opportunity": {"banks": "VERIFY", "telcos": "VERIFY"}}
-  ]
+    {
+      "country": "Nigeria",
+      "region": "West Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 90,
+        "dollar_access": 85,
+        "rail_fragmentation": 55,
+        "settlement_friction": 80,
+        "score": 78
+      },
+      "trajectory": "mixed",
+      "trajectory_note": "Repatriation friction RISING - May 2026 FX policy shifts settlement to receive-naira, apply for conversion, await review. Blocked airline funds RESOLVED - off the IATA list. Score the two separately.",
+      "evidence": "Naira down ~70% since 2023. CBN 2025 Annual Report: autonomous-channel outflows up 164.84% to $16.26bn from $6.14bn; total FX outflows up 27.83% to $49.05bn.",
+      "regulatory": 3,
+      "regulatory_detail": "SEC ARIP conditional approval-in-principle as a Digital Assets Exchange (13 Aug 2026); NFIU registered",
+      "rails": 5,
+      "rails_detail": "Bank transfer collections 1% below NGN 100,000, 0.5% above; payouts flat NGN 100",
+      "partners": 3,
+      "partners_detail": "Tranzmit API integration, USA-Nigeria corridor (25 Aug 2026)",
+      "blocked_funds": false,
+      "binding_constraint": "regulatory - conditional approval only",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY",
+        "note": "Bank and telco counts not yet verified. Do not display invented figures."
+      }
+    },
+    {
+      "country": "Ethiopia",
+      "region": "East Africa",
+      "yc_status": "absent",
+      "friction": {
+        "fx_volatility": 85,
+        "dollar_access": 95,
+        "rail_fragmentation": 75,
+        "settlement_friction": 90,
+        "score": 86
+      },
+      "trajectory": "stable",
+      "trajectory_note": "Birr floated July 2024 (~30% devaluation). Parallel premium narrowed but banks still ration FX; importers wait months for allocations.",
+      "evidence": "IATA blocked funds $54m (Oct 2025), $44m (Apr 2025). Kenya Airways reports ~$11.6m trapped, losing value as the birr fell.",
+      "regulatory": 0,
+      "rails": 0,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory - no presence",
+      "expansion_signal": "HIGH. Highest friction score in the table against zero serviceability. The clearest demand-versus-capability gap.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Kenya",
+      "region": "East Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 50,
+        "dollar_access": 45,
+        "rail_fragmentation": 35,
+        "settlement_friction": 40,
+        "score": 43
+      },
+      "trajectory": "stable",
+      "evidence": "Moderate FX volatility, deep mobile-money penetration, fragmented rails at the edges.",
+      "regulatory": 1,
+      "regulatory_detail": "Operating; licence status to verify",
+      "rails": 5,
+      "rails_detail": "Bank transfer and mobile money",
+      "partners": 2,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Ghana",
+      "region": "West Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 60,
+        "dollar_access": 55,
+        "rail_fragmentation": 40,
+        "settlement_friction": 45,
+        "score": 50
+      },
+      "trajectory": "stable",
+      "regulatory": 4,
+      "regulatory_detail": "VASP registered with Bank of Ghana, August 2025; FIC registered",
+      "rails": 5,
+      "partners": 2,
+      "blocked_funds": false,
+      "binding_constraint": "none - well served",
+      "note": "June 2025 Bank of Ghana notice referenced Yellow Pay; Yellow Card responded that Yellow Pay was not available in Ghana and disputed the HanyPay stablecoin claim.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "South Africa",
+      "region": "Southern Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 40,
+        "dollar_access": 30,
+        "rail_fragmentation": 20,
+        "settlement_friction": 30,
+        "score": 30
+      },
+      "trajectory": "stable",
+      "regulatory": 5,
+      "regulatory_detail": "FSCA Category I FSP no. 53790; third-party payments provider under Standard Bank (Jan 2026) and Nedbank (Mar 2026) sponsorship",
+      "rails": 5,
+      "partners": 4,
+      "blocked_funds": false,
+      "binding_constraint": "none - strongest serviceability in the table",
+      "note": "Lowest friction of the African markets. Serviceability is not the constraint here; demand density is.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Zambia",
+      "region": "Southern Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 60,
+        "dollar_access": 55,
+        "rail_fragmentation": 50,
+        "settlement_friction": 50,
+        "score": 54
+      },
+      "trajectory": "stable",
+      "regulatory": 4,
+      "regulatory_detail": "VASP registered with Bank of Zambia under Circular 05/2026, March 2026; FIC registered",
+      "rails": 5,
+      "partners": 1,
+      "blocked_funds": false,
+      "binding_constraint": "partners",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Botswana",
+      "region": "Southern Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 35,
+        "dollar_access": 35,
+        "rail_fragmentation": 45,
+        "settlement_friction": 40,
+        "score": 39
+      },
+      "trajectory": "stable",
+      "regulatory": 5,
+      "regulatory_detail": "VASP licence, NBFIRA, 29 September 2022, certificate 11/1/5(1); FIA registered",
+      "rails": 3,
+      "partners": 1,
+      "blocked_funds": false,
+      "binding_constraint": "rails",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Malawi",
+      "region": "Southern Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 90,
+        "dollar_access": 90,
+        "rail_fragmentation": 65,
+        "settlement_friction": 85,
+        "score": 83
+      },
+      "trajectory": "rising",
+      "evidence": "Old Mutual FY2025: group earnings significantly impacted by Malawi hyperinflation; sensitivity analysis shows a 50% kwacha devaluation would cut results-from-operations growth to 7-9% against the 13% reported. Company cites hyperinflationary conditions AND foreign currency shortages. Kenya Airways reports funds trapped here.",
+      "regulatory": 1,
+      "rails": 3,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory",
+      "expansion_signal": "HIGH. Second-highest friction with minimal serviceability.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Tanzania",
+      "region": "East Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 50,
+        "dollar_access": 55,
+        "rail_fragmentation": 45,
+        "settlement_friction": 50,
+        "score": 50
+      },
+      "trajectory": "stable",
+      "regulatory": 2,
+      "regulatory_detail": "Bank of Tanzania fintech sandbox application pending; FIU registered",
+      "rails": 5,
+      "rails_detail": "Bank transfer and mobile money",
+      "partners": 1,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory - application pending",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Uganda",
+      "region": "East Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 50,
+        "dollar_access": 50,
+        "rail_fragmentation": 45,
+        "settlement_friction": 45,
+        "score": 48
+      },
+      "trajectory": "stable",
+      "regulatory": 1,
+      "regulatory_detail": "FIA registration",
+      "rails": 5,
+      "partners": 1,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Rwanda",
+      "region": "East Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 45,
+        "dollar_access": 50,
+        "rail_fragmentation": 40,
+        "settlement_friction": 45,
+        "score": 45
+      },
+      "trajectory": "stable",
+      "regulatory": 1,
+      "regulatory_detail": "FIC registration",
+      "rails": 3,
+      "partners": 1,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Cameroon",
+      "region": "Central Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 55,
+        "dollar_access": 85,
+        "rail_fragmentation": 70,
+        "settlement_friction": 85,
+        "score": 74
+      },
+      "trajectory": "stable",
+      "evidence": "Part of the XAF Zone - $105m blocked as at end-March 2026, second-largest single entry on the IATA list.",
+      "regulatory": 0,
+      "rails": 3,
+      "partners": 1,
+      "blocked_funds": true,
+      "blocked_funds_note": "via XAF Zone",
+      "binding_constraint": "regulatory",
+      "expansion_signal": "HIGH - XAF Zone friction with no regulatory footing.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Gabon",
+      "region": "Central Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 55,
+        "dollar_access": 85,
+        "rail_fragmentation": 70,
+        "settlement_friction": 85,
+        "score": 74
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": true,
+      "blocked_funds_note": "via XAF Zone",
+      "binding_constraint": "rails",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Republic of the Congo",
+      "region": "Central Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 55,
+        "dollar_access": 85,
+        "rail_fragmentation": 75,
+        "settlement_friction": 85,
+        "score": 75
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": true,
+      "blocked_funds_note": "via XAF Zone",
+      "binding_constraint": "rails",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "DR Congo",
+      "region": "Central Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 75,
+        "dollar_access": 80,
+        "rail_fragmentation": 85,
+        "settlement_friction": 80,
+        "score": 80
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "rails and regulatory",
+      "expansion_signal": "HIGH - documented repatriation delays and FX shortages, minimal serviceability.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Senegal",
+      "region": "West Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 40,
+        "dollar_access": 65,
+        "rail_fragmentation": 45,
+        "settlement_friction": 55,
+        "score": 51
+      },
+      "trajectory": "stable",
+      "note": "XOF is pegged to the euro, so FX volatility is structurally low; dollar access is the constraint.",
+      "regulatory": 0,
+      "rails": 3,
+      "partners": 1,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Côte d'Ivoire",
+      "region": "West Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 40,
+        "dollar_access": 65,
+        "rail_fragmentation": 45,
+        "settlement_friction": 55,
+        "score": 51
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 3,
+      "partners": 1,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Mali",
+      "region": "West Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 40,
+        "dollar_access": 70,
+        "rail_fragmentation": 60,
+        "settlement_friction": 60,
+        "score": 58
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 3,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Benin",
+      "region": "West Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 40,
+        "dollar_access": 65,
+        "rail_fragmentation": 55,
+        "settlement_friction": 55,
+        "score": 54
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 3,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Togo",
+      "region": "West Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 40,
+        "dollar_access": 65,
+        "rail_fragmentation": 55,
+        "settlement_friction": 55,
+        "score": 54
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 3,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Burkina Faso",
+      "region": "West Africa",
+      "yc_status": "operating",
+      "friction": {
+        "fx_volatility": 40,
+        "dollar_access": 70,
+        "rail_fragmentation": 60,
+        "settlement_friction": 60,
+        "score": 58
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 3,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Brazil",
+      "region": "Latin America",
+      "yc_status": "expansion",
+      "friction": {
+        "fx_volatility": 55,
+        "dollar_access": 40,
+        "rail_fragmentation": 25,
+        "settlement_friction": 35,
+        "score": 39
+      },
+      "trajectory": "RESTRICTING",
+      "note": "PIX has materially reduced domestic rail fragmentation. Cross-border remains the friction.",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory - and actively restricting",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      },
+      "trajectory_note": "CRITICAL REGULATORY CHANGE. Resolution 561 bars regulated electronic-FX providers - payment institutions, e-money issuers and acquirers - from using stablecoins or other crypto to settle the offshore leg of cross-border payments. Effective October 2026, settlement with overseas counterparties must run through traditional FX operations or non-resident real accounts. Brazil's crypto framework took effect February 2026 under Central Bank supervision: Resolution 519 established VASP licensing, Resolution 520 set minimum capital of R$10.8m-R$37.2m by activity type. IMPLICATION: the regulated-FX-provider channel is closing in Brazil precisely as Yellow Card expands there. Do not score Brazil on friction alone - the binding constraint is now regulatory and it is tightening.",
+      "regulatory_detail": "No presence. Resolution 519 VASP licensing regime in force from Feb 2026; Resolution 561 restricts stablecoin settlement of the offshore leg from Oct 2026.",
+      "expansion_signal": "DOWNGRADED. Pix has already removed most domestic rail friction (79.8bn transactions in 2025, 54.7% of retail payments) and Resolution 561 closes the regulated-FX-provider route. Large market, narrowing opening."
+    },
+    {
+      "country": "Mexico",
+      "region": "Latin America",
+      "yc_status": "expansion",
+      "friction": {
+        "fx_volatility": 45,
+        "dollar_access": 35,
+        "rail_fragmentation": 35,
+        "settlement_friction": 40,
+        "score": 39
+      },
+      "trajectory": "stable",
+      "note": "SPEI reduces domestic friction. High remittance volume corridor with the US.",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "rails",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Argentina",
+      "region": "Latin America",
+      "yc_status": "expansion",
+      "friction": {
+        "fx_volatility": 70,
+        "dollar_access": 60,
+        "rail_fragmentation": 40,
+        "settlement_friction": 55,
+        "score": 56
+      },
+      "trajectory": "DECLINING",
+      "trajectory_note": "Cepo capital controls largely lifted for individuals from April 2025. Companies still face restrictions on FX for non-operational and treasury purposes and on dividend repatriation timing. DOWN-WEIGHT relative to headline volatility.",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "rails",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Colombia",
+      "region": "Latin America",
+      "yc_status": "expansion",
+      "friction": {
+        "fx_volatility": 50,
+        "dollar_access": 40,
+        "rail_fragmentation": 45,
+        "settlement_friction": 45,
+        "score": 45
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "rails",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "India",
+      "region": "South Asia",
+      "yc_status": "expansion",
+      "friction": {
+        "fx_volatility": 35,
+        "dollar_access": 45,
+        "rail_fragmentation": 20,
+        "settlement_friction": 45,
+        "score": 36
+      },
+      "trajectory": "stable",
+      "note": "UPI makes domestic rails among the least fragmented anywhere. Capital controls and cross-border compliance are the friction.",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Bangladesh",
+      "region": "South Asia",
+      "yc_status": "expansion",
+      "friction": {
+        "fx_volatility": 65,
+        "dollar_access": 80,
+        "rail_fragmentation": 55,
+        "settlement_friction": 70,
+        "score": 68
+      },
+      "trajectory": "stable",
+      "evidence": "IATA April 2025 reading: $92m blocked.",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory and rails",
+      "expansion_signal": "MODERATE-HIGH - high friction, blocked funds, no footing.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Pakistan",
+      "region": "South Asia",
+      "yc_status": "expansion",
+      "friction": {
+        "fx_volatility": 70,
+        "dollar_access": 80,
+        "rail_fragmentation": 60,
+        "settlement_friction": 70,
+        "score": 70
+      },
+      "trajectory": "stable",
+      "evidence": "IATA April 2025 reading: $83m blocked.",
+      "regulatory": 0,
+      "rails": 1,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory and rails",
+      "expansion_signal": "MODERATE-HIGH",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Algeria",
+      "region": "North Africa",
+      "yc_status": "absent",
+      "friction": {
+        "fx_volatility": 60,
+        "dollar_access": 95,
+        "rail_fragmentation": 70,
+        "settlement_friction": 95,
+        "score": 80
+      },
+      "trajectory": "stable",
+      "evidence": "Largest single blocked-funds entry globally: $258m at end-March 2026, $307m at end-October 2025.",
+      "regulatory": 0,
+      "rails": 0,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory - no presence",
+      "expansion_signal": "HIGHEST BLOCKED-FUNDS VALUE OF ANY MARKET. Zero serviceability. The single largest documented demand-versus-capability gap in the dataset.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Mozambique",
+      "region": "Southern Africa",
+      "yc_status": "absent",
+      "friction": {
+        "fx_volatility": 70,
+        "dollar_access": 90,
+        "rail_fragmentation": 70,
+        "settlement_friction": 90,
+        "score": 80
+      },
+      "trajectory": "improving",
+      "trajectory_note": "Blocked funds fell from $205m (Apr 2025) to $91m (Oct 2025) to $82m (Mar 2026) - a consistent downward trend.",
+      "regulatory": 0,
+      "rails": 0,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory - no presence",
+      "expansion_signal": "HIGH but improving. Third-largest blocked-funds entry.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Angola",
+      "region": "Southern Africa",
+      "yc_status": "absent",
+      "friction": {
+        "fx_volatility": 80,
+        "dollar_access": 90,
+        "rail_fragmentation": 70,
+        "settlement_friction": 85,
+        "score": 81
+      },
+      "trajectory": "stable",
+      "evidence": "$73m blocked at end-March 2026. Shoprite disclosed sustained difficulty repatriating cash from Angola; revenue fell 16% in local currency and 40% in rand terms in one reporting period.",
+      "regulatory": 0,
+      "rails": 0,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory - no presence",
+      "expansion_signal": "HIGH. Both third-party (IATA) and corporate (Shoprite) evidence of trapped capital.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Zimbabwe",
+      "region": "Southern Africa",
+      "yc_status": "absent",
+      "friction": {
+        "fx_volatility": 75,
+        "dollar_access": 70,
+        "rail_fragmentation": 60,
+        "settlement_friction": 75,
+        "score": 70
+      },
+      "trajectory": "DECLINING",
+      "trajectory_note": "Materially improving. Two functional currency changes in 2024 moved reporting to USD; Old Mutual ceased hyperinflation accounting from 1 July 2024. Annual inflation fell below 10% for the first time since 1997 (Feb 2026); IMF staff-monitored programme approved. DOWN-WEIGHT.",
+      "regulatory": 0,
+      "rails": 0,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory - no presence",
+      "expansion_signal": "MODERATE and falling. Do not treat historic hyperinflation as current condition.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Egypt",
+      "region": "North Africa",
+      "yc_status": "absent",
+      "friction": {
+        "fx_volatility": 70,
+        "dollar_access": 65,
+        "rail_fragmentation": 50,
+        "settlement_friction": 60,
+        "score": 61
+      },
+      "trajectory": "improving",
+      "trajectory_note": "IATA cites significant improvement alongside Nigeria and Ethiopia.",
+      "regulatory": 0,
+      "rails": 0,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory - no presence",
+      "expansion_signal": "MODERATE-HIGH. Large economy, real friction, active fintech sector (MNT-Halan, Fawry, Paymob), no Yellow Card presence.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Morocco",
+      "region": "North Africa",
+      "yc_status": "absent",
+      "friction": {
+        "fx_volatility": 35,
+        "dollar_access": 55,
+        "rail_fragmentation": 45,
+        "settlement_friction": 50,
+        "score": 46
+      },
+      "trajectory": "stable",
+      "regulatory": 0,
+      "rails": 0,
+      "partners": 0,
+      "blocked_funds": false,
+      "binding_constraint": "regulatory - no presence",
+      "expansion_signal": "MODERATE",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    },
+    {
+      "country": "Eritrea",
+      "region": "East Africa",
+      "yc_status": "absent",
+      "friction": {
+        "fx_volatility": 70,
+        "dollar_access": 95,
+        "rail_fragmentation": 90,
+        "settlement_friction": 95,
+        "score": 88
+      },
+      "trajectory": "stable",
+      "evidence": "$78m blocked, unchanged across the Oct 2025 and Mar 2026 readings.",
+      "regulatory": 0,
+      "rails": 0,
+      "partners": 0,
+      "blocked_funds": true,
+      "binding_constraint": "regulatory - no presence",
+      "expansion_signal": "Highest friction score in the table, but flag realism: a closed economy where an infrastructure play may not be viable regardless of demand. Include for completeness, not as a recommendation.",
+      "institutional_opportunity": {
+        "banks": "VERIFY",
+        "telcos": "VERIFY"
+      }
+    }
+  ],
+  "latam_context": {
+    "adoption": "71% of Latin American firms already use stablecoins for cross-border payments (Fireblocks, 2025). B2B stablecoin payments rose from under $100m per month in early 2023 to over $6bn per month by mid-2025.",
+    "baseline_friction": "Correspondent banking settlement takes 3-5 business days; all-in costs reach 2-7% once wire fees, FX markups and intermediary deductions are counted. Sub-Saharan African remittance corridors still average over 6% in fees (World Bank).",
+    "why_it_matters": "Adoption is already high in LatAm, so the pitch there is displacement rather than education - a different sale from Africa. Worth stating in the market view."
+  },
+  "blocked_funds_context": {
+    "current_readings": {
+      "end_March_2026": "USD774m globally, largest proportion in Africa. Algeria 258m, XAF Zone 105m, Mozambique 82m, Eritrea 78m, Angola 73m.",
+      "end_October_2025": "USD1.2bn globally, a USD100m improvement on April 2025. 93% trapped in Africa and the Middle East. Algeria 307m, XAF Zone 179m, Lebanon 138m, Mozambique 91m, Angola 81m, Eritrea 78m, Zimbabwe 67m, Ethiopia 54m.",
+      "end_April_2025": "USD1.3bn globally, a 25% improvement on the USD1.7bn reported for October 2024. AME region 85% at USD1.1bn. Mozambique 205m, XAF Zone 191m, Algeria 178m, Lebanon 142m, Bangladesh 92m, Angola 84m, Pakistan 83m, Eritrea 76m, Zimbabwe 68m, Ethiopia 44m."
+    },
+    "nigeria_historical_peak": "Nigeria held the largest blocked-funds position in the world for over a year - USD549m in December 2022, USD662m in January 2023, USD743.7m by March 2023 per IATA correspondence to the aviation ministry. Fully resolved and off the list by 2026. Evidence that these positions do clear, and the reason Nigerian aviation treasury behaviour remains cautious.",
+    "afraa_framing": "AFRAA policy paper, July 2026: cash flow is the most pressing factor affecting the commercial viability of most African airlines; repatriation delays contravene bilateral air service agreements and occasion significant opportunity costs and foreign exchange losses. AFRAA's own recommendations include facilitating payments through international payment platforms - an explicit opening for settlement infrastructure.",
+    "iata_framing": "Willie Walsh, IATA Director General: timely repatriation is vital for airlines to cover dollar-denominated expenses, delays and denials increase exchange rate risks, and airlines operate on very thin margins. This is the clearest third-party articulation of the soft-currency-in, hard-currency-out problem available."
+  }
 }

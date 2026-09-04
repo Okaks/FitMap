@@ -376,7 +376,8 @@ def recommend(c, soft_caps):
 
 
 def classify(c, hard, established, name):
-    if name in PARTNER_MOTION:
+    stated = str(c.get("meta", {}).get("output_category", ""))
+    if name in PARTNER_MOTION or stated == "route_to_partnership":
         return "route_to_partnership"
     if hard:
         return "excluded"
