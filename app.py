@@ -49,14 +49,24 @@ def pill(cat):
     return f'<span class="pill {cls}">{label}</span>'
 
 
+def _dataset_fingerprint():
+    p = DATA / "MASTER_dataset.json"
+    stat = p.stat()
+    return f"{stat.st_mtime_ns}-{stat.st_size}"
+
+
 @st.cache_data
-def load_dataset_from_disk():
+def load_dataset_from_disk(fingerprint):
     return json.loads((DATA / "MASTER_dataset.json").read_text())["companies"]
 
 
 def load_dataset():
-    if "companies" not in st.session_state:
-        st.session_state.companies = json.loads(json.dumps(load_dataset_from_disk()))
+    """Reload when the file on disk changes, so a redeploy or a pull is picked up.
+    Unsaved edits made in this session survive until the file itself changes."""
+    fp = _dataset_fingerprint()
+    if st.session_state.get("_dataset_fp") != fp:
+        st.session_state.companies = json.loads(json.dumps(load_dataset_from_disk(fp)))
+        st.session_state._dataset_fp = fp
     return st.session_state.companies
 
 
