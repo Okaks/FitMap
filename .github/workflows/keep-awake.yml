@@ -1,0 +1,20 @@
+name: Keep apps awake
+
+on:
+  schedule:
+    - cron: "0 */8 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping FitMap
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 90 https://fitmap.streamlit.app/)
+          echo "FitMap responded $code"
+
+      - name: Ping Layover
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 90 https://layover.streamlit.app/)
+          echo "Layover responded $code"
