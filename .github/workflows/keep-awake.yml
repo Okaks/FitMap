@@ -1,29 +1,56 @@
-name: Keep apps awake
+name: Keep Streamlit apps awake
 
 on:
   schedule:
-    - cron: "0 */8 * * *"
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
-jobs:
-  ping:
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      - name: Ping FitMap
-        continue-on-error: true
-        run: |
-          code=$(curl -sS -o /dev/null -w "%{http_code}" \
-            --max-redirs 3 --max-time 60 \
-            -A "Mozilla/5.0 (compatible; keepalive)" \
-            https://fitmap.streamlit.app/ || echo "no-response")
-          echo "FitMap responded: $code"
+permissions:
+  contents: write
 
-      - name: Ping Layover
-        continue-on-error: true
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Playwright
         run: |
-          code=$(curl -sS -o /dev/null -w "%{http_code}" \
-            --max-redirs 3 --max-time 60 \
-            -A "Mozilla/5.0 (compatible; keepalive)" \
-            https://layover.streamlit.app/ || echo "no-response")
-          echo "Layover responded: $code"
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Wake apps
+        env:
+          APP_URLS: |
+            https://layover.streamlit.app/
+            https://fitmap.streamlit.app/
+        run: python .github/scripts/wake.py
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wake-screenshots
+          path: shots/
+          retention-days: 7
+
+      - name: Heartbeat commit if repo is going stale
+        if: success()
+        run: |
+          LAST=$(git log -1 --format=%ct)
+          NOW=$(date +%s)
+          DAYS=$(( (NOW - LAST) / 86400 ))
+          if [ "$DAYS" -lt 50 ]; then
+            echo "Last commit was $DAYS days ago. No heartbeat needed."
+            exit 0
+          fi
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > .keep-awake
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .keep-awake
+          git commit -m "keep-awake heartbeat" || exit 0
+          git push
