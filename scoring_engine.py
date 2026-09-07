@@ -458,8 +458,8 @@ def _score_story(c, contribs, t2, urg, urg_state):
                      "so a company with several faint indicators does not outrank one with a real problem.")
     pain = c.get("signals", {}).get("tier2_disclosed_pain") or {}
     if pain.get("present") and pain.get("strength", 0) >= 0.7:
-        parts.append("The score is then lifted because the company has publicly reported that currency "
-                     "movements or dollar access have cost it money.")
+        parts.append("The score is then lifted because the company has publicly reported that "
+                     "currency movements or difficulty accessing dollars affected its results.")
     elif t2 > 1.05:
         parts.append("The score is lifted slightly by supporting evidence such as its entity structure "
                      "and the number of payment channels it runs.")
@@ -554,7 +554,13 @@ def validate(rows):
         ],
         "negative_controls": [
             {"company": r["company"], "category": r["category"], "score": r.get("score"),
-             "passes": r["category"] in ("excluded", "no_established_need") or r.get("suppressed_products")}
+             "held by": ("ruled out — " + r["hard_disqualifiers"][0]["rule"].replace("_", " ")
+                         if r["hard_disqualifiers"] else
+                         ("offerings suppressed — " + ", ".join(
+                             s.replace("_", " ") for s in r.get("suppressed_products", []))
+                          if r.get("suppressed_products") else "no established need")),
+             "passes": bool(r["category"] in ("excluded", "no_established_need")
+                            or r.get("suppressed_products"))}
             for r in negatives
         ],
         "note": "Positive controls are confirmed Yellow Card customers. If they do not rank high, the framework is wrong, not the companies.",

@@ -94,18 +94,27 @@ w_coll = st.sidebar.slider("Multi-market local collection", 0, 50, 20)
 w_curr = st.sidebar.slider("Recurring multi-currency obligations", 0, 50, 20)
 
 st.sidebar.markdown("---")
-ladder = st.sidebar.select_slider(
-    "Decay across stacked signals",
-    options=["sharp", "moderate", "flat"],
-    value="sharp",
-    help="How much a company's second, third and fourth signals count. Sharp forces separation at the top of the ranking.",
-)
-DECAY = {"sharp": [1.0, 0.8, 0.6, 0.4], "moderate": [1.0, 0.85, 0.7, 0.55], "flat": [1.0, 0.9, 0.8, 0.7]}[ladder]
-
-t2_ceiling = st.sidebar.slider("Tier 2 ceiling", 1.0, 2.0, 1.4, 0.05,
-                               help="How far disclosed FX pain can amplify an established need.")
-urg_expand = st.sidebar.slider("Urgency: expanding", 1.0, 2.0, 1.3, 0.05,
-                               help="Applied to companies that entered a market recently. Never below 1.0 — retreat is a disqualifier, not a discount.")
+with st.sidebar.expander("Advanced settings"):
+    st.caption(
+        "These control how the scoring behaves. The defaults are the framework as designed — "
+        "change them to test whether the ranking holds up."
+    )
+    ladder = st.select_slider(
+        "When a company has several signals, how much do the weaker ones count?",
+        options=["sharp", "moderate", "flat"], value="sharp",
+        help="Sharp: only the strongest really counts. Flat: they all count nearly equally.",
+    )
+    t2_ceiling = st.slider(
+        "Maximum lift from a company's own public statements", 1.0, 2.0, 1.4, 0.05,
+        help="A company that has publicly reported currency issues scores higher. This caps how much.",
+    )
+    urg_expand = st.slider(
+        "Lift for companies entering new markets", 1.0, 2.0, 1.3, 0.05,
+        help="Recent expansion means the problem is live. Never goes below 1.0 — a stable company "
+             "is not penalised.",
+    )
+DECAY = {"sharp": [1.0, 0.8, 0.6, 0.4], "moderate": [1.0, 0.85, 0.7, 0.55],
+         "flat": [1.0, 0.9, 0.8, 0.7]}[ladder]
 
 st.sidebar.markdown("---")
 st.sidebar.caption(
@@ -253,7 +262,7 @@ with tab_co:
         for key in ["tier2_disclosed_pain"]:
             sig = raw.get("signals", {}).get(key)
             if isinstance(sig, dict) and sig.get("present"):
-                st.markdown("**Disclosed pain**")
+                st.markdown("**What the company has said publicly**")
                 st.caption(sig.get("source", ""))
 
         if r["blocked_funds_flag"]["fires"]:
@@ -385,68 +394,60 @@ with tab_mkt:
 
 with tab_method:
     st.markdown("""
-### The question this answers
+### The question
 
-Which companies have a cross-border money problem that this infrastructure solves — and which part
-of it they need.
+Which companies have a cross-border money problem this infrastructure solves, and which part of it
+they need.
 
-### How a company gets its score
+### How a company gets scored
 
-**First, is it even a candidate?** A company operating in one country with one currency has no
-cross-border problem. A subsidiary whose parent sets banking policy overseas cannot buy anything
-independently. A company selling the same service to the same customers is a competitor. Any of
-these and it is ruled out, with the reason shown.
+**Is it even a candidate?** A company in one country with one currency has no cross-border problem.
+A subsidiary whose parent sets banking policy overseas cannot buy anything on its own. A company
+selling the same service to the same customers is a competitor. Any of these and it is ruled out,
+with the reason shown.
 
-**Then, is there a real problem?** Four things establish one: recurring cross-border payments,
-a standing need for dollars, collecting money across several markets, and owing money in several
+**Is there a real problem?** Four things establish one: recurring cross-border payments, a standing
+need for dollars, collecting or paying across several markets, and owing money in several
 currencies. Each is rated on how good the evidence is — a figure in a filing counts for more than
-something inferred from a company's website.
+something inferred from a website.
 
-Stacking weak signals does not beat one strong one. A company with four faint indicators should not
-outrank a company with two clear ones, so later signals count for progressively less.
+Weak signals do not stack into a strong case. A company with four faint indicators should not
+outrank one with two clear ones, so each additional signal counts for less.
 
-**Then, how bad is it?** If a company has publicly said currency movements hurt it, that multiplies
-the score. It cannot create a problem where none exists — supporting evidence makes an existing
-problem worse, nothing more.
+**How serious is it?** A company that has publicly said currency movements or dollar access affected
+its results scores higher. This can only amplify a problem that already exists, never create one.
 
-Only FX or dollar-access harm counts here. One company in this set has heavy documented trouble —
-layoffs, unpaid suppliers, a lawsuit — with no currency component at all. That is the wrong kind of
+Only currency issues count here. One company in this set has heavy documented trouble — layoffs,
+unpaid suppliers, a lawsuit — with no currency component at all. That is a different kind of
 difficulty and it scores nothing.
 
-**Finally, how urgent?** A company that entered new markets recently has an unsolved problem now.
-A company that has been stable for years is not penalised, because assuming it has already solved
-things would be a guess. A company retreating from a region is different — it has publicly decided
-not to invest there, and it is ruled out.
+**How urgent?** A company entering new markets has a live problem. A stable company is not
+penalised, since assuming it has already solved things would be a guess. A company retreating from
+a region has decided not to invest there, and is ruled out.
 
 ### Why some companies get a shorter list
 
-A company can have solved part of this itself. One agricultural group in this set runs its own
-treasury operations in three countries, so there is no treasury pitch to make — but it still
-collects from farmers across dozens of markets in local currency, and that part is unsolved.
+A company may have solved part of this itself. One agricultural group runs its own treasury
+operations in three countries — no treasury pitch to make. But it still collects from farmers
+across dozens of markets in local currency, and that part is open. So the offerings it has already
+solved are removed and the rest stay.
 
-Ruling it out entirely would throw away a real opportunity. Pitching it treasury tooling would
-waste everyone's time. So the offerings it has already solved are removed and the rest stay.
+### Why three outcomes, not two
 
-### Why there are three outcomes rather than two
-
-Some companies compete on one layer and could still use the infrastructure on another. Forcing a
-yes-or-no answer would mean either pitching a competitor or discarding a genuine partnership.
+Some companies compete on one layer and could still use the infrastructure on another. A yes-or-no
+answer would mean either pitching a competitor or discarding a real partnership.
 
 ### What it does not use
 
-No transaction volumes, no payment counts, no estimates of how much money sits idle. None of that
-is public, and guessing would make every number here unarguable. It uses what can be checked:
-which markets a company operates in, which currencies come in and go out, how it is structured.
-
-Every signal carries its source. Where the evidence is thin, it says so.
+No transaction volumes, no payment counts, no estimates of idle capital. None of that is public.
+It uses what can be checked: markets, currencies in and out, how the company is structured. Every
+signal carries its source, and thin evidence is flagged.
 
 ### Does it work?
 
-Four companies in this set are confirmed customers. If the framework is sound, they should rank
-high — and they do. Nine more were included specifically because they *should* fail, each for a
-different reason, so every rule is visibly doing something.
-
-Move the weights in the sidebar and watch whether that still holds.
+Four companies here are confirmed customers and should rank high — they do. Nine more were included
+because they *should* fail, each for a different reason, so every rule is visibly doing something.
+Move the settings in the sidebar and watch whether that holds.
 """)
     st.dataframe(pd.DataFrame(validation["positive_controls"]), hide_index=True, use_container_width=True)
     st.caption(
@@ -455,7 +456,7 @@ Move the weights in the sidebar and watch whether that still holds.
     )
     st.dataframe(pd.DataFrame(validation["negative_controls"]), hide_index=True, use_container_width=True)
     st.caption(
-        "Each negative control fails for one specific reason, so every rule is visibly doing work. "
-        "The hardest of them has publicly stated FX pain and still isn't a customer — it supplies "
-        "dollar liquidity rather than buying it."
+        "Each of these was included because it should fail, and each fails for a different reason — "
+        "so every rule is visibly doing something. Some are ruled out entirely; others keep a score "
+        "but have offerings suppressed because they have already solved that part themselves."
     )
