@@ -10,7 +10,7 @@ import github_sync
 DATA = Path(__file__).parent
 
 st.set_page_config(
-    page_title="Opportunity Scoring — Yellow Card",
+    page_title="FitMap",
     page_icon="◆",
     layout="wide",
     initial_sidebar_state="expanded",
