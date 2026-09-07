@@ -39,7 +39,7 @@ LABELS_G = {
     "local_rails": "Local collections and payouts", "fx": "Currency conversion",
     "stablecoin_settlement": "Stablecoin settlement", "api_widget": "Payments API and Widget",
     "wallets_custody": "Wallets and custody",
-    "fx_provider_enablement": "Infrastructure to serve their own customers",
+    "fx_provider_enablement": "Payments API (for onward use)",
 }
 
 PILL = {
@@ -265,21 +265,35 @@ with tab_prod:
     chosen = st.radio("Offering", products, horizontal=True,
                       format_func=lambda p: LABELS_G.get(p, p.replace("_", " ")))
 
+    ORDER = {"prospect": 0, "prospect_narrow": 1, "route_to_partnership": 2}
     hits = []
     for r in rows:
+        if r["category"] not in ORDER:
+            continue
         for p in r["recommendations"]:
             if p["product"] == chosen:
                 hits.append({
+                    "_o": ORDER[r["category"]],
                     "Company": r["company"],
+                    "Category": PILL[r["category"]][1],
                     "Score": round(r["score"], 0),
                     "Fit": round(p["score"], 0),
-                    "Position": "supporting" if p.get("subordinate") else "lead",
-                    "Category": PILL[r["category"]][1],
-                    "Why": p["reason"],
+                    "Lead or supporting": "supporting" if p.get("subordinate") else "lead",
+                    "Why this company": p["reason"],
                 })
-    hits.sort(key=lambda h: -h["Fit"])
-    st.caption(f"{len(hits)} companies")
-    st.dataframe(pd.DataFrame(hits), hide_index=True, use_container_width=True)
+    hits.sort(key=lambda h: (h["_o"], -h["Fit"], -h["Score"]))
+    for h in hits:
+        h.pop("_o")
+
+    st.caption(f"{len(hits)} companies to approach — prospects first, then narrow pitch, then "
+               f"partnership. Excluded companies are not shown.")
+    if hits:
+        st.dataframe(
+            pd.DataFrame(hits).astype(str), hide_index=True, use_container_width=True,
+            column_config={"Why this company": st.column_config.TextColumn(width="large")},
+        )
+    else:
+        st.info("No approachable company matches this offering.")
 
     suppressed_here = [r["company"] for r in rows if chosen in r["suppressed_products"]
                        and r["category"] in ("prospect", "prospect_narrow", "route_to_partnership")]

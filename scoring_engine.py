@@ -29,7 +29,7 @@ PRODUCT_NAMES = {
     "stablecoin_settlement": "Stablecoin settlement",
     "api_widget": "Payments API and Widget",
     "wallets_custody": "Wallets and custody",
-    "fx_provider_enablement": "Infrastructure to serve their own customers",
+    "fx_provider_enablement": "Payments API (for onward use)",
 }
 
 DIRECTION_PLAIN = {
@@ -246,8 +246,8 @@ def sig_fx_provider_enablement(c):
     s = 0.40 * rails + 0.30 * reach + 0.30 * max(dependency, 0.4)
     return {
         "score": round(100 * min(1.0, s + 0.25), 1),
-        "reason": "already moves foreign currency for its own customers — needs rails "
-                  "underneath, not treasury tooling",
+        "reason": "already moves foreign currency for its own customers — needs the rails "
+                  "underneath rather than treasury tooling",
     }
 
 
