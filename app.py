@@ -230,6 +230,10 @@ with tab_co:
             )
 
         st.markdown("**Why it scores what it does**")
+        if r.get("score_story"):
+            st.markdown(f'<div class="why" style="line-height:1.6;">{r["score_story"]}</div>',
+                        unsafe_allow_html=True)
+            st.markdown("")
         if r["tier1_breakdown"]:
             df = pd.DataFrame(r["tier1_breakdown"])
             df["signal"] = df["signal"].str.replace("tier1_", "").str.replace("_", " ")
@@ -238,10 +242,13 @@ with tab_co:
                 hide_index=True, use_container_width=True,
             )
         comp = r["components"]
-        st.caption(
-            f"Base {comp['tier1_base']} × Tier 2 {comp['tier2_modifier']} "
-            f"× Tier 3 {comp['tier3_modifier']} × urgency {comp['urgency_multiplier']}"
-        )
+        with st.expander("The arithmetic"):
+            st.caption(
+                f"Base {comp['tier1_base']} × Tier 2 {comp['tier2_modifier']} "
+                f"× Tier 3 {comp['tier3_modifier']} × urgency {comp['urgency_multiplier']}. "
+                "Weight is how much a signal is worth; strength is how good the evidence is; "
+                "decay is the discount applied to each signal after the strongest."
+            )
 
         for key in ["tier2_disclosed_pain"]:
             sig = raw.get("signals", {}).get(key)
@@ -280,6 +287,7 @@ with tab_prod:
                     "Fit": round(p["score"], 0),
                     "Lead or supporting": "supporting" if p.get("subordinate") else "lead",
                     "Why this company": p["reason"],
+                    "_pill": pill(r["category"]),
                 })
     hits.sort(key=lambda h: (h["_o"], -h["Fit"], -h["Score"]))
     for h in hits:
@@ -287,13 +295,16 @@ with tab_prod:
 
     st.caption(f"{len(hits)} companies to approach — prospects first, then narrow pitch, then "
                f"partnership. Excluded companies are not shown.")
-    if hits:
-        st.dataframe(
-            pd.DataFrame(hits).astype(str), hide_index=True, use_container_width=True,
-            column_config={"Why this company": st.column_config.TextColumn(width="large")},
-        )
-    else:
+    if not hits:
         st.info("No approachable company matches this offering.")
+    for h in hits:
+        pos = "" if h["Lead or supporting"] == "lead" else " · supporting"
+        st.markdown(
+            f'<div class="rowline"><b>{h["Company"]}</b> &nbsp;{h["_pill"]}&nbsp; '
+            f'<span class="why">fit {h["Fit"]:.0f} · overall {h["Score"]:.0f}{pos}</span><br>'
+            f'<span class="why">{h["Why this company"]}</span></div>',
+            unsafe_allow_html=True,
+        )
 
     suppressed_here = [r["company"] for r in rows if chosen in r["suppressed_products"]
                        and r["category"] in ("prospect", "prospect_narrow", "route_to_partnership")]

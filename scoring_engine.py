@@ -29,7 +29,6 @@ PRODUCT_NAMES = {
     "stablecoin_settlement": "Stablecoin settlement",
     "api_widget": "Payments API and Widget",
     "wallets_custody": "Wallets and custody",
-    "fx_provider_enablement": "Payments API (for onward use)",
 }
 
 DIRECTION_PLAIN = {
@@ -219,36 +218,21 @@ def sig_stablecoin_settlement(c):
 
 
 def sig_api_widget(c):
-    if not c.get("product_gates", {}).get("provides_financial_functionality_to_customers"):
+    gates = c.get("product_gates", {})
+    if not gates.get("provides_financial_functionality_to_customers"):
         return None
     coll = sig_val(c, "tier1_multi_market_collection")
     rails = sig_val(c, "tier2_multiple_local_rails")
     breadth = _market_breadth(c)
-    s = max(0.35, 0.45 * coll + 0.30 * rails + 0.25 * breadth)
-    note = str(c.get("product_gates", {}).get("gate_note", "")).split(".")[0].strip()
+    resells = bool(gates.get("sells_fx_or_payments_to_third_parties"))
+    s = max(0.35, 0.45 * coll + 0.30 * rails + 0.25 * breadth) + (0.25 if resells else 0.0)
+    note = str(gates.get("gate_note", "")).split(".")[0].strip()
     sector = str(c.get("identity", {}).get("sector", "")).lower()
-    why = note if note else f"a {sector} platform serving its own customers"
-    return {"score": round(100 * s, 1), "reason": why[:150]}
-
-
-def sig_fx_provider_enablement(c):
-    """A company that solved its own FX problem by becoming an FX provider.
-    It doesn't need treasury tooling - it needs rails it can resell to its own
-    customers. Different pitch, different buyer conversation."""
-    gates = c.get("product_gates", {})
-    if not gates.get("provides_financial_functionality_to_customers"):
-        return None
-    if not gates.get("sells_fx_or_payments_to_third_parties"):
-        return None
-    reach = _market_breadth(c)
-    rails = sig_val(c, "tier2_multiple_local_rails")
-    dependency = sig_val(c, "tier2_compliance_friction")
-    s = 0.40 * rails + 0.30 * reach + 0.30 * max(dependency, 0.4)
-    return {
-        "score": round(100 * min(1.0, s + 0.25), 1),
-        "reason": "already moves foreign currency for its own customers — needs the rails "
-                  "underneath rather than treasury tooling",
-    }
+    if resells:
+        why = "already moves money for its own customers on someone else's rails"
+    else:
+        why = note if note else f"offers financial services to its own customers ({sector})"
+    return {"score": round(100 * min(1.0, s), 1), "reason": why[:170], "resells": resells}
 
 
 def sig_wallets_custody(c):
@@ -268,7 +252,6 @@ SIGNATURES = {
     "fx": sig_fx,
     "stablecoin_settlement": sig_stablecoin_settlement,
     "api_widget": sig_api_widget,
-    "fx_provider_enablement": sig_fx_provider_enablement,
     "wallets_custody": sig_wallets_custody,
 }
 
@@ -425,7 +408,7 @@ def recommend(c, soft_caps):
         elif gua["score"] < tre["score"] * 0.8:
             results = [r for r in results if r["product"] != "global_usd_accounts"]
 
-    if any(r["product"] == "fx_provider_enablement" for r in results):
+    if any(r.get("resells") for r in results):
         results = [r for r in results
                    if r["product"] not in ("treasury_management", "global_usd_accounts")]
 
@@ -446,6 +429,47 @@ def classify(c, hard, established, name):
     if not established:
         return "no_established_need"
     return "prospect"
+
+
+def _score_story(c, contribs, t2, urg, urg_state):
+    """One plain sentence explaining the score, for readers who won't read a table."""
+    names = {
+        "tier1_cross_border_payments": "it makes cross-border payments regularly",
+        "tier1_usd_liquidity": "it needs dollars on an ongoing basis",
+        "tier1_multi_market_collection": "it collects or pays out across several markets",
+        "tier1_multi_currency_obligations": "it owes money in several currencies",
+    }
+    strong = [names[x["signal"]] for x in contribs if x["strength"] >= 0.7 and x["signal"] in names]
+    weak = [names[x["signal"]] for x in contribs if 0 < x["strength"] < 0.7 and x["signal"] in names]
+
+    if not strong and not weak:
+        return "No evidence of a cross-border money problem was found."
+
+    def joln(xs):
+        return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " and " + xs[-1]
+
+    parts = []
+    if strong:
+        parts.append(f"There is clear evidence that {joln(strong)}.")
+    if weak:
+        parts.append(f"There is weaker evidence that {joln(weak)}.")
+    if len(contribs) > 1:
+        parts.append("The strongest of these counts in full and each additional one counts for less, "
+                     "so a company with several faint indicators does not outrank one with a real problem.")
+    pain = c.get("signals", {}).get("tier2_disclosed_pain") or {}
+    if pain.get("present") and pain.get("strength", 0) >= 0.7:
+        parts.append("The score is then lifted because the company has publicly reported that currency "
+                     "movements or dollar access have cost it money.")
+    elif t2 > 1.05:
+        parts.append("The score is lifted slightly by supporting evidence such as its entity structure "
+                     "and the number of payment channels it runs.")
+    if urg > 1.0:
+        parts.append("It is lifted again because the company has entered new markets recently, so the "
+                     "problem is live rather than settled.")
+    elif urg_state == "static":
+        parts.append("No lift for recent expansion: the footprint has been stable, so any arrangement "
+                     "it has is probably entrenched.")
+    return " ".join(parts)
 
 
 def score_company(c):
@@ -480,6 +504,7 @@ def score_company(c):
             "urgency_state": urg_state,
         },
         "tier1_breakdown": contribs,
+        "score_story": _score_story(c, contribs, t2, urg, urg_state),
         "tier1_established": established,
         "hard_disqualifiers": hard,
         "soft_caps": [s["label"] for s in soft],
