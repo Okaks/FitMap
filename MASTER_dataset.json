@@ -252,8 +252,8 @@
         },
         "tier2_disclosed_pain": {
           "present": true,
-          "strength": 0.7,
-          "source": "integration rationale - avoided building African payment connections itself"
+          "strength": 0.5,
+          "source": "INFERRED FROM ACTION. Coinbase used a partner's Widget for local African payment methods rather than building the connections itself. Evidences the need; not a statement of harm."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -345,8 +345,8 @@
         },
         "tier2_disclosed_pain": {
           "present": true,
-          "strength": 0.8,
-          "source": "integrated Yellow Card for direct settlement path into Nigeria rather than building it"
+          "strength": 0.5,
+          "source": "INFERRED FROM ACTION. Tranzmit integrated a third-party settlement path into Nigeria rather than building one, which evidences the need. Not a statement of harm."
         },
         "tier2_multi_entity": {
           "present": false,
@@ -1014,9 +1014,9 @@
           "source": "single market collection"
         },
         "tier2_disclosed_pain": {
-          "present": true,
-          "strength": 0.4,
-          "source": "FX access is a known constraint for the category - WEAK, verify company-specific"
+          "present": false,
+          "strength": 0.2,
+          "source": "NOT SELF-DISCLOSURE. FX access described as a constraint for the category, with no company-specific statement located."
         },
         "tier2_multi_entity": {
           "present": false,
@@ -1114,8 +1114,8 @@
         },
         "tier2_disclosed_pain": {
           "present": true,
-          "strength": 0.5,
-          "source": "FX translation effects routinely disclosed - standard for listed multinationals, not distinctive"
+          "strength": 0.3,
+          "source": "Company disclosure, but generic: FX translation effects appear routinely in listed-multinational reporting and are not distinctive to Cemex. Weighted low for that reason."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -1897,8 +1897,8 @@
         },
         "tier2_disclosed_pain": {
           "present": true,
-          "strength": 0.7,
-          "source": "WeeTracker on the July 2026 FMO facility - funding aims to address the shortage of local-currency financing for Kenya's clean mobility sector. Local currency scarcity stated as the constraint being solved."
+          "strength": 0.5,
+          "source": "INFERRED FROM LENDER BEHAVIOUR. WeeTracker reports the July 2026 FMO facility aims to address the shortage of local-currency financing for Kenya's clean mobility sector. That is the lender's stated purpose, not an M-KOPA statement of harm."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -2002,9 +2002,9 @@
           "source": "collections and disbursements network across 43 markets"
         },
         "tier2_disclosed_pain": {
-          "present": true,
-          "strength": 0.9,
-          "source": "Group CPIO Luke Kyohere on the Privy partnership - cites need for faster settlement and better liquidity management; company material describes African cross-border movement as slow and fragmented with multiple intermediaries and prolonged settlement cycles"
+          "present": false,
+          "strength": 0.2,
+          "source": "NOT SELF-DISCLOSURE. Kyohere's remarks on the Privy partnership describe the market Onafriq sells into and announce a product to address it - a vendor problem statement, not the company reporting harm to itself. Reclassified out of Tier 2. Exclusion stands on the same-buyer competitor rule regardless. Onafriq's own material does cite that over 80% of intra-African payments route through correspondent banks outside the continent, costing about USD5bn a year - a market fact, filed in the market layer rather than as company pain."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -3100,8 +3100,8 @@
         },
         "tier2_disclosed_pain": {
           "present": true,
-          "strength": 0.7,
-          "source": "Pattern of deliberately seeking local-currency debt to avoid mismatch: USD 4m local-currency loan from Union Togolaise de Banque, USD 8m local-currency loan (~RWF 7.3bn) from the AfDB-backed Off-Grid Energy Access Fund. Sector analysis notes average lending rates of 10-20%+ across African markets, Nigeria at 27%."
+          "strength": 0.5,
+          "source": "INFERRED FROM COMPANY BEHAVIOUR rather than a statement of harm. Bboxx repeatedly raises local-currency debt to avoid mismatch - USD4m from Union Togolaise de Banque, USD8m (~RWF 7.3bn) from the AfDB-backed Off-Grid Energy Access Fund. Deliberate hedging evidences the exposure; it is not the company reporting a loss."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -3204,8 +3204,8 @@
         },
         "tier2_disclosed_pain": {
           "present": true,
-          "strength": 0.7,
-          "source": "Brighter Life Kenya 1 repaid senior debt in full and ahead of schedule from operating cash flow - a structured vehicle built specifically because ordinary lenders found the receivables, described as millions of tiny mobile-money payments in volatile local currencies, too small and too unfamiliar to underwrite"
+          "strength": 0.5,
+          "source": "INFERRED FROM STRUCTURE. Brighter Life Kenya 1 was built because ordinary lenders found the receivables - millions of small mobile-money payments in volatile local currencies - hard to underwrite. Evidence of the condition rather than a company statement of harm."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -4420,9 +4420,9 @@
           "source": "100,000+ retailer collection points, expanding beyond Nigeria"
         },
         "tier2_disclosed_pain": {
-          "present": true,
-          "strength": 0.7,
-          "source": "Sector analysis identifies the exact mechanism - Nigeria's B2B BNPL market is shaped by currency volatility, with the naira losing over 50% of its value in 2023, which simultaneously raises demand for payment terms among import-dependent businesses AND complicates the economics of naira-denominated credit"
+          "present": false,
+          "strength": 0.3,
+          "source": "NOT SELF-DISCLOSURE. Sector analysis of Nigerian B2B BNPL economics under naira volatility, not a TradeDepot statement. The structural exposure is real and scores in Tier 1; this is not Tier 2 pain."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -4521,9 +4521,9 @@
           "source": "Merchant collection across the distribution chain from manufacturers to retailers"
         },
         "tier2_disclosed_pain": {
-          "present": true,
-          "strength": 0.6,
-          "source": "Same sector mechanism as TradeDepot - Nigerian B2B BNPL economics complicated by naira volatility"
+          "present": false,
+          "strength": 0.25,
+          "source": "NOT SELF-DISCLOSURE. Sector mechanism inferred from the TradeDepot analysis, not a Sabi statement."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -4838,8 +4838,8 @@
         },
         "tier2_disclosed_pain": {
           "present": true,
-          "strength": 0.8,
-          "source": "Air Peace publicly warned with Arik Air and Dana Air that Nigeria's 5% NCAA ticket levy is straining airline finances. Nigeria previously held the world's largest blocked-funds position - USD743.7m by March 2023, up from USD549m in December 2022 - which is now resolved but shaped the sector's treasury behaviour. AFRAA: cash flow is the most pressing factor affecting the commercial viability of most African airlines, and repatriation delays occasion significant opportunity costs and foreign exchange losses."
+          "strength": 0.4,
+          "source": "WEAK AND PARTLY OFF-POINT. The public warning with Arik and Dana concerns Nigeria's 5% NCAA ticket levy, which is a tax rather than an FX matter. Nigeria's blocked-funds position peaked at USD743.7m in March 2023 and is now resolved. AFRAA states cash flow is the most pressing factor affecting commercial viability of most African airlines and that repatriation delays cause FX losses - sector evidence, not an Air Peace disclosure. Downgraded accordingly."
         },
         "tier2_multi_entity": {
           "present": false,
@@ -5045,9 +5045,9 @@
           "source": "Collection is B2B enterprise invoicing; the multi-market activity is on the payout side"
         },
         "tier2_disclosed_pain": {
-          "present": true,
-          "strength": 0.6,
-          "source": "Sector evidence rather than company disclosure: payment infrastructure for African remote workers runs through Wise, Payoneer or EOR-managed payroll, and practitioners advise confirming a worker's preferred method given differing local banking friction. That friction is Andela's operational problem at scale."
+          "present": false,
+          "strength": 0.25,
+          "source": "NOT SELF-DISCLOSURE. Sector commentary on payment infrastructure for African remote workers. The payout exposure is structural and scores in Tier 1; no company statement of harm was found."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -5703,5 +5703,9 @@
     "Block/Square positive-control status needs verification",
     "Tala output category needs a judgement call - see its tier0_note",
     "Market table (20 YC countries + expansion + absent markets) not yet built"
-  ]
+  ],
+  "audit": {
+    "date": "2026-09-07",
+    "tier2_disclosed_pain_review": "Every Tier 2 disclosed-pain source was reviewed against one test: is this the company describing harm to itself, or is it sector commentary, a vendor's market pitch, or an inference from behaviour? Five rows were reclassified out of Tier 2 (Onafriq, TradeDepot, Sabi, Andela, Bamboo) and seven were downgraded to reflect inference-from-behaviour rather than disclosure (Cemex, Bboxx, M-KOPA, d.light, Air Peace, Tranzmit, Coinbase). No row's category changed as a result. Rows retaining full-strength disclosed pain are those where a named officer or a filing states the harm: Dangote, Ethiopian Airlines, Kenya Airways, Jumia, Globant, Old Mutual, Shoprite, Flour Mills, Sun King, Beximco, Interloop, Western Union, Visa, Nomba."
+  }
 }

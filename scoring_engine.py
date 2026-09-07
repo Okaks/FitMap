@@ -245,7 +245,9 @@ def normalise_flags(c):
     for k in HARD_DISQUALIFIERS:
         out[k] = truthy(raw.get(k))
 
-    if "HARD DISQUALIFY" in note or "HARD CAP" in note:
+    negated = any(p in note for p in ("NO HARD CAP", "NO HARD DISQUALIFY", "NOT DISQUALIFIED",
+                                      "NO CAP.", "NO CAP,"))
+    if not negated and ("HARD DISQUALIFY" in note or "HARD CAP" in note):
         if "FOREIGN PARENT" in note or "PARENT TREASURY" in note:
             out["foreign_parent_treasury"] = True
         if "SAME BUYER" in note or "COMPETES FOR THE SAME BUYER" in note or "DIRECT COMPETITOR" in note:
