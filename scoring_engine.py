@@ -21,6 +21,51 @@ TIER1_WEIGHTS = {
 
 DECAY_LADDER = [1.0, 0.8, 0.6, 0.4]
 
+PRODUCT_NAMES = {
+    "global_usd_accounts": "Global USD Accounts",
+    "treasury_management": "Treasury management",
+    "local_rails": "Local collections and payouts",
+    "fx": "Currency conversion",
+    "stablecoin_settlement": "Stablecoin settlement",
+    "api_widget": "Payments API and Widget",
+    "wallets_custody": "Wallets and custody",
+    "fx_provider_enablement": "Infrastructure to serve their own customers",
+}
+
+DIRECTION_PLAIN = {
+    "soft_in_hard_out": "earns local currency, owes hard currency",
+    "hard_in_soft_out": "earns hard currency, owes local currency",
+    "bidirectional": "money moves both ways",
+    "none": "no recurring mismatch",
+    "none material": "no material mismatch",
+}
+
+
+def _plain_direction(d):
+    d = str(d or "")
+    for k, v in DIRECTION_PLAIN.items():
+        if d.startswith(k):
+            extra = d[len(k):].strip(" ()")
+            return f"{v}{' — ' + extra if extra else ''}"
+    return d
+
+
+def _markets(c):
+    """Short readable market description."""
+    txt = str(c.get("footprint", {}).get("operating_countries", ""))
+    txt = txt.split(";")[0].split(" - ")[0].strip()
+    return txt[:70] if txt else "its operating markets"
+
+
+def _currencies(c, key):
+    lst = c.get("money_movement", {}).get(key, []) or []
+    lst = [x for x in lst if len(str(x)) <= 30]
+    if not lst:
+        return ""
+    if len(lst) <= 3:
+        return ", ".join(lst)
+    return f"{', '.join(lst[:3])} and {len(lst)-3} more"
+
 TIER2_WEIGHTS = {
     "tier2_disclosed_pain": 0.20,
     "tier2_multi_entity": 0.10,
@@ -84,9 +129,12 @@ def sig_global_usd_accounts(c):
     pain = sig_val(c, "tier2_disclosed_pain")
     curr = sig_val(c, "tier1_multi_currency_obligations")
     blended = 0.50 * s + 0.20 * breadth + 0.18 * curr + 0.12 * pain
+    verbs = {"receives": "receives", "holds": "holds", "pays": "pays out",
+             "needs_on_demand": "needs dollars on demand"}
+    said = ", ".join(verbs.get(u, u) for u in usd_req)
     return {
         "score": round(100 * blended, 1),
-        "reason": f"USD requirement: {', '.join(usd_req)}",
+        "reason": f"{said} in USD, against {_currencies(c, 'currencies_collected_raw') or 'local currency income'}",
     }
 
 
@@ -100,7 +148,8 @@ def sig_treasury(c):
                 + 0.20 * _market_breadth(c))
     return {
         "score": round(100 * strength, 1),
-        "reason": f"Multi-entity structure across {curr} collected currencies",
+        "reason": f"separate entities across {_markets(c)}, collecting in "
+                  f"{_currencies(c, 'currencies_collected_raw') or f'{curr} currencies'}",
     }
 
 
@@ -118,9 +167,12 @@ def sig_local_rails(c):
                "drivers" in str(c.get("money_movement", {}).get("recipient_type", "")) or \
                "employees" in str(c.get("money_movement", {}).get("recipient_type", ""))
     direction = "both" if inbound and outbound else ("inbound" if inbound else "outbound")
+    who = str(c.get("money_movement", {}).get("recipient_type", "")).strip()
+    flow = {"both": "collects from and pays out to", "inbound": "collects from",
+            "outbound": "pays out to"}[direction]
     return {
         "score": round(100 * s, 1),
-        "reason": f"Multi-market local collection/disbursement ({direction})",
+        "reason": f"{flow} {who or 'counterparties'} across {_markets(c)}",
         "direction": direction,
     }
 
@@ -145,7 +197,7 @@ def sig_fx(c):
                 + 0.45 * sig_val(c, "tier2_disclosed_pain"))
     return {
         "score": round(100 * strength, 1),
-        "reason": f"Recurring currency mismatch ({d})",
+        "reason": _plain_direction(d),
         "subordinate": True,
     }
 
@@ -157,9 +209,11 @@ def sig_stablecoin_settlement(c):
     if s < 0.5:
         return None
     strength = min(1.0, s * (1 + 0.15 * friction_hits))
+    hits = [k for k in BLOCKED_FUNDS_COUNTRIES if k.split()[0] in countries]
+    where = f"including {', '.join(hits[:3])}" if hits else "across its corridors"
     return {
         "score": round(100 * strength, 1),
-        "reason": "Cross-border settlement through high-friction corridors",
+        "reason": f"cross-border settlement {where}",
         "subordinate": True,
     }
 
@@ -171,7 +225,10 @@ def sig_api_widget(c):
     rails = sig_val(c, "tier2_multiple_local_rails")
     breadth = _market_breadth(c)
     s = max(0.35, 0.45 * coll + 0.30 * rails + 0.25 * breadth)
-    return {"score": round(100 * s, 1), "reason": "Offers financial functionality to its own customers"}
+    note = str(c.get("product_gates", {}).get("gate_note", "")).split(".")[0].strip()
+    sector = str(c.get("identity", {}).get("sector", "")).lower()
+    why = note if note else f"a {sector} platform serving its own customers"
+    return {"score": round(100 * s, 1), "reason": why[:150]}
 
 
 def sig_fx_provider_enablement(c):
@@ -189,7 +246,8 @@ def sig_fx_provider_enablement(c):
     s = 0.40 * rails + 0.30 * reach + 0.30 * max(dependency, 0.4)
     return {
         "score": round(100 * min(1.0, s + 0.25), 1),
-        "reason": "Sells FX or payments onward — needs rails to resell, not treasury tooling",
+        "reason": "already moves foreign currency for its own customers — needs rails "
+                  "underneath, not treasury tooling",
     }
 
 
@@ -198,8 +256,9 @@ def sig_wallets_custody(c):
         return None
     platform = c.get("product_gates", {}).get("provides_financial_functionality_to_customers")
     s = 0.55 + (0.20 if platform else 0.0) + 0.25 * _market_breadth(c)
+    note = str(c.get("product_gates", {}).get("gate_note", "")).split(".")[0].strip()
     return {"score": round(100 * min(1.0, s), 1),
-            "reason": "Documented need to hold or manage digital assets"}
+            "reason": note[:150] if note else "holds or manages digital assets"}
 
 
 SIGNATURES = {
@@ -355,6 +414,7 @@ def recommend(c, soft_caps):
         r = fn(c)
         if r:
             r["product"] = name
+            r["label"] = PRODUCT_NAMES.get(name, name.replace("_", " "))
             results.append(r)
 
     gua = next((r for r in results if r["product"] == "global_usd_accounts"), None)

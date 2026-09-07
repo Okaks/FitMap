@@ -2875,8 +2875,8 @@
         },
         "tier2_disclosed_pain": {
           "present": true,
-          "strength": 0.9,
-          "source": "PRIMARY INTERVIEW - analyst states cross-border payment has not been cracked; even when the process runs smoothly it still takes time to land. Local dom account settlement T+1 to T+3; bank processing within the hour or end of day depending on relationship pressure rather than anything the company controls."
+          "strength": 0.6,
+          "source": "PRIMARY INTERVIEW, Aug 2026 - PARTLY SOLVED, and the analyst says so. Nomba no longer uses a third-party payer: it holds liquidity in USD and GBP directly and pays from it, so the sourcing problem that existed in 2023-24 is gone. What remains is settlement time - the analyst states cross-border payment has not been cracked, that even when the process runs smoothly it still takes time to land, and that a local domiciliary account settles T+1 to T+3 while bank processing lands within the hour or at end of day depending on relationship pressure. Score reflects a real but narrowed problem."
         },
         "tier2_multi_entity": {
           "present": true,
@@ -2907,7 +2907,7 @@
         "provides_financial_functionality_to_customers": true,
         "sells_fx_or_payments_to_third_parties": true,
         "holds_or_manages_digital_assets": false,
-        "gate_note": "Sells FX payment services onward to corporates and retail. Triggers the FX-provider signature."
+        "gate_note": "Makes foreign-currency payments for itself and for its corporate and retail customers, using partner rails it does not own. Passes the platform gate."
       },
       "tier0_flags": {
         "single_market_single_currency": false,
@@ -2930,7 +2930,7 @@
         "output_category": "route_to_partnership",
         "control_type": "live prospect",
         "evidence_type": "PRIMARY - first-hand interview with a serving treasury analyst, August 2026",
-        "notes": "The only row in the dataset built from primary research rather than public sources. PATTERN: solved its own FX problem by becoming an FX provider. Not treasury-solved, not a competitor - a company running an FX line on partner rails with its own customers to serve. THE PITCH: not treasury tooling. Sell Nomba the ability to promise its own customers faster settlement and a regulated local compliance counterparty, replacing foreign processors that demand documents Nigerian companies often cannot produce. Interview also supplies the simulator's core numbers: local dom T+1 to T+3, US offshore paying into the US same day within hours, bank processing within the hour or end of day depending on relationship."
+        "notes": "The only row in the dataset built from primary research rather than public sources. PATTERN: solved its own sourcing problem by holding multi-currency liquidity, and now makes foreign payments for its own customers on partner rails. Not treasury-solved, not a competitor - a company running an FX line on partner rails with its own customers to serve. THE PITCH: not treasury tooling. Sell Nomba the ability to promise its own customers faster settlement and a regulated local compliance counterparty, replacing foreign processors that demand documents Nigerian companies often cannot produce. Interview also supplies the simulator's core numbers: local dom T+1 to T+3, US offshore paying into the US same day within hours, bank processing within the hour or end of day depending on relationship."
       }
     },
     {

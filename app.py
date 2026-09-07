@@ -34,6 +34,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+LABELS_G = {
+    "global_usd_accounts": "Global USD Accounts", "treasury_management": "Treasury management",
+    "local_rails": "Local collections and payouts", "fx": "Currency conversion",
+    "stablecoin_settlement": "Stablecoin settlement", "api_widget": "Payments API and Widget",
+    "wallets_custody": "Wallets and custody",
+    "fx_provider_enablement": "Infrastructure to serve their own customers",
+}
+
 PILL = {
     "prospect": ("p-prospect", "Prospect"),
     "prospect_narrow": ("p-narrow", "Narrow pitch"),
@@ -101,8 +109,7 @@ urg_expand = st.sidebar.slider("Urgency: expanding", 1.0, 2.0, 1.3, 0.05,
 
 st.sidebar.markdown("---")
 st.sidebar.caption(
-    "Structure only. No payment volumes, transaction counts or idle-balance "
-    "estimates — structure is verifiable, volume is not. Every signal carries a source."
+    "Scored on company structure only — markets, currencies, entities. Every signal carries a source."
 )
 
 rows, validation = run_scoring(w_cbp, w_usd, w_coll, w_curr, DECAY, t2_ceiling, urg_expand)
@@ -145,10 +152,21 @@ with tab_co:
         )
         shown = [r for r in rows if r["category"] in cats]
         st.caption(f"{len(shown)} companies")
+        with st.expander("What the categories mean"):
+            st.markdown(
+                "- **Prospect** — a real need, nothing already solved. Approach normally.\n"
+                "- **Narrow pitch** — needs some offerings but has already solved others itself. "
+                "Pitch only what is listed; the rest would be selling something it already has.\n"
+                "- **Partnership** — competes on one layer but could use the infrastructure on another. "
+                "Approach as a partner, not with a treasury pitch.\n"
+                "- **Excluded** — ruled out, with the reason shown on the company.\n"
+                "- **No established need** — some supporting signals, but nothing that proves a "
+                "cross-border problem exists."
+            )
 
         for r in shown:
             flag = " ⚑" if r["review_flag"]["needs_review"] else ""
-            prods = ", ".join(p["product"].replace("_", " ") for p in r["recommendations"])
+            prods = ", ".join(p.get("label", p["product"]) for p in r["recommendations"])
             st.markdown(
                 f'<div class="rowline"><b>{r["score"]:.0f}</b> &nbsp; {r["company"]}{flag} '
                 f'&nbsp; {pill(r["category"])}<br><span class="why">{prods}</span></div>',
@@ -206,7 +224,7 @@ with tab_co:
                                                           "route_to_partnership"):
             st.info(
                 "**Already solved, don't pitch:** "
-                + ", ".join(s.replace("_", " ") for s in r["suppressed_products"])
+                + ", ".join(LABELS_G.get(s, s.replace("_", " ")) for s in r["suppressed_products"])
                 + ". Soft caps suppress the products a company has solved for itself — "
                 "they don't remove it from the list."
             )
@@ -242,9 +260,10 @@ with tab_co:
 
 with tab_prod:
     st.markdown("Pick an offering to see which companies its signature fires for, strongest first.")
-    products = sorted({p["product"] for r in rows for p in r["recommendations"]})
+    products = sorted({p["product"] for r in rows for p in r["recommendations"]
+                       if r["category"] in ("prospect", "prospect_narrow", "route_to_partnership")})
     chosen = st.radio("Offering", products, horizontal=True,
-                      format_func=lambda p: p.replace("_", " "))
+                      format_func=lambda p: LABELS_G.get(p, p.replace("_", " ")))
 
     hits = []
     for r in rows:
@@ -262,7 +281,8 @@ with tab_prod:
     st.caption(f"{len(hits)} companies")
     st.dataframe(pd.DataFrame(hits), hide_index=True, use_container_width=True)
 
-    suppressed_here = [r["company"] for r in rows if chosen in r["suppressed_products"]]
+    suppressed_here = [r["company"] for r in rows if chosen in r["suppressed_products"]
+                       and r["category"] in ("prospect", "prospect_narrow", "route_to_partnership")]
     if suppressed_here:
         st.info(
             f"**Suppressed for {len(suppressed_here)} companies** that have already solved this "
@@ -286,12 +306,18 @@ with tab_mkt:
         "Binding constraint": m.get("binding_constraint", ""),
     } for m in mk["markets"]])
 
-    view = st.radio("View", ["Gap: demand against capability", "All markets"], horizontal=True)
-    if view.startswith("Gap"):
+    st.markdown(
+        "Each market is scored two ways: how hard it is to move money there, and whether the "
+        "infrastructure to serve it exists yet. Those are separate questions — a market can be "
+        "difficult *and* well served, or easy and unreachable."
+    )
+    view = st.radio("View", ["Where demand outruns capability", "All markets"], horizontal=True)
+    if view.startswith("Where"):
         gap = md[(md["Friction"] >= 60) & (md["Regulatory"] <= 1)].sort_values("Friction", ascending=False)
         st.markdown(
-            "Markets where friction is high and the provider has little or no regulatory footing. "
-            "These are expansion signals, not sales targets — the constraint is capability, not demand."
+            "Markets scoring high on friction where there is little or no licence or rail coverage yet. "
+            "The demand is real; the ability to serve it is not there. These are expansion signals "
+            "rather than places to sell into today."
         )
         st.dataframe(gap, hide_index=True, use_container_width=True)
     else:
@@ -334,59 +360,68 @@ with tab_mkt:
 
 with tab_method:
     st.markdown("""
-### The formula
+### The question this answers
 
-    score = tier 1 base × tier 2 × tier 3 × urgency
+Which companies have a cross-border money problem that this infrastructure solves — and which part
+of it they need.
 
-**Tier 1 establishes that a problem exists.** Four signals, weighted, each rated 0–1 on how good
-the evidence is, then sorted and decayed by rank. The decay is the point: a company that hits all
-four signals weakly should not outrank one that hits two of them strongly. Without it, the model
-rewards signal-counting instead of need.
+### How a company gets its score
 
-**Tier 2 is multiplicative, not additive.** Supporting signals make an existing problem worse; they
-cannot create one. If they were additive, a company with no real cross-border problem could
-accumulate its way into the top ten.
+**First, is it even a candidate?** A company operating in one country with one currency has no
+cross-border problem. A subsidiary whose parent sets banking policy overseas cannot buy anything
+independently. A company selling the same service to the same customers is a competitor. Any of
+these and it is ruled out, with the reason shown.
 
-Tier 2 counts *disclosed foreign-exchange or dollar-access harm* — an FX loss, a devaluation impact,
-a stated hard-currency shortage, a repatriation problem. It does not count financial distress
-generally. One company in this set has heavy documented distress — layoffs, unpaid vendors, a
-supplier lawsuit — with no FX component at all. A model keying on "financial difficulty" would score
-that as pain. It is the wrong kind entirely.
+**Then, is there a real problem?** Four things establish one: recurring cross-border payments,
+a standing need for dollars, collecting money across several markets, and owing money in several
+currencies. Each is rated on how good the evidence is — a figure in a filing counts for more than
+something inferred from a company's website.
 
-**Urgency only ever multiplies upward.** A company that entered three markets this year has an
-unsolved problem now. A company that has been static for a decade is not penalised, because
-"they've already solved it" is an inference, not evidence. Sustained regional retreat is different —
-that is a company publicly deciding not to invest, and it is a disqualifier rather than a discount.
+Stacking weak signals does not beat one strong one. A company with four faint indicators should not
+outrank a company with two clear ones, so later signals count for progressively less.
 
-### Soft caps suppress products, not companies
+**Then, how bad is it?** If a company has publicly said currency movements hurt it, that multiplies
+the score. It cannot create a problem where none exists — supporting evidence makes an existing
+problem worse, nothing more.
 
-The first version of this excluded any company with a mature treasury. That was wrong, and one row
-proves it: an agricultural trading group operating across dozens of markets, procuring from
-smallholders in soft currency against dollar export receipts. Every structural signal fires at
-maximum — and it runs its own treasury companies in three offshore jurisdictions.
+Only FX or dollar-access harm counts here. One company in this set has heavy documented trouble —
+layoffs, unpaid suppliers, a lawsuit — with no currency component at all. That is the wrong kind of
+difficulty and it scores nothing.
 
-The treasury pitch is dead there. Collection and payout rails across those markets are not.
-Suppressing the solved products and keeping the rest turns an exclusion into a correctly-scoped
-pitch. A scraper puts that company in the top five. A blanket cap throws it away. Neither is right.
+**Finally, how urgent?** A company that entered new markets recently has an unsolved problem now.
+A company that has been stable for years is not penalised, because assuming it has already solved
+things would be a guess. A company retreating from a region is different — it has publicly decided
+not to invest there, and it is ruled out.
 
-### Three outcomes, not two
+### Why some companies get a shorter list
 
-Some companies are neither prospects nor exclusions. A payments company can compete on one layer
-and still buy rails on another — that is precisely what Coinbase does. Forcing a binary choice
-means either pitching treasury to a competitor or discarding a real partnership.
+A company can have solved part of this itself. One agricultural group in this set runs its own
+treasury operations in three countries, so there is no treasury pitch to make — but it still
+collects from farmers across dozens of markets in local currency, and that part is unsolved.
 
-### Structure only
+Ruling it out entirely would throw away a real opportunity. Pitching it treasury tooling would
+waste everyone's time. So the offerings it has already solved are removed and the rest stay.
 
-No payment volumes, transaction counts, or estimates of idle capital. Those aren't publicly
-available and guessing at them would make every number in here unfalsifiable. Structure — which
-markets, which currencies in, which currencies out, what entity shape — is verifiable, and it is
-what the products actually key on.
+### Why there are three outcomes rather than two
 
-Every signal carries a source. Where evidence is thin it is flagged rather than hidden.
-Companies with no Tier 1 signal appear in their own category instead of being deleted, so the
-floor rule can be judged rather than trusted.
+Some companies compete on one layer and could still use the infrastructure on another. Forcing a
+yes-or-no answer would mean either pitching a competitor or discarding a genuine partnership.
 
-### Validation
+### What it does not use
+
+No transaction volumes, no payment counts, no estimates of how much money sits idle. None of that
+is public, and guessing would make every number here unarguable. It uses what can be checked:
+which markets a company operates in, which currencies come in and go out, how it is structured.
+
+Every signal carries its source. Where the evidence is thin, it says so.
+
+### Does it work?
+
+Four companies in this set are confirmed customers. If the framework is sound, they should rank
+high — and they do. Nine more were included specifically because they *should* fail, each for a
+different reason, so every rule is visibly doing something.
+
+Move the weights in the sidebar and watch whether that still holds.
 """)
     st.dataframe(pd.DataFrame(validation["positive_controls"]), hide_index=True, use_container_width=True)
     st.caption(
